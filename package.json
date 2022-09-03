@@ -1,0 +1,24 @@
+{
+  "name": "mi-primer-sitio-con-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-sass": "sass -c ./assets/style/scss/main.scss ./assets/style/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigodomingorena/mi-primer-sitio-con-js.git"
+  },
+  "keywords": [],
+  "author": "Rodrigo Domingorena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigodomingorena/mi-primer-sitio-con-js/issues"
+  },
+  "homepage": "https://github.com/rodrigodomingorena/mi-primer-sitio-con-js#readme",
+  "devDependencies": {
+    "sass": "^1.54.8"
+  }
+}
