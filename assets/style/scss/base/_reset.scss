@@ -1,0 +1,31 @@
+@use "../utilities/mixins" as mx;
+@use "../utilities/variables" as v;
+
+
+
+
+* {
+  @include mx.font-stack($l-h: normal);//  line-height
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+//  Esto lleva el 'font-size' del elemento raiz de '16px' a '10px'. Ahora: 1rem = 10px.
+  @include mx.font-stack($f-s: 62.5%);//  font-size
+  overflow-x: hidden;
+
+//  Esta propiedad especifica el comportamiento del desplazamiento. Cuando esta propiedad
+//  está especificada en el elemento raíz, se aplica al viewport.
+//  El valor 'smooth' hace que la caja se desplace suavemente, utilizando una función de
+//  tiempo definida por el agente de usuario (user-agent) sobre un período de tiempo también
+//  definido por este.(https://developer.mozilla.org/es/docs/Web/CSS/scroll-behavior).
+  scroll-behavior: smooth;
+}
+
+
+a {
+  @include mx.font-stack($t-d: none);//  text-decoration
+  color: v.$white;
+}

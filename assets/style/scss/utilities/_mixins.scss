@@ -1,0 +1,43 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+
+
+
+
+
+
+//===================================================================
+//  Font Stack
+//===================================================================
+
+
+//  Creado para mantener agrupadas todas las propiedades relacionadas al texto
+//  y así mantener cierta unidad y orden a lo largo del proyecto en cuanto
+//  a estas características.
+
+@mixin font-stack(
+  $t-a: null,
+  $t-d: null,
+  $t-s: null,
+  $l-h: null,
+  $l-e: null,
+  $c: null,
+  $f-s: null,
+  $f-w: null,
+  ) {
+
+  @if $t-a {text-align: $t-a;}
+  @if $t-d {text-decoration: $t-d;}
+  @if $t-s {text-shadow: $t-s;}
+  @if $l-h {line-height: $l-h;}
+  @if $l-e {letter-spacing: $l-e;}
+  @if $c {color: $c;}
+  @if $f-s {font-size: $f-s;}
+  @if $f-w {font-weight: map.get(mp.$font-weight, $f-w);}
+}
+
+
+//===================================================================
+//  Cierre de Font Stack
+//===================================================================
