@@ -3,6 +3,8 @@
 @use "sass:meta";
 
 
+@use "maps" as mp;
+@use "variables" as v;
 
 
 
@@ -40,4 +42,245 @@
 
 //===================================================================
 //  Cierre de Font Stack
+//===================================================================
+
+
+
+
+//===================================================================
+//  Responsive
+//===================================================================
+
+
+//  Creado para declarar las distintas 'media queries' a lo largo del proyecto.
+
+
+@mixin responsive($size) {
+
+  @if map.has-key(mp.$breakpoints, $size) {//  1*
+    @media #{meta.inspect(map.get(mp.$breakpoints, $size))} {//  2*
+      @content;
+    }
+  } @else if meta.type-of($size) == number {//  3*
+      @if math.is-unitless($size) {//  4*
+        $size-in-px: $size * 1px;
+
+        @media (min-width: #{$size-in-px}) {
+          @content;
+        }
+      } @else {//  5*
+        @media (min-width: #{$size}) {
+          @content;
+        }
+      }
+  } @else {//  6*
+    @warn "Desafortunadamente no existe ningún valor para '#{$size}'."
+          "Asegúrese de que esté definido en el mapa '$breakpoints'."
+          "O bien que sea un número válido.";
+  }
+}
+
+
+//  Explicación:
+
+//  1*  Si el mapa '$breakpoints' contiene el '$size' suministrado.
+//  2*  Devuelve el valor que tiene asociado el $size en el mapa $breakpoints
+//      después de una declaración '@media'.
+//  3*  Si no, se corrobora que el '$size' sea un número.
+//  4*  Si es un número, en caso de que no tenga unidades, se lo convierte a
+//      'px' y se imprime la declaración '@media' que sigue.
+//  5*  Si es un número con unidades, directamente se imprime la declaración
+//      '@media' que sigue.
+//  6*  Si el mapa '$breakpoints' no contiene el $size suministrado y tampoco
+//      este es un número, devolvemos el siguiente '@warn' para alertar sobre
+//      el problema en cuestión.
+
+
+//  Ejemplo.
+
+//  .element {
+//    @include responsive('md') {
+//      position: sticky;
+//      top: -4.3rem;
+//    }
+//  }
+
+
+//  Código resultante:
+
+//  @media (min-width: 768px) {
+//    .element {
+//      position: sticky;
+//      top: -4.3rem;
+//    }
+//  }
+
+
+//===================================================================
+//  Cierre de Responsive
+//===================================================================
+
+
+
+
+//===================================================================
+//  Color Hover
+//===================================================================
+
+
+//  Mixin que genera un 'background-color' en ':hover' dependiendo de si la clase
+//  del elemento en cuestión se encuentra dentro de un 'header--brown' o 'header--blue'.
+
+
+@mixin color-hover($color: v.$white, $map...) {
+
+  @each $color-header, $background in meta.keywords($map) {
+    .header--#{$color-header} &:hover {
+      background-color: $background;
+      @if $color {@include font-stack($c: $color);}
+    }
+  }
+}
+
+
+//  Ejemplo.
+
+//  Mapa suministrado:
+
+//  $header-color: (
+//    'brown': v.$brown,
+//    'blue': v.$light-blue,
+//  );
+
+//  .element {
+//    @include color-hover(mp.$header-color...);
+//  }
+
+//  Código resultante:
+
+//  header--brown .element:hover {
+//    background-color: rgba(113, 83, 67, 1);
+//    color: #fff;
+//  }
+
+//  header--blue .element:hover {
+//    background-color: rgba(15, 159, 214, 1);
+//    color: #fff;
+//  }
+
+
+//===================================================================
+//  Cierre de Color Hover
+//===================================================================
+
+
+
+
+//===================================================================
+//  Color Nav
+//===================================================================
+
+
+//  Mixin que genera un 'background-color' dependiendo de si la clase del elemento
+//  en cuestión ('header__navbar') se encuentra dentro de un 'header--brown' o
+//  'header--blue'.
+
+@mixin color-nav($map...) {
+  @each $color-header, $background in meta.keywords($map) {
+    .header--#{$color-header} & {
+      background-color: $background;
+    }
+  }
+}
+
+
+//  Ejemplo.
+
+//  Mapa suministrado:
+
+//  $header-color-05: (
+//    'brown': v.$brown-05,
+//    'blue': v.$light-blue-05,
+//  );
+
+//  .header__navbar {
+//    @include color-nav(mp.$header-color-05...);
+//  }
+
+//  Código resultante:
+
+//  header--brown .header__navbar {
+//    background-color: rgba(113, 83, 67, 0.5);
+//  }
+
+//  header--blue .header__navbar {
+//    background-color: rgba(15, 159, 214, 0.5);
+//  }
+
+
+//===================================================================
+//  Cierre de Color Nav
+//===================================================================
+
+
+
+
+//===================================================================
+//  Size
+//===================================================================
+
+
+//  Creado para mantener agrupadas todas las propiedades relacionadas al 'width'
+//  y 'height' para así mantener cierta unidad y orden a lo largo del proyecto en
+//  cuanto a estas características.
+
+@mixin size(
+  $w: null,
+  $h: null,
+  $wmin: null,
+  $wmax: null,
+  $hmin: null,
+  $hmax: null,
+  ) {
+  
+  @if $w {width: $w;}
+  @if $wmin {min-width: $wmin;}
+  @if $wmax {max-width: $wmax;}
+  @if $h {height: $h;}
+  @if $hmin {min-height: $hmin;}
+  @if $hmax {max-height: $hmax;}
+}
+
+
+//===================================================================
+//  Cierre de Size
+//===================================================================
+
+
+
+
+//===================================================================
+//  Transition
+//===================================================================
+
+
+//  Mixin creado para agilizar la declaración de la propiedad 'transition'
+//  con un valor por defecto (uno de los más utilizados) y con la posibilidad
+//  de ser personalizado en los casos que sean necesarios.
+
+@mixin transition(
+  $props: all,
+  $duration: 0.75s,
+  $timing: ease-out,
+  $delay: 0s,
+) {
+  
+  transition-property: $props;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+  transition-delay: $delay;
+}
+
+//===================================================================
+//  Cierre de Transition
 //===================================================================

@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "sass:math";
+
+/* @use "maps" as mp;
+@use "variables" as v; */
+
+
+
+
+//===================================================================
+//  Percentage Margin
+//===================================================================
+
+//  Esta función fue creada debido a que en el proyecto se utilizan muchas veces
+//  valores de 'margin' en porcentajes que hacen referencia a las columnas del
+//  'grid' que ofrece Bootstrap.
+
+//  Por ejemplo, si quiero que un elemento tenga un 'margin-left' de dos columnas
+//  de Bootstrap, en vez de escribir '16.666666666667%', llamo a esta función de esta
+//  manera: 'percentage-margin(2)' y devuelve como resultado el número que acabo de
+//  mostrar. Esto es muy útil ya que no hay que andar haciendo cálculos cada vez que
+//  necesito un 'margin' específico (1, 1.5 o 3 columnas, por ej.) al mismo tiempo
+//  que es mucho más intuitivo y semántico ver un '2' en alusión a dos columnas que
+//  un número como '16.666666666667%'.
+
+@function percentage-margin($value) {
+  @return math.percentage(math.div(1, math.div(12, $value)));
+}
+
+//===================================================================
+//  Cierre de Percentage Margin
+//===================================================================

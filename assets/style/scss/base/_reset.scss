@@ -29,3 +29,8 @@ a {
   @include mx.font-stack($t-d: none);//  text-decoration
   color: v.$white;
 }
+
+body {
+  height: 9999px;
+  background: transparent radial-gradient(closest-side at 50% 33%, v.$white 0%, v.$light-brown 100%);
+}
