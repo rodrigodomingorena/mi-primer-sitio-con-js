@@ -1,0 +1,50 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+
+
+
+
+//===================================================================
+//  Colores
+//===================================================================
+
+$white: #fff;
+
+//  Tono Marrón  //
+
+$brown: rgba(113, 83, 67, 1);
+$brown-07: color.adjust($brown, $alpha: -0.3);
+$brown-05: color.adjust($brown, $alpha: -0.5);
+
+$dark-brown: rgba(43, 0, 0, .5); 
+
+$light-brown: rgba(247, 231, 148, 1);
+
+// Tono azul  //
+
+$light-blue: rgba(15, 159, 214, 1);
+$light-blue-07: color.adjust($light-blue, $alpha: -0.3);
+$light-blue-05: color.adjust($light-blue, $alpha: -0.5);
+$light-blue-02: color.adjust($light-blue, $alpha: -0.8);
+
+$bondi-blue: rgba(0, 135, 187, 1);
+
+$dodger-blue: rgba(0, 185, 255, 1);
+
+$blue-gradient: rgba(82, 201, 221, 1);
+
+//  Tono naranja  //
+
+$orange: rgba(237, 125, 59, 1);
+$orange-05: color.adjust($orange, $alpha: -0.5);
+$orange-02: color.adjust($orange, $alpha: -0.8);
+
+
+$blaze-orange: rgba(255, 95, 0, 1);
+
+$orange-gradient: rgba(255, 160, 123, 1);
+
+//===================================================================
+//  Cierre de Colores
+//===================================================================

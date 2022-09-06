@@ -1,0 +1,246 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/maps" as mp;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v; 
+
+
+//===========================================================================//
+//                                                                           //
+//                               HEADER                                      //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <header c= "header header--brown/--blue">
+//    <div>
+//      <nav c="header__nav">
+//        <a c="header__brand"></a>
+//        <button c="header__toggler">
+//          <span c="header__toggler-icon"></span>
+//        </button>
+//        <div c="header__navbar">
+//          <ul c="header__navbar-nav">
+//            <li c="header__item">
+//              <a c="header__link"></a>
+//            </li>
+//          </ul>
+//        </div>
+//      </nav>
+//    </div>
+//  </header>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.header {
+  @include mx.transition($duration: 1s);// (ver estructura en 'utilities/mixins')
+  position: absolute;
+  z-index: 1000;
+  backdrop-filter: blur(4px) brightness(1.2);
+  -webkit-backdrop-filter: blur(4px);
+  //  La siguiente regla elimina el padding predeterminado que tiene
+//  ya que posee la clase '.container' de Bootstrap.
+  padding: 0;
+
+  &--brown {
+    background-color: v.$brown-07;
+  }
+
+  &--blue {
+   background-color: v.$light-blue-07;
+  }
+}
+
+
+.header__nav {
+  align-items: stretch;//  Trabaja con Flexbox desde Bootstrap con la '.navbar'
+  padding: 0;
+
+  //  Esta regla sobreescribe la url del 'navbar-toggler' predeterminada de Bootstrap en dos características:
+  //  1-(stroke='rgba%28255, 255, 255, 0.55%29') por (stroke='rgba%28255, 255, 255, 1%29') subiendo la opacidad del ícono.
+  //  2-(stroke-linecap='round') por (stroke-linecap='square') eliminando así sus terminaciones redondeadas por otras cuadradas.
+  .header__toggler-icon {
+    background-image: 
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='square' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+}
+
+ 
+.header__brand {
+  @include mx.font-stack(
+    $l-h: 1.05263em,//  line-height
+    $f-s: 2.6rem,//  font-size
+    $f-w: 'medium',//  font-weight
+  );
+  @include mx.transition();
+
+  margin-left: f.percentage-margin(0.5);//  Media columna de Bootstrap (ver estructura en 'utilities/functions').
+  padding: 0.5em 0.923076em;
+
+//  Mixin que genera un 'background-color' en ':hover' dependiendo de si la clase
+//  se encuentra dentro de un 'header--brown' o 'header--blue'.
+//  (ver estructura en 'utilities/mixins').
+  @include mx.color-hover(mp.$header-color...);
+ 
+//  Device Small
+  @include mx.responsive('sm') {
+    margin-left: f.percentage-margin(1);//  Una columna de Bootstrap.
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+    padding: 1.52631em 0.63157em 0.18421em;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+      margin-left: f.percentage-margin(0.5);//  Media columna de Bootstrap.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+      margin-left: f.percentage-margin(1);//  Vuelve a una columna de Bootstrap.
+  }
+}
+
+
+.header__toggler {
+  @include mx.font-stack($f-s: 1.7rem);//  font-size
+  margin-right: f.percentage-margin(1);//  Una columna de Bootstrap.
+  border: none {
+    radius: 0;//  Elimina el 'border-radius' predeterminado de Bootstrap.
+  };
+  @include mx.transition();
+  padding: 0.75em 0.45em 0.75em;
+
+//  Mixin que genera un 'background-color' en ':hover' dependiendo de si la clase
+//  se encuentra dentro de un header--brown o header--blue.
+  @include mx.color-hover(null, mp.$header-color-05...);
+
+  &:focus {
+    box-shadow: none;//  Elimina el 'box-shadow' en ':focus' predeterminado de Bootstrap.
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 2.5rem);//  font-size
+    margin-right: f.percentage-margin(1.5);//  Una columna y media de Bootstrap.
+    padding-top: 2.232em;
+  }
+}
+
+
+.header__navbar {
+  @include mx.transition((all, background-color), (0.75s, 0s));
+
+//  Mixin que genera un 'background-color' dependiendo de si la clase
+//  se encuentra dentro de un header--brown o header--blue
+//  (ver estructura en 'utilities/mixins').
+  @include mx.color-nav(mp.$header-color-05...);
+ 
+//  Device Large
+  @include mx.responsive('lg') {
+    justify-content: flex-end;//  Trabaja con Flexbox desde Bootstrap con la '.navbar-collapse'
+    margin-right: f.percentage-margin(0.5);//  Media columna de Bootstrap.
+
+    .header & {
+      background-color: transparent;
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+      margin-right: f.percentage-margin(1);//  Una columna de Bootstrap.
+  }
+}
+
+
+.header__navbar-nav {
+//  Device Small
+  @include mx.responsive('sm') {
+    flex-direction: row;//  Trabaja con Flexbox desde Bootstrap con la '.navbar-nav'
+  }
+}
+
+
+.header__item {
+  flex-grow: 1;
+
+//  Device Medium
+  @include mx.responsive('lg') {
+    &:not(:last-child) {
+      margin-right: 3em;
+    }
+  }
+}
+
+
+.header__link {
+  @include mx.size(100%);//  width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.5em,//  line-height
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  @include mx.transition();
+  display: inline-block;//  Cambia el default 'inline' para que pueda incorporar los demás estilos.
+  padding: 0.7777777em 0;
+
+//  Mixin que genera un 'background-color' en ':hover' dependiendo de si la clase
+//  se encuentra dentro de un header--brown o header--blue.
+  @include mx.color-hover(mp.$header-color...);
+
+  &--activo {
+    @include mx.font-stack($t-d: underline);//  text-decoration
+  }
+
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.size(max-content);//  width
+    padding: 3.88888em 1.22222em 1.11111em;
+  }
+}
+
+
+@keyframes header-fixed-opacity {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+//  Clase que se asigna mediante JavaScript al elemento '.header' cuando el usuario
+//  se desplaza más allá de la altura del elemento y se quita cuando el desplazamiento
+//  vuelve al tope superior del documento.
+.header--fixed {
+  // Device Medium
+  @include mx.responsive('md') {
+    position: fixed;
+  //  Regla que genera una pequeña animación de opacidad para que el fijamiento no sea brusco.
+    animation: header-fixed-opacity 1s ease-out;
+
+    .header__brand {
+      padding-top: 0.4em;
+    }
+
+    .header__toggler {
+      padding-top: 0.45em;
+    }
+
+    .header__link {
+      padding-top: 1.11111em;
+    }
+  }
+}
