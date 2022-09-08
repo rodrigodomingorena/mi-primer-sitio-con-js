@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="./assets/style/css/main.css" />
   </head>
   <body id="start-index">
-    <!-- START HEADER INDEX-->
+    <!-- START HEADER -->
     <header class="header header--brown container-fluid">
       <div class="row g-0">
         <nav class="col header__nav navbar navbar-dark navbar-expand-lg">
@@ -83,7 +83,154 @@
         </nav>
       </div>
     </header>
-    <!-- END HEADER INDEX-->
+    <!-- END HEADER -->
+
+    <!-- START HERO -->
+    <div class="hero-index">
+      <div class="container px-0">
+        <div class="row g-0">
+          <!-- START TITLE -->
+          <section
+            class="title-index col-6 col-sm-10 col-md-8 col-lg-4 col-xl-3"
+          >
+            <article class="title-index__article">
+              <h1 class="title-index__title">
+                De la <br />naturaleza <br />a tu plato
+              </h1>
+              <p class="title-index__paragraph">
+                Cada día seleccionamos materia prima orgánica de estación de la
+                más alta calidad, apoyando a nuestros productores y granjas
+                locales, para ofrecerte así lo mejor de nuestra naturaleza en
+                cada plato.
+              </p>
+            </article>
+          </section>
+          <!-- END TITLE -->
+
+          <!-- START SOCIAL-->
+          <div class="social-index col-md-2 col-lg-1">
+            <div class="social-index__logos">
+              <a
+                class="social-index__link"
+                href="https://www.facebook.com"
+                target="_blank"
+              >
+                <img
+                  src="./assets/media/svg/facebook.svg"
+                  width="21"
+                  height="40"
+                  loading="lazy"
+                  alt="Ir a Facebook"
+                />
+              </a>
+              <a
+                class="social-index__link"
+                href="https://www.instagram.com"
+                target="_blank"
+              >
+                <img
+                  src="./assets/media/svg/instagram.svg"
+                  width="30"
+                  height="29"
+                  loading="lazy"
+                  alt="Ir a Instagram"
+                />
+              </a>
+            </div>
+          </div>
+          <!-- END SOCIAL -->
+
+          <!-- START BUTTONS -->
+          <div class="buttons-index col-lg-1">
+            <a
+              class="buttons-index__button buttons-index__button--down"
+              href="#start-sauce"
+            >
+              <img
+                src="./assets/media/svg/arrow-down.svg"
+                width="60"
+                height="60"
+                loading="lazy"
+                alt="Ir a abajo"
+              />
+            </a>
+
+            <a
+              class="buttons-index__button buttons-index__button--up"
+              href="#start-index"
+            >
+              <img
+                src="./assets/media/svg/arrow-up.svg"
+                width="23"
+                height="23"
+                loading="lazy"
+                alt="Ir a arriba"
+              />
+            </a>
+          </div>
+          <!-- END BUTTONS-->
+
+          <!-- START INTRO -->
+          <section class="intro-index" id="start-sauce">
+            <article class="intro-index__article">
+              <h3 class="intro-index__title intro-index__title--color-weight">
+                SAUCE
+              </h3>
+              <p class="intro-index__paragraph">
+                Somos la materialización de un sueño y nuestra pasión por la
+                cocina, la naturaleza y los buenos momentos.
+              </p>
+            </article>
+
+            <picture class="intro-index__picture">
+              <source
+                media="(min-width: 768px)"
+                srcset="./assets/media/index/md/image-2.webp"
+                type="image/webp"
+              />
+              <source
+                media="(min-width: 768px)"
+                srcset="./assets/media/index/md/image-2.png"
+              />
+
+              <source
+                media="(min-width: 576px)"
+                srcset="./assets/media/index/sm/image-2.webp"
+                type="image/webp"
+              />
+              <source
+                media="(min-width: 576px)"
+                srcset="./assets/media/index/sm/image-2.png"
+              />
+
+              <source
+                srcset="./assets/media/index/image-2.webp"
+                type="image/webp"
+              />
+              <img
+                class="intro-index__image"
+                src="./assets/media/index/image-2.png"
+                loading="lazy"
+                alt="Imagen ilustrativa de verduras"
+              />
+            </picture>
+
+            <article class="intro-index__article">
+              <h3 class="intro-index__title">Abierto todos los días</h3>
+              <p class="intro-index__paragraph">
+                <time datetime="12:00">12:00&#8239;h</time> -
+                <time datetime="16:00">16:00&#8239;h</time> |
+                <time datetime="19:00">19:00&#8239;h</time> -
+                <time datetime="1:00">1:00&#8239;h</time>
+              </p>
+            </article>
+            <!--</div>-->
+          </section>
+          <!-- END INTRO -->
+        </div>
+      </div>
+    </div>
+    <!-- END HERO -->
 
     <!-- Bootstrap JS CDN -->
     <script

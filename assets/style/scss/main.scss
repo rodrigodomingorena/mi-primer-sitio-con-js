@@ -3,4 +3,6 @@
 
 @use 'base';
 
-@use 'layout/header';
+@use 'components/header';
+
+@use 'views/index';
