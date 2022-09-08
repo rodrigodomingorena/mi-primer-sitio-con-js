@@ -1,0 +1,164 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                              TITLE INDEX                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <section c="title-index">
+//    <article c="title-index__article">
+//      <h1 c="title-index__title"></h1>
+//      <p c="title-index__paragraph"></p>
+//    </article>
+//  </section>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.title-index {
+  @include mx.transition;
+  margin: {
+    top: 8.4rem;
+    left: f.percentage-margin(3);//  Tres columnas de Bootstrap (ver estructura en 'utilities/functions').
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: {
+      top: 11.2rem;
+      left: f.percentage-margin(1);//  Una columna de Bootstrap.
+    }
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: {
+      top: 14.7rem;
+      left: f.percentage-margin(2);//  Dos columnas de Bootstrap.
+    }
+  }
+
+  //  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      top: 37.1rem;
+      left: f.percentage-margin(0.5);//  Media columna de Bootstrap.
+    }
+  }
+
+  //  Device XX-Large
+  @include mx.responsive('xxl') {
+    margin: {
+      top: 36.3rem;
+      left: f.percentage-margin(1);//  Una columna de Bootstrap.
+    }
+  }
+}
+
+
+.title-index__article {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.title-index__title {
+  @include mx.transition;
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.05263em,//  line-height
+    $c: v.$light-blue,//  color
+    $f-s: 2.4rem,//  font-size
+    $f-w: 'semi-bold',//  font-weight
+  );
+  margin-bottom: 0;//  Elimina el 'margin-bottom' predeterminado de Bootstrap.
+
+//  Device 296px
+  @include mx.responsive(296px) {
+//  Una vez llegados a 296px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device 346px
+  @include mx.responsive(346px) {
+//  Una vez llegados a 346px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 3rem);//  font-size
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+    margin-bottom: 0.60526em;
+  }
+
+//  Device  Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 5.7rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-s: 3.8rem,//  font-size
+    );
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 4.6rem);//  font-size
+  }
+}
+
+
+.title-index__paragraph {
+  @include mx.transition;
+  display: none;
+  margin-bottom: 0;//  Elimina el 'margin-bottom' predeterminado de Bootstrap.
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack(
+      $t-a: center,//  text-align
+      $l-h: 1.625em,//  line-height
+      $l-e: 0.02em,//  letter-spacing
+      $c: v.$brown,//  color
+      $f-s: 1.4rem,//  font-size
+      $f-w: 'regular',//  font-weight
+    );
+    display: block;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+
+//  Device Large
+   @include mx.responsive('lg') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-w: 'medium',//  font-weight
+    );
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.font-stack($l-e: -0.02em);//  letter-spacing
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+}
