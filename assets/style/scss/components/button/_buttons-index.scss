@@ -1,0 +1,84 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+
+
+//===========================================================================//
+//                                                                           //
+//                            BUTTONS INDEX                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <div c="buttons-index">
+//      <a c="buttons-index__button/--up>
+//        <img></img>
+//      </a>
+//      <a c="buttons-index__button/--down>
+//        <img></img>
+//      </a>
+//  </div>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.buttons-index {
+//  Device Large
+  @include mx.responsive('lg') {
+    margin-left: f.percentage-margin(-1);//  Una columna de Bootstrap (ver estructura en 'utilities/functions').
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.buttons-index__button {
+  @include mx.transition((all, opacity), (0.75s, 0.4s));
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+
+  &--down {
+    display: none;
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    right: 1.8rem; 
+    bottom: 1.8rem;
+  }
+
+  //  Device Medium
+  @include mx.responsive('md') {
+    &--up {
+      display: none;
+    }
+  }
+
+  @keyframes levitation {
+    0% {transform: transaletY(-10px);}
+    100% {transform: translateY(10px);}
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    position: static;
+    opacity: 0.4;
+    animation: levitation 1s ease-in-out infinite alternate none;
+
+    &--down {
+      display: block;
+    }
+
+    &:hover {
+      opacity: 1;
+      animation-play-state: paused;
+    }
+  }
+}
