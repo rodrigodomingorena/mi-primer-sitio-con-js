@@ -1,0 +1,102 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+
+
+//===========================================================================//
+//                                                                           //
+//                              SOCIAL INDEX                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <div c="social-index">
+//    <div c="social-index__logos">
+//      <a c="social-index__link>
+//        <img></img>
+//      </a>
+//      <a c="social-index__link>
+//        <img></img>
+//      </a>
+//    </div>
+//  </div>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+
+.social-index {
+  @include mx.transition;
+
+  //  Device Medium
+  @include mx.responsive('md') {
+    margin: {
+      top: 11.95rem;
+      left: f.percentage-margin(5);//  Cinco columnas de Bootstrap (ver estructura en 'utilities/functions').
+    }
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      top: 38.1rem;
+      left: f.percentage-margin(6);//  Seis columnas de Bootstrap.
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin-left: f.percentage-margin(7);//  Siete columnas de Bootstrap.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    margin-left: f.percentage-margin(6);//  Seis columnas de Bootstrap.
+  }
+}
+
+
+.social-index__logos {
+  display: none;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    flex-direction: column;
+  }
+}
+
+
+.social-index__link {
+  @include mx.transition((all, transform, opacity), (0.75s, 0.4s, 0.4s));
+  opacity: 0.4;
+
+  &:not(:last-child) {
+    margin-right: 3rem;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    &:not(:last-child) {
+      margin: {
+        right: 0;
+        bottom: 1.9rem;
+      }
+    }
+  }
+}
