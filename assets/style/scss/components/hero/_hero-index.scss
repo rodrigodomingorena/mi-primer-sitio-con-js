@@ -1,0 +1,34 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                              HERO INDEX                                   //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                            ESTRUCTURA HTML
+//
+//  <div c="hero-index">
+//    <div>
+//      <div>
+//        <section c="title-index"></section>
+//        <div c="social-index"></div>
+//        <div c="buttons-index"></div>
+//        <section c="intro-index"></section>
+//      </div>
+//    </div>
+//  </div>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.hero-index {
+//  Mixin que genera los 'background' (Ver estructura en 'utilities/mixins').
+  @include mx.hero-index-background;
+}
