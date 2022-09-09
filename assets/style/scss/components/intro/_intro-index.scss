@@ -66,10 +66,7 @@
 
 .intro-index__article {
   @include mx.transition((all, width), (0.75s, 0s));
-  @include mx.font-stack(
-    $t-a: center,//  text-align
-    $f-w: 'light',//  font-weight
-  );
+  @include mx.font-stack($t-a: center);//  text-align
 
   &:last-child {
     @include mx.size(100vw);//  width
@@ -89,6 +86,7 @@
   @include mx.font-stack(
     $c: v.$light-blue,//  color
     $f-s: 2.2rem,//  font-size
+    $f-w: 'light',//  font-weight
   );
   margin-bottom: 0.947368421em;
   
@@ -120,6 +118,7 @@
     $l-e: -0.02em,//  letter-spacing
     $c: v.$brown,//  color
     $f-s: 1.1rem,//  font-size
+    $f-w: 'light',//  font-weight
   );
   margin: 0 auto;
 
