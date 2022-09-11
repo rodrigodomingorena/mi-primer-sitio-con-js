@@ -30,13 +30,8 @@ a {
   color: v.$white;
 }
 
-body {
-  height: 9999px;
-  //background: transparent radial-gradient(closest-side at 50% 33%, v.$white 0%, v.$light-brown 100%);
-}
-
 .container {
-  //  Ayuda a que la transición de los anchos de los 'containers'
-  //  de Bootstrap sea suave.
+//  Ayuda a que la transición de los anchos de los 'containers'
+//  de Bootstrap sea suave.
   @include mx.transition;
 }
