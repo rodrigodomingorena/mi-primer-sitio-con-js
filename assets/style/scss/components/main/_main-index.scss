@@ -1,0 +1,306 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                               MAIN INDEX                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <main c="main-index">
+//      <article c="main-index__article">
+//        <div>
+//          <div>
+//            <picture c="main-index__picture">
+//              <source>
+//              <img c="main-index__image">
+//            </picture>
+//            <div c="main-index__description">
+//              <h2 c="main-index__title"></h2>
+//              <p c="main-index__paragraph"></p>
+//              <a c="main-index__button">
+//            </div>
+//          </div>
+//        </div>
+//      </article>
+//      <article c"main-index__article">...</article>
+//      ...
+//  </main>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.main-index__article {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento. (Ver estructura en 'utilities/mixins')
+	@include mx.bg-main-index-article;
+	@include mx.transition;
+  padding: {
+		top: 4.5rem;
+		bottom: 4.5rem;
+	}
+
+//  Device Small
+	@include mx.responsive('sm') {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento.
+		@include mx.bg-main-index-article('sm');
+		@include mx.size($h: 43rem);//  height
+		display: flex;
+		align-items: center;
+    padding: 0;
+	}
+
+//  Device Medium
+	@include mx.responsive('md') {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento.
+		@include mx.bg-main-index-article('md');
+		@include mx.size($h: 64rem);//  height
+	}
+
+//  Device Large
+	@include mx.responsive('lg') {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento.
+		@include mx.bg-main-index-article('lg');
+		@include mx.size(
+			$h: 100vh,//  height
+			$hmin: 76.8rem,//  min-height
+			$hmax: 108rem,//  max-height
+		);
+
+		.row {
+			align-items: center;
+		}
+	}
+}
+
+
+.main-index__picture {
+  @include mx.transition;
+	display: none;
+//  Esta regla hace que las imágenes de los 'main-index__picture' se intercalen en el diseño
+//  de izquierda a derecha por cada 'main-index__article', generando un zig-zag entre cada uno.
+  .main-index__article:nth-child(even) & {
+    order: 1;
+  }
+
+//  Device Large
+	@include mx.responsive('lg') {
+    display: block;
+    margin-left: f.percentage-margin(1);// Una columna de Bootstrap (ver estructura en 'utilities/functions').
+
+//    Esta regla es para ajustar la ubicación del 'main-index__picture' perteneciente
+//    al 'main-index__article:nth-child(2)', debido a que su ancho difiere de los demás.
+		.main-index__article:nth-child(2) & {
+			margin-left: f.percentage-margin(-1);//  Una columna de Bootstrap.
+			padding-bottom: 3rem;
+		}
+	}
+
+//  Device X-Large
+	@include mx.responsive('xl') {
+//    Esta regla es para ajustar la ubicación del 'main-index__picture' perteneciente
+//    al 'main-index__article:nth-child(2)', debido a que su ancho difiere de los demás.
+    .main-index__article:nth-child(2) & {
+			margin-left: f.percentage-margin(-0.5);//  Media columna de Bootstrap.
+			padding-bottom: 0;
+		}
+	}
+}
+
+
+.main-index__image {
+  @include mx.size(
+    $wmax: 100%,//  max-width
+    $h: auto,//  height
+  );
+  filter: drop-shadow(10px 10px 15px #00000066);
+}
+
+
+.main-index__description {
+  @include mx.transition;
+  margin-left: f.percentage-margin(1);//  Una columna de Bootstrap.
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin-left: f.percentage-margin(2);//  Dos columnas de Bootstrap.
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin-left: f.percentage-margin(3);//  Tres columnas de Bootstrap.
+  }
+
+//  Device Large
+	@include mx.responsive('lg') {
+    margin-left: f.percentage-margin(1);//  Una columna de Bootstrap.
+		align-items: flex-start;
+	}
+
+//  Device X-Large
+	@include mx.responsive('xl') {
+//    Esta regla es para ajustar la ubicación del 'main-index__description' perteneciente
+//    a los 'main-index__article:nth-child(VALORES-PARES)' debido a que su orden de aparición 
+//    difiere de los pertenecientes a los VALORES-IMPARES (estilos por defecto).
+    .main-index__article:nth-child(even) & {
+      margin-left: f.percentage-margin(1.5);//  Una columna y media de Bootstrap.
+    }
+	}
+}
+
+
+.main-index__title {
+//  Mixin que declara la propiedad 'color' de forma personalizada
+//  por cada 'main-index__title'. (Ver estructura en 'utilities/mixins')
+  @include mx.main-index-title-color;
+  @include mx.transition;
+	@include mx.font-stack (
+		$t-a: center,//  text-align
+		$t-s: 0 0.1em 0.2em rgba(0, 0, 0, 0.15),//  text-shadow
+		$l-h: 1.05263em,//  line-height
+		$f-s: 3rem,//  font-size
+		$f-w: 'bold',//  font-weight
+	);
+	margin-bottom: 0.605263157em;
+
+//  Device Small
+	@include mx.responsive('sm') {
+		@include mx.font-stack($f-s: 3.8rem);//  font-size
+	}
+
+//  Device Medium
+	@include mx.responsive('md') {
+		@include mx.font-stack($f-s: 5.7rem);//  font-size
+	}
+
+//  Device Large
+	@include mx.responsive('lg') {
+		@include mx.font-stack (
+			$t-a: left,//  text-align
+			$f-s: 3.8rem,//  font-size
+			$f-w: 'semi-bold',//  font-weight
+		);
+	}
+}
+
+
+.main-index__paragraph {
+  @include mx.transition;
+  @include mx.size($wmax: 40ch);//  max-width
+	@include mx.font-stack (
+    $t-a: center,//  text-align
+    $t-s: 0.1em 0.1em 0.15em rgba(0, 0, 0),//  text-shadow
+		$l-h: 1.75em,//  line-height
+		$l-e: 0.02em,//  letter-spacing
+		$c: v.$white,//  color
+		$f-s: 1.4rem,//  font-size
+		$f-w: 'regular',//  font-weight
+	);
+	margin-bottom: 2.25em;
+
+	.main-index__article:nth-child(3) & {
+		@include mx.font-stack(
+    $t-s: 0.1em 0.1em 0.15em rgba(0, 0, 0, 0.5),//  text-shadow
+    $c: v.$brown//  color
+    );
+	}
+
+//  Device Medium
+	@include mx.responsive('md') {
+		@include mx.font-stack (
+			$f-s: 1.6rem,//  font-size
+			$f-w: 'medium',//  font-weight
+		);
+	}
+
+//  Device Large
+	@include mx.responsive('lg') {
+		@include mx.font-stack (
+			$t-a: left,//  text-align
+      $t-s: none,//  text-shadow
+			$l-e: -0.012em,//  letter-spacing
+			$f-w: 'regular',//  font-weight
+		);
+
+    .main-index__article:nth-child(3) & {
+      @include mx.font-stack($t-s: none);//  text-shadow
+    }
+	}
+
+//  Device X-Large
+	@include mx.responsive('xl') {
+		@include mx.size($wmax: 34ch);//  max-width
+		@include mx.font-stack ($l-e: v.$interletter);//  letter-spacing
+	}
+}
+
+
+.main-index__button {
+  @include mx.transition;
+	@include mx.font-stack (
+		$l-e: v.$interletter,//  letter-spacing
+		$c: v.$light-brown,//  color
+		$f-s: 1.8rem,//  font-size
+		$f-w: 'regular',//  font-weight
+	);
+	border: 0.007692em solid v.$light-brown;
+	padding: 0.76923em 0.84615em;
+
+//  Device Medium
+	@include mx.responsive('md') {
+		@include mx.font-stack($f-s: 2.6rem);//  font-size
+	}
+
+//  Device Large
+	@include mx.responsive('lg') {
+		@include mx.font-stack($c: v.$brown);//  color
+		border-color: v.$brown;
+	}
+
+	&:hover {
+		@include mx.font-stack($c: v.$brown);//  color
+		background-color: v.$light-brown;
+
+//    Device Large
+		@include mx.responsive('lg') {
+			@include mx.font-stack($c: v.$white);//  color
+			background-color: v.$brown;
+		}
+	}
+
+//  Modificador para ajustar propiedades de color del 'button' del último 'main-index__article'.
+	&--color {
+		@include mx.font-stack($c: v.$brown);//  color
+		border-color: v.$brown;
+
+//  Device Large
+		@include mx.responsive('lg') {
+			@include mx.font-stack($c: v.$orange);//  color
+			border-color: v.$orange;
+		}
+
+		&:hover {
+			@include mx.font-stack($c: v.$white);//  color
+			background-color: v.$brown;
+
+//    Device Large
+			@include mx.responsive('lg') {
+				background-color: v.$orange;
+			}
+		}
+	}
+}
