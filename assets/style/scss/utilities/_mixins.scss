@@ -359,3 +359,134 @@
 //===================================================================
 //  Hero Index Background
 //===================================================================
+
+
+
+
+//===================================================================
+//  Bg Articles
+//===================================================================
+
+//  Creado para declarar los 'background' de los tres '.main-index__article'
+//  del documento 'index'.
+
+@mixin bg-main-index-article($breakpoint: null) {
+
+  @each $nth, $bg, $gradient in (//  1*
+
+    1 v.$light-blue v.$blue-gradient,
+    2 v.$orange v.$orange-gradient,
+    3 v.$light-brown v.$white
+    
+  ) {
+
+    @if $breakpoint != 'lg' {//  2*
+
+      $url: if($breakpoint,
+        '../../media/index/#{$breakpoint}/bg-#{$nth}.png',
+        '../../media/index/bg-#{$nth}.png'
+      );
+      $size: closest-side at 50% 50%;
+      $bg-gradient: #{$gradient} 0%, #{$bg} 100%;
+      $radial-gradient: $size, $bg-gradient;
+      $background: url($url) no-repeat center,
+        transparent radial-gradient($radial-gradient) 0% 0% no-repeat padding-box;
+
+      &:nth-child(#{$nth}) {//  3*
+        @if not $breakpoint {
+          background-color: $bg;//  4*
+        }
+        background: $background;
+      }
+    }
+
+    @else {//  5*
+
+      $url: '../../media/index/#{$breakpoint}/bg-#{$nth}.png';
+      $size: if($nth % 2 == 0, closest-side at 67% 50%, closest-side at 33% 50%);//  6*
+      $bg-gradient: #{$gradient} 0%, #{$bg} 100%;
+      $radial-gradient: $size, $bg-gradient;
+      $background: radial-gradient($radial-gradient);
+
+      &:nth-child(#{$nth}) {
+        background: $background;
+      }
+    }
+  }
+}
+
+
+
+//  Explicación:
+
+//  1*  Genero un bucle y declaro los valores asociados a las tres variaciones
+//      del 'main-index__article'.
+//  2*  Si el '$breakpoint' suministrado es distinto de 'lg' genero el bucle con
+//      los valores que siguen.
+//  3*  Una vez establecidas las propiedades necesarias para declarar las reglas de 
+//      estilo, establezco los selectores que darán a cada '.main-index__article' sus
+//      valores según sean sus ubicaciones ('$nth') en el documento.
+//  4*  Si no se declara un '$breakpoint' devolverá la propiedad 'background-color'
+//      ya que esta se suministra una sola vez en las pantallas más pequeñas.
+//  5*  Si el '$breakpoint' suministrado es igual a 'lg', genero el bucle con los
+//      valores que siguen.
+//  6*  Los '.main-index__article:nth-child(VALORES-PARES)' necesitan un '$size' distinto 
+//      a los que están ubicados en VALORES-IMPARES.
+
+
+//  Ejemplo.
+
+//  .main-index__article {
+//    @include bg-main-index-article('md');
+//  }
+
+
+//  Código resultante:
+
+//  .main-index__article:nth-child(1) {
+//    background: url('../media/index/md/bg-1.png') no-repeat center,
+//                transparent radial-gradient(closest-side at 50% 50%, rgba(82, 201, 221, 1) 0%, rgba(15, 159, 214, 1) 100%) 0% 0% no-repeat padding-box;
+//   }
+
+//  .main-index__article:nth-child(2) {
+//    background: url('../media/index/md/bg-2.png') no-repeat center,
+//                transparent radial-gradient(closest-side at 50% 50%, rgba(255, 160, 123, 1) 0%, rgba(237, 125, 59, 1) 100%) 0% 0% no-repeat padding-box;
+//   }
+
+//  .main-index__article:nth-child(3) {
+//    background: url('../media/index/md/bg-3.png') no-repeat center,
+//                transparent radial-gradient(closest-side at 50% 50%, #fff 0%, rgba(247, 231, 148, 1) 100%) 0% 0% no-repeat padding-box;
+//   }
+
+
+//===================================================================
+//  Cierre de Bg Articles
+//===================================================================
+
+
+
+
+//===================================================================
+//  Main Index Title Color
+//===================================================================
+
+
+//  Mixin creado para declarar la propiedad 'color' de forma personalizada
+//  por cada 'main-index__title' existente en el documento 'index'.
+
+@mixin main-index-title-color {
+  @each $nth, $color in ( 
+    1 v.$blaze-orange,
+    2 v.$dodger-blue, 
+    3 v.$light-blue
+  ) {
+    .main-index__article:nth-child(#{$nth}) & {
+      @include font-stack($c: $color);//  color
+    }
+  }
+}
+
+
+//===================================================================
+//  Main Index Title Color
+//===================================================================
