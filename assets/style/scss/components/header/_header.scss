@@ -198,7 +198,7 @@
 //  se encuentra dentro de un header--brown o header--blue.
   @include mx.color-hover(mp.$header-color...);
 
-  &--activo {
+  &--active {
     @include mx.font-stack($t-d: underline);//  text-decoration
   }
 
