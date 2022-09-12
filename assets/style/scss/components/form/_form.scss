@@ -1,0 +1,206 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                                 FORM                                      //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                            ESTRUCTURA HTML
+//
+//  <section>
+//    <div>
+//      <form c="form">
+//        <div>
+//          <legend c="form__legend"></legend>
+//          <div c="form__input__container">
+//            <input c="form__input"></input>
+//          </div>
+//          <textarea c="form__textarea"></textarea>
+//          <input c="form__input" type="submit">
+//        </div>
+//      </form>
+//    </div>
+//  </section>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.form {
+  @include mx.transition;
+  margin: 4.8rem auto;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: 6rem auto;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: 13.4rem auto;
+  }
+
+  &--contact /* contact__form--contact */ {
+    margin: 8rem auto;
+
+//    Device Small
+    @include mx.responsive('sm') {
+      margin-top: 11rem;
+    }
+
+//    Device Medium;
+    @include mx.responsive('md') {
+      margin-top: 20rem;
+    }
+  }
+}
+
+
+.form__legend {
+  @include mx.transition;
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.05263em,//  line-height
+    $c: v.$orange,//  color
+    $f-s: 2.6rem,//  font-size
+    $f-w: 'light',//  font-weight
+  );
+  margin-bottom: 1.20769em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+}
+
+
+
+//===================================================================
+//  'Placeholders' que se extenderán a los próximos selectores
+//===================================================================
+
+%font-stack-form {
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$brown,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+}
+
+%input-textarea-custom {
+  @include mx.size(100%);//  width
+  margin-bottom: 1.5em;
+  border: 0.0625em solid v.$brown;
+  padding: 1.25em;
+}
+
+%opacity {
+  opacity: 0.4;
+}
+
+//  Device Medium
+@include mx.responsive('md') {
+  %font-size-md {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholders'
+//===================================================================
+
+
+
+.form__input {
+// DEFAULT //
+  @extend %font-stack-form;
+  @include mx.transition;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @extend %font-size-md;
+  
+//  La siguiente regla se aplica a todos los 'form__input' que se encuentren
+//  dentro un un 'form__input__container' ubicado en la columna derecha del
+//  diseño de la interfaz. Sirve para separar adecuadamente la visualización
+//  de dichos 'inputs' con los ubicados a su izquierda.
+    &__container:nth-child(odd) & {
+      float: right;
+    }
+  }
+
+// NO TYPE SUBMIT //
+  &:not([type="submit"]) {
+    @extend %input-textarea-custom;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @include mx.size(96.85%);//  width
+    }
+  }
+
+// PLACEHOLDER //
+  &::placeholder {
+    @extend %opacity;
+
+//    Device Medium
+    @include mx.responsive('md') {
+       @extend %font-size-md;
+    }
+  }
+
+// TYPE SUBMIT //
+  &[type="submit"] {
+    @include mx.size(auto);//  width
+    @include mx.transition;
+    @include mx.font-stack(
+      $c: v.$white,//  color
+      $f-s: 1.8rem,//  font-size
+    );
+    margin: 0 auto;
+    border: none;
+    padding: 0.77777em 0.83333em;
+    background-color: v.$light-blue;
+    cursor: pointer;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @include mx.font-stack($f-s: 2.6rem);//  font-size
+    }
+
+    &:hover {
+      background-color: v.$bondi-blue;
+    }
+  }
+}
+
+
+.form__textarea {
+  @extend %font-stack-form,
+          %input-textarea-custom;
+  @include mx.size($h: 10.7142em);//  height
+  @include mx.font-stack($l-h: 1.75em);//  line-height
+  margin-bottom: 3.5em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @extend %font-size-md;
+  }
+
+  &::placeholder {
+    @extend %opacity;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @extend %font-size-md;
+    }
+  }
+}
