@@ -1,0 +1,306 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                               FOOTER                                      //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <footer c="footer footer--brown/--blue">
+//    <div>
+//      <div>
+//        <div c="footer__data">
+//          <h4 c="footer__title"></h4>
+//          <p c="footer__paragraph"></p>
+//        </div>
+//
+//        <div c="footer__nav">
+//          <ul c="footer__list">
+//            <li c="footer__item">
+//              <a c="footer__link"></a>
+//            </li>
+//          </ul>
+//        </div>
+//        
+//        <div c="footer__social">
+//          <a c="footer__social__link">
+//            <img></img>
+//          </a>
+//        </div>
+//      </div>
+//    </div>
+//  </footer>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.footer {
+  @include mx.transition(padding, 0.75s);
+  padding: 4.4rem 0;
+
+  &--brown {
+    background-color: v.$brown;
+  }
+
+  &--blue {
+    background-color: v.$light-blue;
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    padding: 5.6rem 0;
+
+    .row {
+      flex-direction: column;
+    }
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    padding: 11rem 0;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    .row {
+      flex-direction: row;
+    }
+  }
+}
+
+
+.footer__data {
+  @include mx.transition;
+  order: v.$last;
+  margin: {
+    top: 8.7rem;
+    left: f.percentage-margin(1);//  Una columna de Bootstrap (ver estructura en 'utilities/functions').
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: {
+      top: 0;
+      left: f.percentage-margin(2);//  Dos columnas de Bootstrap.
+    }
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    order: v.$first;
+    margin-left: f.percentage-margin(1);//  Una columna de Bootstrap.
+  }
+}
+
+
+.footer__title {
+  @include mx.transition;
+  @include mx.font-stack(
+    $c: v.$white,//  color
+    $f-s: 2.6rem,//  font-size
+    $f-w: 'medium',//  font-weight
+  );
+  margin-bottom: 0.55em;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($t-a: center);//  text-align
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+}
+
+
+.footer__paragraph {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-h: 1.5em,//  line-height
+    $c: v.$white,//  color
+    $f-s: 1rem,//  font-size
+    $f-w: 'light',//  font-weight
+  );
+  margin-bottom: 0;//  Elimina el margin predeterminado que tiene en Bootstrap.
+
+//  Device 320px
+  @include mx.responsive(320px) {
+//  Una vez llegados a 320px se puede agrandar el 'font-size' sin que se rompa el diseño.
+     @include mx.font-stack($f-s: 1.2rem);
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack(
+      $t-a: center,//  text-align
+      $f-s: 1.4rem//  font-size
+    );
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+}
+
+
+.footer__nav {
+  margin-left: f.percentage-margin(1);//  Una columna de Bootstrap.
+
+  //  Device Large
+  @include mx.responsive('lg') {
+    align-self: flex-end;
+  }
+}
+
+
+.footer__list {
+// Elimina los valores por defecto de la 'ul'
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    display: flex;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    display: block;
+  }
+}
+
+
+.footer__item {
+  @include mx.transition;
+  @include mx.font-stack(
+    $f-s: 1.2rem,//  font-size
+    $f-w: 'light',//  font-weight
+  );
+
+//  Device 285px
+  @include mx.responsive(285px) {
+//  Una vez llegados a 285px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 1.4rem);
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+//  Mixin que declara las propiedades 'flex', 'max-width', 'margin-left' y 'text-align'
+//  para cada elemento 'footer__item'. Esto permite la correcta ubicación de estos
+//  dentro de su contenedor padre. (ver estructura en 'utilities/mixins')
+    @include mx.footer-item-layout;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') { 
+//  En este breakpoint se "resetean" los estilos aplicados en el Device Small.
+//  Para ganarle a la especificidad del selector ':nth-child()' utilizado en el
+//  mixin 'footer-item-layout', se usan las directivas '!important'.
+    @include mx.size($wmax: none !important);//  max-width
+    @include mx.font-stack($t-a: center !important);//  text-align
+    margin-left: 0 !important;
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.font-stack($t-a: left !important);//  text-align
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.16666em;
+
+//    Device Small
+    @include mx.responsive('sm') {
+      margin-bottom: 0;
+    }
+
+//    Device Large
+    @include mx.responsive('lg') {
+      margin-bottom: 1.16666em;
+    }
+  }
+}
+
+
+.footer__link:hover {
+  @include mx.transition(font-weight, 0.1s);
+  @include mx.font-stack(
+    $c: v.$white,//  color
+    $f-w: 'regular',//  font-weight
+  );
+}
+
+
+.footer__social {
+  @include mx.transition;
+  margin-left: f.percentage-margin(5);//  Cinco columnas de Bootstrap.
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: 5.3rem auto;
+    flex-direction: row;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: 7.5rem auto;
+}
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin: 0 auto;
+    justify-content: flex-end;
+  }
+}
+
+
+.footer__social__link {
+  &:hover {
+    @include mx.transition((all, transform), (0.75s, 0.4s));
+    transform: scale(1.1);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.9rem;
+
+//    Device Small
+    @include mx.responsive('sm') {
+      margin: {
+        right: 2.9rem;
+        bottom: 0;
+      }
+    }
+  }
+}
