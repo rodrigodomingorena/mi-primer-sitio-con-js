@@ -488,5 +488,73 @@
 
 
 //===================================================================
-//  Main Index Title Color
+//  Cierre de Main Index Title Color
+//===================================================================
+
+
+
+
+//===================================================================
+//  Footer Item Layout
+//===================================================================
+
+
+//  Mixin creado para declarar las propiedades 'flex', 'max-width', 'margin-left'
+//  y 'text-align' en forma de bucle para cada elemento 'footer__item'.
+//  Esto permite la correcta ubicación de estos dentro de su contenedor padre.
+
+@mixin footer-item-layout {
+
+  @each $nth, $basis, $margin, $align in (
+    1 30% null null,
+    2 20% 10% center,
+    3 20% 20% right
+  ) {
+
+    &:nth-child(#{$nth}) {
+      @include size($wmax: $basis); //  max-width
+      flex: 0 0 $basis;
+
+      @if $align {
+        @include font-stack($align);//  text-align
+      }
+
+      @if $margin {
+        margin-left: $margin;
+      }
+    }
+  }
+}
+
+
+//  Ejemplo.
+
+//  .footer__item {
+//    @include footer-item-layout;
+//  }
+
+//  Código resultante:
+
+//  .footer__item:nth-child(1) {
+//    max-width: 30%;
+//    flex: 0 0 30%;
+//  }
+
+//  .footer__item:nth-child(2) {
+//    max-width: 20%;
+//    flex: 0 0 20%;
+//    text-align: center;
+//    margin-left: 10%;
+//  }
+
+//  .footer__item:nth-child(3) {
+//    max-width: 20%;
+//    flex: 0 0 20%;
+//    text-align: right;
+//    margin-left: 20%;
+//  }
+
+
+//===================================================================
+//  Cierre de Footer Item Layout
 //===================================================================
