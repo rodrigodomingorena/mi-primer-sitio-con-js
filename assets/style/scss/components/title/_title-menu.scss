@@ -1,0 +1,165 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                              TITLE MENU                                   //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <section c= "title-menu">
+//    <div>
+//      <article c="title-menu__article">
+//        <h1 c="title-menu__title"></h1>
+//        <p c="title-menu__paragraph"></p>
+//        <a c="title-menu__button">
+//          <img>
+//        </a>
+//      </article>
+//    </div>
+//  </section>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.title-menu__article {
+  @include mx.transition;
+  margin: {
+    top: 10.6rem;
+    left: f.percentage-margin(0.5);//  Media columna de Bootstrap (ver estructura en 'utilities/functions').
+  }
+  background-color: v.$dark-brown;
+  backdrop-filter: blur(2px) brightness(0.9);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 5rem 3rem;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: {
+      top: 17.6rem;
+      left: f.percentage-margin(1);//  Una columna de Bootstrap.
+    }
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      top: 18rem;
+      left: f.percentage-margin(0.5);//  Media columna de Bootstrap.
+    }
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    margin-top: 19rem;
+  }
+}
+
+
+.title-menu__title{
+  @include mx.transition;
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $t-s: 0.1em 0.1em 0.333333em rgba(0, 0, 0, 0.6),//  text-shadow
+    $l-h: 1.1578947em,//  line-height
+    $c: v.$dodger-blue,//  color
+    $f-s: 3rem,//  font-size
+    $f-w: 'semi-bold',//  font-weight
+  );
+  margin-bottom: 0.6842105em;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 6rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $t-s: 0.1em 0.1em 0.333333em rgba(0, 0, 0, 0.16),//  text-shadow
+      $c: v.$light-blue,//  color
+      $f-s: 7.6rem,//  font-size
+    );
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 8.6rem);//  font-size
+  }
+}
+
+
+.title-menu__paragraph {
+  @include mx.transition;
+  @include mx.size($wmax: 40ch);//  max-width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.5em,//  line-height
+    $c: v.$white,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin: 0 auto;//  Centra el elemento a la vez que elimina el 'margin' predeterminado de Bootstrap.
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $l-e: -0.01em,//  letter-spacing
+      $c: v.$brown,//  color
+      $f-w: 'medium',//  font-weight
+    );
+    margin: 0 0 2.7777777em;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.size($wmax: 45ch);//  max-width
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+}
+
+
+.title-menu__button {
+  @include mx.transition(opacity, 0.4s);
+  display: none;
+  opacity: 0.4;
+
+//  Pequeña animación que produce un efecto de levitación.
+//  (Declarada en components/buttons/_buttons-index)
+  animation: levitation 1s ease-in-out infinite alternate none;
+
+//  Device Large
+  @include mx.responsive('lg') {
+    display: inline-block;
+  }
+
+  &:hover {
+    opacity: 1;
+    animation-play-state: paused;
+  }
+}
