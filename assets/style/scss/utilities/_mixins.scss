@@ -312,7 +312,7 @@
 
     @if $breakpoint {//  2*
       @include responsive($breakpoint) {//  3*
-        background: url(#{$url}) no-repeat center top,
+        background: url($url) no-repeat center top,
         transparent radial-gradient(#{$size}, v.$white 0%, v.$light-brown 100%)
         0% 0% no-repeat padding-box;
       }
@@ -320,7 +320,7 @@
     
     @else {//  4*
       background-color: v.$light-brown;
-      background: url(#{$url}) no-repeat center top,
+      background: url($url) no-repeat center top,
       transparent radial-gradient(#{$size}, v.$white 0%, v.$light-brown 100%)
       0% 0% no-repeat padding-box;
     }
@@ -557,4 +557,77 @@
 
 //===================================================================
 //  Cierre de Footer Item Layout
+//===================================================================
+
+
+
+
+//===================================================================
+//  Bg Menu
+//===================================================================
+
+//  Mixin que genera los 'background-image' del documento 'menu',
+//  dependiendo de los distintos breakpoints y pantallas de visualización.
+
+@mixin bg-menu {
+
+  @each $breakpoint in (null, 'sm', 'md', 'lg', 'xl', 'xxl') {//  1*
+    
+    @if $breakpoint {//  2*
+      
+      $url: '../../media/menu/#{$breakpoint}/hero-image.png';
+      $value-breakpoint: map.get(mp.$breakpoints, $breakpoint, 'min-width');//  3*
+      $position: if($value-breakpoint < 992px,
+        center top,
+        right top
+      );
+
+      @include responsive($breakpoint) {//  4*
+        background: url($url) no-repeat $position,
+                    radial-gradient(closest-side at 50% 50%, v.$white 0%, v.$light-brown 100%);
+      }
+    } 
+
+    @else {//  7*
+
+      background-color: v.$light-brown;
+      background: url('../../media/menu/hero-image.png') no-repeat center top,
+                  radial-gradient(closest-side at 50% 50%, v.$white 0%, v.$light-brown 100%);
+    }
+  }
+}
+
+
+//  Explicación:
+
+//  1*  Genero un bucle y declaro los valores de los '$breakpoint' a utilizar.
+//  2*  En este caso, si el '$breakpoint' es distinto de 'null'.
+//  3*  Obtenemos el valor perteneciente al 'min-width' a través de una búsqueda
+//      'profunda' buscando más allá del primer valor 
+//      (ej. "'sm': (min-width: 576px)" solo devuelve '576px').
+//  4*  Llamamos al mixin 'responsive' pasándole el '$breakpoint' correspondiente
+//      a la iteración del bucle.
+//  7*  En este caso, si el '$breakpoint' es igual a 'null' devolvemos las
+//      declaraciones que siguen.
+
+
+//  Ejemplo.
+
+//  .bg-menu {
+//    @include bg-menu;
+//  }
+
+
+//  Código resultante (solo se muestra un '$breakpoint' del bucle):
+
+//  @media (min-width: 576px) {
+//    .bg-menu {
+//      background: url('../../media/menu/sm/hero-image.png') no-repeat center top,
+//                  radial-gradient(closest-side at 50% 50%, #fff 0%, rgba(247, 231, 148, 1) 100%);
+//    }
+//  }
+
+
+//===================================================================
+//  Cierre de Bg Menu
 //===================================================================
