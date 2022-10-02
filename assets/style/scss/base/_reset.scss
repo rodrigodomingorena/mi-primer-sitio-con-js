@@ -30,6 +30,14 @@ a {
   color: v.$white;
 }
 
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 .container {
 //  Ayuda a que la transición de los anchos de los 'containers'
 //  de Bootstrap sea suave.

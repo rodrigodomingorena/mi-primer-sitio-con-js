@@ -631,3 +631,72 @@
 //===================================================================
 //  Cierre de Bg Menu
 //===================================================================
+
+
+
+
+//===================================================================
+//  Cards
+//===================================================================
+
+//  Mixin que genera los estilos base de las 'cards' utilizadas en varias
+//  páginas del sitio.
+
+@mixin cards() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.4s;
+  background-color: v.$orange-02;
+  
+  &:hover {
+    background-color: v.$orange-05;
+  }
+}
+
+//===================================================================
+//  Cierre de Cards
+//===================================================================
+
+
+
+
+//===================================================================
+//  Thumb
+//===================================================================
+
+//  Mixin que genera los estilos personalizados del 'thumb' del Shadow DOM
+//  perteneciente a los 'inputs' de tipo 'range'.
+
+@mixin thumb {
+  @include transition;
+  @include size(
+    $w: v.$thumb-size,//  width
+    $h: v.$thumb-size//  height
+  );
+  appearance: none;//  Elimina los estilos predeterminados del navegador.
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: v.$orange;
+  border: none {
+    radius: 0;
+  }
+  margin-top: calc(v.$range-height * 0.5 - v.$thumb-size * 0.5);
+  pointer-events: all;
+  box-shadow: 0.0555em 0.0555em 0.44444em #00000060;
+
+  &:hover {
+    background-color: v.$orange-thumb-hover;
+    cursor: grab;
+  }
+
+  &:active {
+    background-color: v.$orange;
+    cursor: grabbing;
+  }
+}
+
+//===================================================================
+//  Cierre de Thumb
+//===================================================================
