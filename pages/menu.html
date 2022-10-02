@@ -85,7 +85,7 @@
     </header>
     <!-- END HEADER -->
 
-    <div class="bg-menu" style="height: 4000px">
+    <div class="bg-menu">
       <!-- START TITLE -->
       <section class="title-menu container px-0">
         <div class="row g-0">
@@ -114,8 +114,386 @@
         </div>
       </section>
       <!-- END TITLE -->
-    </div>
 
+      <!-- START MAIN -->
+      <main class="main-menu container px-0" id="start-cards">
+        <div class="row g-0">
+          <!-- START CONTROLS -->
+          <section class="controls col-10 col-md-11">
+            <!-- START SEARCH -->
+            <label class="controls__search">
+              <img
+                class="controls__search__image"
+                src="../assets/media/svg/search.svg"
+                width="30"
+                height="30"
+                loading="lazy"
+                alt="Buscar"
+              />
+              <input
+                class="controls__search__input"
+                type="search"
+                name="search"
+                placeholder="Buscar"
+                autocomplete="off"
+              />
+            </label>
+            <!-- END SEARCH -->
+
+            <!-- START OPTIONS -->
+            <fieldset class="controls__options">
+              <!-- START OPTION -->
+              <div class="controls__option">
+                <img
+                  class="controls__option__show-button"
+                  src="../assets/media/svg/filter.svg"
+                  tabindex="0"
+                  width="30"
+                  height="30"
+                  loading="lazy"
+                  alt="Filtrar"
+                />
+                <div class="controls__option__modal">
+                  <div
+                    class="controls__option__card controls__option__card--filter"
+                  >
+                    <div class="controls__option__range-container">
+                      <div class="controls__option__outputs">
+                        <output id="fromOutput"></output>
+                        <output id="toOutput"></output>
+                      </div>
+                      <div class="controls__option__ranges">
+                        <input
+                          id="fromRange"
+                          step="10"
+                          type="range"
+                          min="300"
+                          max="600"
+                          value="300"
+                        />
+                        <input
+                          id="toRange"
+                          step="10"
+                          type="range"
+                          min="300"
+                          max="600"
+                          value="500"
+                        />
+                      </div>
+                    </div>
+
+                    <ul class="controls__option__list">
+                      <li>
+                        <label class="controls__option__label"
+                          >Ensaladas<input type="checkbox" name="salads"
+                        /></label>
+                      </li>
+                      <li>
+                        <label class="controls__option__label"
+                          >Verduras<input type="checkbox" name="vegetables"
+                        /></label>
+                      </li>
+                      <li>
+                        <label class="controls__option__label"
+                          >Pastas<input type="checkbox" name="pastas"
+                        /></label>
+                      </li>
+                      <li>
+                        <label class="controls__option__label"
+                          >Carnes<input type="checkbox" name="meats"
+                        /></label>
+                      </li>
+                    </ul>
+
+                    <button class="controls__option__confirm-button" type="button">
+                      CONFIRMAR
+                    </button>
+                    <button
+                      class="controls__option__cancel-button"
+                      type="button"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+              <!-- END OPTION -->
+
+              <!-- START OPTION -->
+              <div class="controls__option">
+                <img
+                  class="controls__option__show-button"
+                  src="../assets/media/svg/sort.svg"
+                  tabindex="0"
+                  width="30"
+                  height="30"
+                  loading="lazy"
+                  alt="Ordenar"
+                />
+                <div class="controls__option__modal">
+                  <div class="controls__option__card">
+                    <ul class="controls__option__list">
+                      <li class="controls__option__li-active">Por defecto</li>
+                      <li>Menor a mayor precio</li>
+                      <li>Mayor a menor precio</li>
+                      <li>De la A a la Z</li>
+                      <li>De la Z a la A</li>
+                    </ul>
+                    <button class="controls__option__confirm-button" type="button">
+                      CONFIRMAR
+                    </button>
+                    <button
+                      class="controls__option__cancel-button"
+                      type="button"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+              <!-- END OPTION -->
+            </fieldset>
+            <!-- END OPTIONS -->
+          </section>
+          <!-- END CONTROLS -->
+
+          <div class="principal-section__cards col-10 col-md-11">
+            <article
+              class="principal-section__card principal-section__card--plato-1"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-1.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-1.png"
+                  loading="lazy"
+                  alt="Plato de ensalada Tabulé"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">Ensalada Tabulé</h2>
+              <p class="principal-section__card__price">$&#8239;300</p>
+              <a class="principal-section__card__link" href="./plato-1.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-2"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-2.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-2.png"
+                  loading="lazy"
+                  alt="Plato de pechugas con ensalada"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">
+                Pechugas con ensalada
+              </h2>
+              <p class="principal-section__card__price">$&#8239;450</p>
+              <a class="principal-section__card__link" href="./plato-2.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-3"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-3.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-3.png"
+                  loading="lazy"
+                  alt="Plato de pollo frito con vegetales"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">
+                Pollo frito con vegetales
+              </h2>
+              <p class="principal-section__card__price">$&#8239;450</p>
+              <a class="principal-section__card__link" href="./plato-3.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-4"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-4.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-4.png"
+                  loading="lazy"
+                  alt="Plato de arroz con camarones"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">
+                Arroz con camarones
+              </h2>
+              <p class="principal-section__card__price">$&#8239;500</p>
+              <a class="principal-section__card__link" href="./plato-4.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-5"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-5.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="250"
+                  src="../assets/media/menu/card-image-5.png"
+                  loading="lazy"
+                  alt="Plato de Chow Mein"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">Chow Mein</h2>
+              <p class="principal-section__card__price">$&#8239;450</p>
+              <a class="principal-section__card__link" href="./plato-5.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-6"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-6.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-6.png"
+                  loading="lazy"
+                  alt="Plato de pollo al curry con arroz"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">
+                Pollo al curry con arroz
+              </h2>
+              <p class="principal-section__card__price">$&#8239;500</p>
+              <a class="principal-section__card__link" href="./plato-6.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-7"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-7.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-7.png"
+                  loading="lazy"
+                  alt="Plato de mostacholes con salsa"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">
+                Mostacholes con salsa
+              </h2>
+              <p class="principal-section__card__price">$&#8239;500</p>
+              <a class="principal-section__card__link" href="./plato-7.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-8"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-8.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-8.png"
+                  loading="lazy"
+                  alt="Plato de ravioles negros"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">Ravioles negros</h2>
+              <p class="principal-section__card__price">$&#8239;600</p>
+              <a class="principal-section__card__link" href="./plato-8.html"
+                >VER</a
+              >
+            </article>
+
+            <article
+              class="principal-section__card principal-section__card--plato-9 mb-0"
+            >
+              <picture class="principal-section__card__picture">
+                <source
+                  srcset="../assets/media/menu/card-image-9.webp"
+                  type="image/webp"
+                />
+                <img
+                  class="principal-section__card__image"
+                  width="200"
+                  height="200"
+                  src="../assets/media/menu/card-image-9.png"
+                  loading="lazy"
+                  alt="Plato de tirabuzones con brócoli"
+                />
+              </picture>
+
+              <h2 class="principal-section__card__title">
+                Tirabuzones con brócoli
+              </h2>
+              <p class="principal-section__card__price">$&#8239;550</p>
+              <a class="principal-section__card__link" href="./plato-9.html"
+                >VER</a
+              >
+            </article>
+          </div>
+        </div>
+      </main>
+      <!-- END MAIN -->
+    </div>
     <!-- START FOOTER -->
     <footer class="footer footer--blue">
       <div class="container px-0">
@@ -185,5 +563,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../assets/js/index.js" type="module"></script>
+    <script src="../assets/js/show.js" type="module"></script>
   </body>
 </html>

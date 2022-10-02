@@ -1,0 +1,394 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                                 CONTROLS                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <section c="controls">
+//    <label c="controls__search">
+//      <img c="controls__search__image>
+//      <input c="controls__search__input type="search">
+//    </label>
+//    <fieldset c="controls__options">
+//      <div c="controls__option">
+//        <img c="controls__option__show-button>
+//        <div c="controls__option__modal">
+//          <div c="controls__option__card">
+//            <div c="controls__option__range-container">
+//              <div c="controls__option__outputs">
+//                <output></output>
+//                <output></output>
+//              </div>
+//              <div c="controls__option__ranges">
+//                <input type="range"></input>
+//                <input type="range"></input>
+//              </div>
+//            </div>
+//            <ul c="controls__option__list">
+//              <li>
+//                <label c="controls__option__label">
+//                  <input type="checkbox">
+//                </label>
+//              </li>
+//            </ul>
+//            <button c="controls__option__confirm-button"></button>
+//            <button c="controls__option__cancel-button"></button>
+//          </div>
+//        </div>
+//      </div>
+//    </fieldset>
+//  </section>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.controls {
+  @include mx.transition;
+  display: flex;
+  justify-content: space-between;
+  margin-left: f.percentage-margin(1);// Una columna de Bootstrap (ver estructura en 'utilities/functions').
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin-left: f.percentage-margin(0.5);// Media columna de Bootstrap.
+  }
+}
+
+
+.controls__search {
+  @include mx.transition;
+  @include mx.size(
+    $w: 60%,//  width
+    $wmax: 40rem//  max-width
+  );
+  display: flex;
+  align-items: flex-end;
+  opacity: 0.4;
+
+  &:focus-within, &:hover {
+    opacity: 1;
+  }
+}
+
+
+.controls__search__image {
+  cursor: pointer;
+}
+
+
+.controls__search__input {
+  @include mx.transition;
+  @include mx.size(100%);//  width
+  @include mx.font-stack(
+    $c: v.$orange,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'semi-bold'//  font-weight
+  );
+  background-color: transparent;
+  border: none {
+    bottom: 0.1rem solid v.$light-blue;
+  }
+  outline: none;
+  padding: 0 0 0.25em 0.5em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+// INPUT SEARCH PLACEHOLDER //
+  &::placeholder {
+    @include mx.font-stack(
+      $c: v.$orange,//  color
+      $f-w: 'light'//  font-weight
+    );
+  }
+
+// SEARCH CANCEL BUTTON USER-AGENT (no soportado en Firefox) //
+  &::-webkit-search-cancel-button {
+    @include mx.size(
+      $w: 1.5rem,//  width
+      $h: 1.5rem//  height
+    );
+    appearance: none;//  Elimina los estilos predeterminados del navegador.
+    -webkit-appearance: none;
+
+//  Reemplaza el botón para cancelar la búsqueda predeterminado del navegador
+//  por uno acorde al sistema de diseño del sitio.
+    background-image: url('../../media/svg/cancel-blue.svg');
+    margin: 0 0.4rem 0.4rem 0;
+    align-self: flex-end;
+    cursor: pointer;
+  }
+}
+
+
+.controls__options {
+  display: flex;
+}
+
+
+.controls__option {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+
+
+.controls__option__show-button {
+  @include mx.transition;
+  opacity: 0.4;
+  cursor: pointer;
+
+  &:hover, &--active {
+    opacity: 1;
+  } 
+}
+
+
+@keyframes modal-show-opacity {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.controls__option__modal {
+  @include mx.transition($duration: 0.5s);
+  display: none;
+
+//  Clase que se asigna mediante JavaScript al elemento '.controls__option__modal'
+//  para hacerlo visible al usuario cuando este realiza una acción que desencadena
+//  su visualización.
+  &--show {
+    @include mx.size(
+      $w: 100%,//  width
+      $h: 100%//  heigth
+    );
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: v.$brown-07;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: modal-show-opacity 0.5s ease-out;
+      
+//  Device Large
+    @include mx.responsive('lg') {
+//    Deja de comportarse como un 'modal' y pasa a ser una tarjeta tipo 'dropdown'.
+      @include mx.size(
+        $w: auto,//  width
+        $h: auto//  height
+      );
+      position: absolute;
+      top: 4rem;//  El alto de la 'controls__option__show-button' + 10px
+      right: 0;
+      left: auto;
+      z-index: 999;
+      background: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+
+.controls__option__card {
+  @include mx.transition;
+  @include mx.size(28rem);//  width
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: v.$control-card-blue;
+  padding: 4rem;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
+
+//  Device Small
+  @include mx.responsive('sm') {
+    &--filter {
+      @include mx.size(45rem);//  width
+    }
+  }
+}
+
+
+.controls__option__list {
+  @include mx.size(100%);//  width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $c: v.$light-blue,//  color
+    $f-s: 1.8rem,//  font-size
+    $f-w: 'light'//  font-weight
+  );
+
+  li {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 1.11111em;
+    }
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    .controls__option__card--filter & {
+      display: grid;
+      grid: {
+        template-columns: repeat(2, 1fr);
+        row-gap: 1.11111em;
+        column-gap: 2.22222em;
+      }
+
+      li {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+.controls__option__li-active {
+  @include mx.font-stack(
+    $f-w: 'bold'//  font-weight
+  );
+}
+
+
+.controls__option__label {
+  @include mx.size(100%);//  width
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    @include mx.size(
+      $w: 1.5rem,//  width
+      $h: 1.5rem//  height
+    );
+    appearance: none;//  Elimina los estilos predeterminados del navegador.
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 0.1rem solid v.$orange;
+    cursor: pointer;
+
+    &:checked {
+//    Reemplaza el ícono de chequeo predeterminado del navegador
+//    por uno acorde al sistema de diseño del sitio.
+      background: url('../../media/svg/checked.svg') no-repeat center;
+      border: none;
+    }
+  }
+}
+
+
+.controls__option__confirm-button {
+  @include mx.transition;
+	@include mx.font-stack (
+		$l-e: v.$interletter,//  letter-spacing
+		$c: v.$orange,//  color
+		$f-s: 1.8rem,//  font-size
+		$f-w: 'regular',//  font-weight
+	);
+  background-color: transparent;
+	border: 0.007692em solid v.$orange;
+	padding: 0.76923em 0.84615em;
+  margin-top: 2.22222em;
+
+  &:hover {
+    @include mx.font-stack($c: v.$white);//  color
+    background-color: v.$orange;
+  }
+}
+
+
+.controls__option__cancel-button {
+  @include mx.transition;
+  @include mx.size(
+    $w: 1rem,//  width
+    $h: 1rem//  height
+  );
+  border: none;
+  background: url('../../media/svg/cancel-orange.svg') no-repeat center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  &:hover {
+    scale: 1.5;
+  }
+}
+
+
+.controls__option__range-container {
+  @include mx.size(100%);//  width
+  @include mx.font-stack(
+    $f-s: 1.8rem,//  font-size
+    $c: v.$brown//  color
+  );
+  margin-bottom: 2.22222em;
+}
+
+
+.controls__option__outputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.94444em;
+}
+
+
+.controls__option__ranges {
+//  Propiedades personalizadas que son utilizadas dinámicamente por JavaScript
+//  para poder rellenar visualmente la barra de progreso entre ambos rangos.
+  --trackColor: #{v.$trackColor};
+  --progressColor: #{v.$orange};
+
+  position: relative;
+
+  input[type="range"] {
+    @include mx.size(
+      $w:100%,//  width
+      $h: v.$range-height// height
+    );
+    appearance: none;//  Elimina los estilos predeterminados del navegador.
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    background: none;
+    pointer-events: none;
+
+    &::-webkit-slider-thumb {
+      @include mx.thumb;//  Personaliza el 'thumb' del rango (ver en 'utilities/mixins').
+    }
+
+    &::-moz-range-thumb {
+      @include mx.thumb;//  Personaliza el 'thumb' del rango.
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include mx.size($h: v.$range-height);//  heigth
+    }
+  }
+}
+#fromRange {
+//  Permite que el 'thumb' del primer rango no sea superpuesto por el
+//  'background' del segundo rango que se va rellenando dinámicamente con JavaScript.
+  z-index: 1;
+}
