@@ -1,0 +1,47 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                              SHOW MORE BUTTON                             //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <section c="show-more">
+//    <a c="show-more__button"></a>
+//  </section>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.show-more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 17rem;
+}
+
+
+.show-more__button {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$light-blue,//  color
+    $f-s: 1.8rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  border: 0.05555em solid v.$light-blue;
+  padding: 0.55555em 0.66666em;
+
+  &:hover {
+    @include mx.font-stack($c: v.$white);//  color
+    background-color: v.$light-blue;
+  }
+}
