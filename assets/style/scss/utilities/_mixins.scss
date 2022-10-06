@@ -642,12 +642,15 @@
 //  Mixin que genera los estilos base de las 'cards' utilizadas en varias
 //  páginas del sitio.
 
-@mixin cards() {
+@mixin cards {
+  @include transition(background-color);
   display: flex;
-  flex-direction: column;
+  flex: {
+    direction: column;
+    wrap: wrap;
+  }
   align-items: center;
   justify-content: center;
-  transition: background-color 0.4s;
   background-color: v.$orange-02;
   
   &:hover {
