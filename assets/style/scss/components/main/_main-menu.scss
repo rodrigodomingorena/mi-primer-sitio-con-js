@@ -1,0 +1,49 @@
+@use "../../utilities/mixins" as mx;
+
+
+//===========================================================================//
+//                                                                           //
+//                                 MAIN MENU                                 //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <main c="main-menu">
+//    <div>
+//      <section c="controls">
+//      </section>
+//      <section c="cards-container">
+//      </section>
+//      <section c="show-more">
+//      </section>
+//    </div>
+//  </main>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.main-menu {
+  @include mx.transition;
+  padding-top: 17rem;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    padding-top: 24rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    padding-top: 17rem;
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    padding-top: 22rem;
+  }
+}
