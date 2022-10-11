@@ -1,0 +1,56 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                             PICTURE PLATE                                 //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <picture c="picture-plate">
+//    <source>
+//    <img c="title-plate__image">
+//  </picture>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.picture-plate {
+//  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
+//  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
+//  el diseño en los dipositivos cuyo ancho sea menor a 576px.
+  @include mx.size-plate;
+  background: linear-gradient(to bottom, v.$orange-02, transparent 75%);
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.size($wmax: none);//  max-width
+    background: none;
+    margin-left: f.percentage-margin(-3);//  Tres columnas de Bootstrap (ver estructura en 'utilities/functions').
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin-left: f.percentage-margin(-2.5);//  Dos columnas y media de Bootstrap.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin-left: f.percentage-margin(-2);//  Dos columnas de Bootstrap.
+  }
+}
+  
+  
+.picture-plate__image {
+  @include mx.size($w: 100%);//  width
+  filter: drop-shadow(10px 10px 20px #00000066);
+}
