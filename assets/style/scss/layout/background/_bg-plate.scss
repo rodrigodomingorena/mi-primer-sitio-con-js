@@ -1,0 +1,24 @@
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                             BACKGROUND PLATE                              //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                              ESTRUCTURA HTML
+//
+//  <main c="bg-plate">
+//    <section c="hero-plate"></section>
+//    <section c="info-nutritional"></section>
+//  </main>
+
+
+
+
+.bg-plate {
+	background: v.$light-brown;
+	background: radial-gradient(closest-side at 50% 50%, v.$white 0%, v.$light-brown 100%);
+}
