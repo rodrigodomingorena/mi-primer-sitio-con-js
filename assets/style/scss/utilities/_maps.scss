@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "variables" as v;
 
 
@@ -61,4 +62,27 @@ $font-weight: (
 
 //===================================================================
 //  Cierre de Font Weight
+//===================================================================
+
+
+
+
+//===================================================================
+//  Propiedades de las Mini Cards y su Carrousel
+//===================================================================
+
+//  Propiedades para dimensionar las Mini Cards y el Carrousel presentes
+//  en el documento 'plate-*' a través de las distintas vistas.
+
+$mini-card: (
+  'height': 18rem,
+  'width': 16rem,
+);
+
+$carrousel: (
+  'gap': 4rem
+);
+
+//===================================================================
+//  Cierre de propiedades de las Mini Cards y su Carrousel
 //===================================================================

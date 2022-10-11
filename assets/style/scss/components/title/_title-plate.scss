@@ -1,0 +1,210 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                              TITLE PLATE                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <article c="title-plate">
+//    <h1 c="title-plate__title"></h1>
+//    <p c="title-plate__price"></p>
+//    <p c="title-plate__paragraph"></p>
+//    <div>
+//      <a c="title-plate__link"></a>
+//      <a c="title-plate__link"></a>
+//    </div>
+//  </article>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.title-plate {
+  @include mx.transition(padding);
+//  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
+//  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
+//  el diseño en los dipositivos cuyo ancho sea menor a 576px.
+//  (Ver estructura en 'utilities/mixins')
+  @include mx.size-plate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: v.$orange-02;
+  padding: 3rem;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.size($wmax: none);//  max-width
+    align-items: flex-start;
+    background: linear-gradient(to right, v.$orange-02 50%, transparent);
+    padding-left: 6rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    padding: {
+      top: 4rem;
+      bottom: 4rem;
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    padding: 4.5rem 6.5rem;
+  }
+}
+
+
+.title-plate__title {
+  @include mx.transition;
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.03846em,//  line-height
+    $c: v.$light-blue,//  color
+    $f-s: 2.6rem,//  font-size
+    $f-w: 'semi-bold',//  font-weight
+    $w-b: break-word,//  word-break
+  );
+  margin-bottom: 0.22307em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.size($w: 11ch);//  width
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-s: 3.4rem,//  font-size
+    );
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 4.4rem);//  font-size
+  }
+}
+
+
+.title-plate__price {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$orange,//  color
+    $f-s: 1.8rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 0.47777em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 2.3rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 3rem);//  font-size
+  }
+}
+
+
+.title-plate__paragraph {
+  @include mx.transition;
+  @include mx.size(24ch);//  width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.5em,//  line-height
+    $c: v.$brown,//  color
+    $f-s: 1.2rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 1.96666em;
+
+//  Device 320px
+  @include mx.responsive(320px) {
+//  Una vez llegados a 320px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 1.4rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-s: 1.6rem,//  font-size
+    );
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+}
+
+
+.title-plate__link {
+  @include mx.transition($duration: 0.5s);
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+    );
+    display: inline-block;
+    padding: 0.57142em 0.71428em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+
+  &:first-child {
+    @include mx.font-stack($c: v.$orange);//  color
+    margin-right: 1.07142em;
+    border: 0.05555em solid v.$orange;
+
+    &:hover {
+      @include mx.font-stack($c: v.$white);//  color
+      background-color: v.$orange;
+    }
+  }
+
+  &:last-child {
+    @include mx.font-stack($c: v.$white);//  color
+    background-color: v.$light-blue;
+
+    &:hover {
+      @include mx.font-stack($c: v.$white);//  color
+      background-color: v.$bondi-blue;
+    }
+  }
+}

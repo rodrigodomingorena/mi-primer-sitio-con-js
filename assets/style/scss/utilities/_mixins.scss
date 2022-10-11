@@ -25,6 +25,7 @@
   $c: null,
   $f-s: null,
   $f-w: null,
+  $w-b: null,
   ) {
 
   @if $t-a {text-align: $t-a;}
@@ -35,6 +36,7 @@
   @if $c {color: $c;}
   @if $f-s {font-size: $f-s;}
   @if $f-w {font-weight: map.get(mp.$font-weight, $f-w);}
+  @if $w-b {word-break: $w-b;}
 }
 
 
@@ -640,7 +642,7 @@
 //===================================================================
 
 //  Mixin que genera los estilos base de las 'cards' utilizadas en varias
-//  páginas del sitio.
+//  secciones del sitio.
 
 @mixin cards {
   @include transition(background-color);
@@ -702,4 +704,24 @@
 
 //===================================================================
 //  Cierre de Thumb
+//===================================================================
+
+
+
+
+//===================================================================
+//  Size Plate
+//===================================================================
+
+//  Creado para definir en varios elementos del documeto 'plate' un 
+//  'min-width' y 'max-width' debido a que es una medida recurrente en
+//  varios de ellos.
+
+@mixin size-plate ($wmin: 26rem, $wmax: 31.5rem){
+  min-width: $wmin;
+  max-width: $wmax;
+}
+
+//===================================================================
+//  Cierre de Size Plate
 //===================================================================
