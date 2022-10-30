@@ -1,0 +1,622 @@
+@use "sass:math";
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                           NUTRITIONAL INFO                                //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <section c="nutritional-info">
+//    <div>
+//      <article c="nutritional-info__main">
+//        <h2 c="nutritional-info__main__title"></h2>
+//        <p c="nutritional-info__main__kcal"></p>
+//        <ul c="nutritional-info__main__options">
+//          <li c="nutritional-info__main__option">
+//            <label><input type="radio"></label>
+//          </li>
+//          ...
+//        </ul>
+//        <input c="nutritional-info__main__amount" type="text">
+//      </article>
+//
+//      <article c="nutritional-info__details">
+//        <button c="nutritional-info__details__button"></button>
+//        <div c="nutritional-info__details__content">
+//          <h3 c="nutritional-info__details__title"></h3>
+//          <div c="nutritional-info__details__data">
+//            <p c="nutritional-info__details__grams">
+//              <span></span>
+//            </p>
+//            <ul c="nutritional-info__details__ratio">
+//              <li>
+//                <div></div>
+//                <div></div>
+//              </li>
+//              ...
+//            </ul>
+//          </div>
+//          <p c="nutritional-info__details__description"></p>
+//        </div>
+//        ...
+//      </article>
+//    </div>
+//  </section>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.nutritional-info {
+  @include mx.transition;
+  padding: 12rem 0;
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    padding: 20rem 0;
+  }
+}
+
+
+.nutritional-info__main {
+//  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
+//  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
+//  el diseño en los dipositivos cuyo ancho sea menor a 576px.
+//  (Ver estructura en 'utilities/mixins')
+  @include mx.size-plate;
+  @include mx.transition;
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $f-s: 4rem,//  font-size
+  );
+  margin: 0 auto;
+  box-shadow: v.$box-shadow-2;
+  background: {
+    color: v.$orange-02;
+    position: center;
+    repeat: no-repeat;
+  }
+  padding: 3.5rem 1.5rem;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size($wmax: none);//  max-width
+    @include mx.font-stack($f-s: 5.7rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 7.6rem);//  font-size
+    padding-bottom: 5rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($t-a: left);//  text-align
+    background-position-x: 45rem;
+    padding: {
+      right: 7rem;
+      left: 7rem;
+    }
+  }
+
+// ESTO DEBERÁ HACERSE MEDIANTE JAVASCRIPT !!!!!!
+  @each $breakpoint in (null, 'sm', 'md', 'lg') {
+    @if $breakpoint {
+      @include mx.responsive($breakpoint) {
+        & {
+          background-image: url('../../media/plate-1/#{$breakpoint}/nutritional-info.png');
+        }
+      }
+    } @else {
+      & {
+        background-image: url('../../media/plate-1/nutritional-info.png');
+      }
+    }
+  }
+}
+
+
+.nutritional-info__main__title {
+  @include mx.transition;
+  @include mx.size(21ch);//  width
+  @include mx.font-stack(
+    $l-h: 1.33333em,//  line-height
+    $c: v.$bondi-blue,//  color
+    $f-s: 1.5rem,//  font-size
+    $f-w: 'semi-bold',//  font-weight
+  );
+  margin: 0 auto 0.46666em;
+
+//  Device 360px
+  @include mx.responsive(360px) {
+//  Una vez llegados a 360px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.4rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+    margin: {
+      right: 0;
+      left: 0;
+    }
+  }
+}
+
+
+.nutritional-info__main__kcal {
+  @include mx.font-stack(
+    $t-o: ellipsis,//  text-overflow
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$orange,//  color
+    $f-w: 'medium',//  font-weight
+    $w-s: nowrap,//  white-space
+  );
+  margin-bottom: v.$aspect-main;
+  overflow: hidden;
+}
+
+
+.nutritional-info__main__options {
+  display: grid;
+  grid: {
+    template-columns: repeat(3, auto);
+    gap: v.$aspect-main;
+  }
+  justify-content: center;
+  margin-bottom: v.$aspect-main * 2;
+
+//  Device Large
+  @include mx.responsive('lg') {
+    justify-content: start;
+  }
+}
+
+
+.nutritional-info__main__option {
+  @include mx.transition;
+  @include mx.font-stack(
+    $c: v.$brown,//  color
+    $f-s: 1.4rem,//  font-size
+  );
+  opacity: 0.65;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+  &--selected {
+    opacity: 1;
+
+    label {
+      @include mx.font-stack($t-d: underline);//  text-decoration
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+
+
+.nutritional-info__main__amount {
+  @extend %font-size-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  @include mx.transition;
+  @include mx.font-stack(
+    $t-a: center, //  text-align
+    $c: v.$white,//  color
+  );
+  display: block;
+  margin: 0 auto;
+  border: none {
+    top: 0.0625em transparent solid;
+    bottom: 0.0625em transparent solid;
+  }
+  box-shadow: v.$box-shadow-4;
+  background-color: v.$light-blue;
+  cursor: pointer;
+  padding: v.$aspect-amount;
+  backdrop-filter: blur(3px) brightness(1.1);
+  -webkit-backdrop-filter: blur(3px) brightness(1.1);
+  
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %font-size-sm-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %font-size-lg-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+    margin: 0;
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @extend %font-size-xl-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @extend %font-size-xxl-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+  &:focus {
+    @include mx.size($w: 15ch !important);//  width
+    @include mx.font-stack(
+      $c: v.$light-blue,//  color
+      $f-w: 'medium',//  font-weight
+    );
+    outline: none;
+    border-color: v.$light-blue;
+    box-shadow: none;
+    background-color: v.$orange-02;
+  }
+}
+
+
+.nutritional-info__details {
+  @include mx.size-plate;//  Mixin que controla el 'min-width' y 'max-width'.
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $f-s: 1.4rem,//  font-size
+  );
+  margin: 0 auto;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size($wmax: none);//  max-width
+    @include mx.font-stack($f-s: 2.2rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+}
+
+
+.nutritional-info__details__button {
+  @include mx.transition($duration: 0.5s);
+  @include mx.size(100%);//  width
+  @include mx.font-stack(
+    $c: v.$brown,//  color  
+    $f-w: 'regular',//  font-weight
+  );
+  margin-top: v.$aspect-details;
+  border: none;
+  box-shadow: 0.107em 0.107em 0.357em #00000020;
+  background-color: v.$light-blue-02;
+  padding: v.$aspect-details 0;
+
+  &:hover, &[aria-expanded="true"] {
+    @include mx.font-stack($c: v.$white);//  color
+    background-color: v.$light-blue-05;
+  }
+}
+
+
+.nutritional-info__details__content {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$white,//  color
+  );
+  margin-top: math.div(v.$aspect-details, 2);
+  box-shadow: v.$box-shadow-2;
+  background-color: v.$light-blue-05;
+  padding: 4rem 2rem;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    padding: {
+      right: 3.5rem;
+      left: 3.5rem;
+    }
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    padding: {
+      right: 7rem;
+      left: 7rem;
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    padding-bottom: 6rem;
+  }
+}
+
+
+.nutritional-info__details__title {
+  @include mx.transition;
+  @include mx.font-stack(
+    $f-s: 3rem,//  font-size
+    $f-w: 'medium',//  font-weight
+  );
+  margin-bottom: 0.28333em;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %font-size-sm-title-grams;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %font-size-lg-title-grams;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @extend %font-size-xl-title-grams;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @extend %font-size-xxl-title-grams;//  'Placeholder' declarado unos componentes más adelante.
+  }
+}
+
+
+.nutritional-info__details__data {
+  @extend %font-size-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  @include mx.font-stack($l-e: normal);//  letter-spacing
+  display: grid;
+  grid-gap: v.$aspect-data * 2;
+  align-items: stretch;
+  justify-items: center;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %font-size-sm-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    grid: {
+      template-columns: repeat(2, auto);
+      gap: v.$aspect-data;
+    }
+    justify-content: start;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %font-size-lg-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @extend %font-size-xl-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @extend %font-size-xxl-amount-data;//  'Placeholder' declarado unos componentes más adelante.
+  }
+}
+
+
+.nutritional-info__details__grams {
+  @include mx.transition;
+  @include mx.size($wmax: 100%);//  max-width
+  @include mx.font-stack(
+    $f-s: 3.4rem,//  font-size
+  );
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+  box-shadow: 0.058em 0.058em 0.147em #00000050;
+  background-color: v.$orange;
+  padding: 0.58823em;
+  overflow: hidden;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %font-size-sm-title-grams;//  'Placeholder' declarado al término de este componente.
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %font-size-lg-title-grams;//  'Placeholder' declarado al término de este componente.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @extend %font-size-xl-title-grams;//  'Placeholder' declarado al término de este componente.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @extend %font-size-xxl-title-grams;//  'Placeholder' declarado al término de este componente.
+  }
+
+  span {
+    @include mx.font-stack(
+      $t-o: ellipsis,//  text-overflow
+      $w-s: nowrap,//  white-space
+    );
+    overflow: hidden;
+  }
+}
+
+
+//===================================================================
+//  'Placeholders' que se extendieron a selectores anteriores
+//===================================================================
+
+%font-size-amount-data {
+  @include mx.font-stack($f-s: 1.6rem);//  font-size
+}
+
+@include mx.responsive('sm') {
+  %font-size-sm-title-grams {
+    @include mx.font-stack($f-s: 4.8rem);//  font-size
+  }
+
+  %font-size-sm-amount-data {
+    @include mx.font-stack($f-s: 1.65rem);//  font-size
+  }
+}
+
+@include mx.responsive('lg') {
+  %font-size-lg-title-grams {
+    @include mx.font-stack($f-s: 6.4rem);//  font-size
+  }
+
+  %font-size-lg-amount-data {
+    @include mx.font-stack($f-s: 2.2rem);//  font-size
+  }
+}
+
+@include mx.responsive('xl') {
+  %font-size-xl-title-grams {
+    @include mx.font-stack($f-s: 7.6rem);//  font-size
+  }
+
+  %font-size-xl-amount-data {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+}
+
+@include mx.responsive('xxl') {
+  %font-size-xxl-title-grams {
+    @include mx.font-stack($f-s: 8.8rem);//  font-size
+  }
+
+  %font-size-xxl-amount-data {
+    @include mx.font-stack($f-s: 3rem);//  font-size
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholders'
+//===================================================================
+
+
+
+.nutritional-info__details__ratio {
+  @include mx.transition;
+  display: grid;
+  grid-gap: v.$aspect-data;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    grid-template-columns: repeat(2, auto);
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    grid-template-columns: none;
+    align-content: end;
+    justify-items: start;
+  }
+
+  li {
+    display: grid;
+    grid-gap: v.$aspect-amount;
+    justify-items: center;
+
+//  Device Medium
+    @include mx.responsive('md') {
+      grid-template-columns: repeat(2, auto);
+      align-items: baseline;
+    }
+  }
+
+  div {
+//  Los 'div:first-child' corresponden a los 'divs' que contienen los valores nutricionales.
+//  Por ejemplo: '4,02g', '3,254g', '20,703g'.
+    &:first-child {
+      @include mx.size($wmax: 100%);//  max-width
+      @include mx.font-stack(
+        $t-o: ellipsis,//  text-overflow
+        $w-s: nowrap//  white-space
+      );
+      box-shadow: v.$box-shadow-4;
+      background-color: v.$brown;
+      padding: v.$aspect-amount;
+      overflow: hidden;
+    }
+
+//  Los 'div:last-child' corresponden a los 'divs' que contienen el nombre de los componentes nutricionales.
+//  Por ejemplo: 'Saturada', 'Poliinsaturada', 'Monoinsaturada'.
+    &:last-child {
+      @include mx.font-stack($f-s: 1.4rem);//  font-size
+
+//    Device Small
+      @include mx.responsive('sm') {
+        @include mx.font-stack($f-s: 1.3rem);//  font-size
+      }
+
+//    Device Medium
+      @include mx.responsive('md') {
+      // Pasa a heredar el 'font-size' de su padre 'nutritional-info__details__data'
+        @include mx.font-stack($f-s: inherit);//  font-size
+      }
+    }
+  }
+}
+
+
+.nutritional-info__details__description {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-h: 2em,//  line-height
+    $c: v.$brown,//  color
+    $f-s: 1.4rem,//  font-size
+  );
+  margin: 1.42857em 0 0;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.5rem);//  font-size
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+}
