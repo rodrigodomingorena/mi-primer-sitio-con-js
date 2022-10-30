@@ -33,8 +33,6 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-/* @use "maps" as mp;
-@use "variables" as v; */
 .header {
   transition-property: all;
   transition-duration: 1s;
@@ -1901,6 +1899,433 @@ body {
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 0;
+}
+
+.nutritional-info {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  padding: 12rem 0;
+}
+@media (min-width: 1200px) {
+  .nutritional-info {
+    padding: 20rem 0;
+  }
+}
+
+.nutritional-info__main {
+  min-width: 26rem;
+  max-width: 31.5rem;
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  text-align: center;
+  font-size: 4rem;
+  margin: 0 auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(237, 125, 59, 0.2);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 3.5rem 1.5rem;
+}
+@media (min-width: 576px) {
+  .nutritional-info__main {
+    max-width: none;
+    font-size: 5.7rem;
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__main {
+    font-size: 7.6rem;
+    padding-bottom: 5rem;
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__main {
+    text-align: left;
+    background-position-x: 45rem;
+    padding-right: 7rem;
+    padding-left: 7rem;
+  }
+}
+.nutritional-info__main {
+  background-image: url("../../media/plate-1/nutritional-info.png");
+}
+@media (min-width: 576px) {
+  .nutritional-info__main {
+    background-image: url("../../media/plate-1/sm/nutritional-info.png");
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__main {
+    background-image: url("../../media/plate-1/md/nutritional-info.png");
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__main {
+    background-image: url("../../media/plate-1/lg/nutritional-info.png");
+  }
+}
+
+.nutritional-info__main__title {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  width: 21ch;
+  line-height: 1.33333em;
+  color: rgb(0, 135, 187);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 auto 0.46666em;
+}
+@media (min-width: 360px) {
+  .nutritional-info__main__title {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 576px) {
+  .nutritional-info__main__title {
+    font-size: 2.6rem;
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__main__title {
+    font-size: 3.4rem;
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__main__title {
+    font-size: 3.8rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.nutritional-info__main__kcal {
+  text-overflow: ellipsis;
+  letter-spacing: 0.03em;
+  color: rgb(237, 125, 59);
+  font-weight: 500;
+  white-space: nowrap;
+  margin-bottom: 0.25em;
+  overflow: hidden;
+}
+
+.nutritional-info__main__options {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 0.25em;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+@media (min-width: 992px) {
+  .nutritional-info__main__options {
+    justify-content: start;
+  }
+}
+
+.nutritional-info__main__option {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  color: rgb(113, 83, 67);
+  font-size: 1.4rem;
+  opacity: 0.65;
+}
+@media (min-width: 576px) {
+  .nutritional-info__main__option {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__main__option {
+    font-size: 1.8rem;
+  }
+}
+.nutritional-info__main__option--selected {
+  opacity: 1;
+}
+.nutritional-info__main__option--selected label {
+  text-decoration: underline;
+}
+.nutritional-info__main__option label {
+  cursor: pointer;
+}
+.nutritional-info__main__option input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.nutritional-info__main__amount {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  text-align: center;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-top: 0.0625em transparent solid;
+  border-bottom: 0.0625em transparent solid;
+  box-shadow: 0.1875em 0.1875em 0.375em rgba(0, 0, 0, 0.3137254902);
+  background-color: rgb(15, 159, 214);
+  cursor: pointer;
+  padding: 0.375em;
+  backdrop-filter: blur(3px) brightness(1.1);
+  -webkit-backdrop-filter: blur(3px) brightness(1.1);
+}
+@media (min-width: 992px) {
+  .nutritional-info__main__amount {
+    margin: 0;
+  }
+}
+.nutritional-info__main__amount:focus {
+  width: 15ch !important;
+  color: rgb(15, 159, 214);
+  font-weight: 500;
+  outline: none;
+  border-color: rgb(15, 159, 214);
+  box-shadow: none;
+  background-color: rgba(237, 125, 59, 0.2);
+}
+
+.nutritional-info__details {
+  min-width: 26rem;
+  max-width: 31.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 0 auto;
+}
+@media (min-width: 576px) {
+  .nutritional-info__details {
+    max-width: none;
+    font-size: 2.2rem;
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__details {
+    font-size: 2.6rem;
+  }
+}
+
+.nutritional-info__details__button {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  width: 100%;
+  color: rgb(113, 83, 67);
+  font-weight: 400;
+  margin-top: 0.35714em;
+  border: none;
+  box-shadow: 0.107em 0.107em 0.357em rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(15, 159, 214, 0.2);
+  padding: 0.35714em 0;
+}
+.nutritional-info__details__button:hover, .nutritional-info__details__button[aria-expanded=true] {
+  color: #fff;
+  background-color: rgba(15, 159, 214, 0.5);
+}
+
+.nutritional-info__details__content {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  letter-spacing: 0.03em;
+  color: #fff;
+  margin-top: 0.17857em;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(15, 159, 214, 0.5);
+  padding: 4rem 2rem;
+}
+@media (min-width: 576px) {
+  .nutritional-info__details__content {
+    padding-right: 3.5rem;
+    padding-left: 3.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__details__content {
+    text-align: left;
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__details__content {
+    padding-right: 7rem;
+    padding-left: 7rem;
+  }
+}
+@media (min-width: 1200px) {
+  .nutritional-info__details__content {
+    padding-bottom: 6rem;
+  }
+}
+
+.nutritional-info__details__title {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 0.28333em;
+}
+.nutritional-info__details__data {
+  letter-spacing: normal;
+  display: grid;
+  grid-gap: 1.625em;
+  align-items: stretch;
+  justify-items: center;
+}
+@media (min-width: 768px) {
+  .nutritional-info__details__data {
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 0.8125em;
+    justify-content: start;
+  }
+}
+.nutritional-info__details__grams {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  max-width: 100%;
+  font-size: 3.4rem;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+  box-shadow: 0.058em 0.058em 0.147em rgba(0, 0, 0, 0.3137254902);
+  background-color: rgb(237, 125, 59);
+  padding: 0.58823em;
+  overflow: hidden;
+}
+.nutritional-info__details__grams span {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nutritional-info__main__amount, .nutritional-info__details__data {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 576px) {
+  .nutritional-info__details__title, .nutritional-info__details__grams {
+    font-size: 4.8rem;
+  }
+  .nutritional-info__main__amount, .nutritional-info__details__data {
+    font-size: 1.65rem;
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__details__title, .nutritional-info__details__grams {
+    font-size: 6.4rem;
+  }
+  .nutritional-info__main__amount, .nutritional-info__details__data {
+    font-size: 2.2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .nutritional-info__details__title, .nutritional-info__details__grams {
+    font-size: 7.6rem;
+  }
+  .nutritional-info__main__amount, .nutritional-info__details__data {
+    font-size: 2.6rem;
+  }
+}
+@media (min-width: 1400px) {
+  .nutritional-info__details__title, .nutritional-info__details__grams {
+    font-size: 8.8rem;
+  }
+  .nutritional-info__main__amount, .nutritional-info__details__data {
+    font-size: 3rem;
+  }
+}
+.nutritional-info__details__ratio {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  display: grid;
+  grid-gap: 0.8125em;
+}
+@media (min-width: 576px) {
+  .nutritional-info__details__ratio {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__details__ratio {
+    grid-template-columns: none;
+    align-content: end;
+    justify-items: start;
+  }
+}
+.nutritional-info__details__ratio li {
+  display: grid;
+  grid-gap: 0.375em;
+  justify-items: center;
+}
+@media (min-width: 768px) {
+  .nutritional-info__details__ratio li {
+    grid-template-columns: repeat(2, auto);
+    align-items: baseline;
+  }
+}
+.nutritional-info__details__ratio div:first-child {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0.1875em 0.1875em 0.375em rgba(0, 0, 0, 0.3137254902);
+  background-color: rgb(113, 83, 67);
+  padding: 0.375em;
+  overflow: hidden;
+}
+.nutritional-info__details__ratio div:last-child {
+  font-size: 1.4rem;
+}
+@media (min-width: 576px) {
+  .nutritional-info__details__ratio div:last-child {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__details__ratio div:last-child {
+    font-size: inherit;
+  }
+}
+
+.nutritional-info__details__description {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  line-height: 2em;
+  color: rgb(113, 83, 67);
+  font-size: 1.4rem;
+  margin: 1.42857em 0 0;
+}
+@media (min-width: 768px) {
+  .nutritional-info__details__description {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .nutritional-info__details__description {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 1400px) {
+  .nutritional-info__details__description {
+    font-size: 2rem;
+  }
 }
 
 .form {
