@@ -1236,9 +1236,6 @@ body {
   font-size: 1.8rem;
   font-weight: 300;
 }
-.controls__option__list li {
-  cursor: pointer;
-}
 .controls__option__list li:not(:last-child) {
   margin-bottom: 1.11111em;
 }
@@ -1253,9 +1250,17 @@ body {
     margin-bottom: 0;
   }
 }
+.controls__option__list label {
+  cursor: pointer;
+}
+.controls__option__list input[type=radio], .controls__option__list input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
-.controls__option__li-active {
-  font-weight: 700;
+.controls__option__li--active {
+  font-weight: 500;
 }
 
 .controls__option__label {
@@ -1263,14 +1268,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 }
 .controls__option__label input[type=checkbox] {
   width: 1.5rem;
   height: 1.5rem;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   border: 0.1rem solid rgb(237, 125, 59);
   cursor: pointer;
 }

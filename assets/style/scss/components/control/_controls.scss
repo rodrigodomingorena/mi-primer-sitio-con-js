@@ -238,12 +238,8 @@
     $f-w: 'light'//  font-weight
   );
 
-  li {
-    cursor: pointer;
-
-    &:not(:last-child) {
-      margin-bottom: 1.11111em;
-    }
+  & li:not(:last-child)  {
+    margin-bottom: 1.11111em;
   }
 
 //  Device Small
@@ -261,12 +257,22 @@
       }
     }
   }
+
+  label {
+    cursor: pointer;
+  }
+
+  input[type=radio], input[type=checkbox] {
+    appearance: none;//  Elimina los estilos predeterminados del navegador.
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
 }
 
 
-.controls__option__li-active {
+.controls__option__li--active {
   @include mx.font-stack(
-    $f-w: 'bold'//  font-weight
+    $f-w: 'medium'//  font-weight
   );
 }
 
@@ -276,16 +282,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 
   input[type="checkbox"] {
     @include mx.size(
       $w: 1.5rem,//  width
       $h: 1.5rem//  height
     );
-    appearance: none;//  Elimina los estilos predeterminados del navegador.
-    -webkit-appearance: none;
-    -moz-appearance: none;
     border: 0.1rem solid v.$orange;
     cursor: pointer;
 
