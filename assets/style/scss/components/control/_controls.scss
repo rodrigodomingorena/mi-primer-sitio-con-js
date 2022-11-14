@@ -320,10 +320,21 @@
 	border: 0.007692em solid v.$orange;
 	padding: 0.76923em 0.84615em;
   margin-top: 2.22222em;
+  cursor: pointer;
 
   &:hover {
     @include mx.font-stack($c: v.$white);//  color
     background-color: v.$orange;
+  }
+
+  &:disabled {
+    @include mx.font-stack ($c: v.$brown-05);//  color
+    border-color: v.$brown-05;
+    cursor: auto;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 
