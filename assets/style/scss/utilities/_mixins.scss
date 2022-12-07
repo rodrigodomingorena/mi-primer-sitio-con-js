@@ -728,3 +728,63 @@
 //===================================================================
 //  Cierre de Size Plate
 //===================================================================
+
+
+
+
+//===================================================================
+//  Bg Not Found
+//===================================================================
+
+//  Mixin que genera los 'background-image' del contenedor de 'cards' cuando se ha
+//  producido un error relacionado a la solicitud de platos al servidor, dependiendo
+//  de los distintos breakpoints y pantallas de visualización.
+
+@mixin bg-error {
+
+  @each $breakpoint in (null, 'sm', 'md') {//  1*
+    @if $breakpoint {//  2*
+      @include responsive($breakpoint) {//  3*
+        & {
+          background-image: url('../../media/menu/#{$breakpoint}/error.png');//  4*
+        }
+      }
+    } @else {//  5*
+      & {
+        background-image: url('../../media/menu/error.png');
+      }
+    }
+  }
+}
+
+
+//  Explicación:
+
+//  1*  Genero un bucle y declaro los valores de los '$breakpoint' a utilizar.
+//  2*  En este caso, si el '$breakpoint' es distinto de 'null'.
+//  3*  Llamamos al mixin 'responsive' pasándole el '$breakpoint' correspondiente
+//      a la iteración del bucle.
+//  4*  Declaramos el 'brackground-image' correspondiente al '$breakpoint' actual
+//  5*  En este caso, si el '$breakpoint' es igual a 'null' devolvemos las
+//      declaraciones que siguen.
+
+
+//  Ejemplo.
+
+//  .card__container--error{
+//    @include bg-error;
+//  }
+
+
+//  Código resultante (solo se muestra un '$breakpoint' del bucle):
+
+//  @media (min-width: 576px) {
+//    .card__container--error {
+//      background-image: url('../../media/menu/sm/error.png');
+//    }
+//  }
+
+
+//===================================================================
+//  Cierre de Bg Not Found
+//===================================================================

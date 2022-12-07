@@ -16,6 +16,7 @@ $white: #fff;
 $brown: rgba(113, 83, 67, 1);
 $brown-07: color.adjust($brown, $alpha: -0.3);
 $brown-05: color.adjust($brown, $alpha: -0.5);
+$brown-01: color.adjust($brown, $alpha: -0.9);
 
 $dark-brown: rgba(43, 0, 0, .5); 
 
