@@ -143,9 +143,9 @@
             <!-- START OPTIONS -->
             <fieldset class="controls__options">
               <!-- START OPTION -->
-              <div class="controls__option">
+              <div class="controls__option" id="option-1">
                 <img
-                  class="controls__option__show-button"
+                  class="controls__option__show"
                   src="../assets/media/svg/filter.svg"
                   tabindex="0"
                   width="30"
@@ -167,52 +167,65 @@
                           id="fromRange"
                           step="10"
                           type="range"
-                          min="300"
-                          max="600"
-                          value="300"
+                          data-option="range"
                         />
                         <input
                           id="toRange"
                           step="10"
                           type="range"
-                          min="300"
-                          max="600"
-                          value="500"
+                          data-option="range"
                         />
                       </div>
                     </div>
 
                     <ul class="controls__option__list">
                       <li>
-                        <label class="controls__option__label"
-                          >Ensaladas<input type="checkbox" name="salads"
+                        <label class="controls__option__label" tabindex="0"
+                          >Ensaladas<input
+                            type="checkbox"
+                            name="salads"
+                            data-option="filter"
+                            tabindex="-1"
                         /></label>
                       </li>
                       <li>
-                        <label class="controls__option__label"
-                          >Verduras<input type="checkbox" name="vegetables"
+                        <label class="controls__option__label" tabindex="0"
+                          >Verduras<input
+                            type="checkbox"
+                            name="vegetables"
+                            data-option="filter"
+                            tabindex="-1"
                         /></label>
                       </li>
                       <li>
-                        <label class="controls__option__label"
-                          >Pastas<input type="checkbox" name="pastas"
+                        <label class="controls__option__label" tabindex="0"
+                          >Pastas<input
+                            type="checkbox"
+                            name="pastas"
+                            data-option="filter"
+                            tabindex="-1"
                         /></label>
                       </li>
                       <li>
-                        <label class="controls__option__label"
-                          >Carnes<input type="checkbox" name="meats"
+                        <label class="controls__option__label" tabindex="0"
+                          >Carnes<input
+                            type="checkbox"
+                            name="meats"
+                            data-option="filter"
+                            tabindex="-1"
                         /></label>
                       </li>
                     </ul>
 
                     <button
-                      class="controls__option__confirm-button"
+                      class="controls__option__confirm"
                       type="button"
+                      disabled
                     >
                       CONFIRMAR
                     </button>
                     <button
-                      class="controls__option__cancel-button"
+                      class="controls__option__cancel"
                       type="button"
                     ></button>
                   </div>
@@ -221,9 +234,9 @@
               <!-- END OPTION -->
 
               <!-- START OPTION -->
-              <div class="controls__option">
+              <div class="controls__option" id="option-2">
                 <img
-                  class="controls__option__show-button"
+                  class="controls__option__show"
                   src="../assets/media/svg/sort.svg"
                   tabindex="0"
                   width="30"
@@ -234,20 +247,66 @@
                 <div class="controls__option__modal">
                   <div class="controls__option__card">
                     <ul class="controls__option__list">
-                      <li class="controls__option__li-active">Por defecto</li>
-                      <li>Menor a mayor precio</li>
-                      <li>Mayor a menor precio</li>
-                      <li>De la A a la Z</li>
-                      <li>De la Z a la A</li>
+                      <li>
+                        <label tabindex="0"
+                          >Por defecto<input
+                            type="radio"
+                            name="sort"
+                            value="default"
+                            data-option="sort"
+                            tabindex="-1"
+                        /></label>
+                      </li>
+                      <li>
+                        <label tabindex="0"
+                          >Menor a mayor precio<input
+                            type="radio"
+                            name="sort"
+                            value="minor-to-mayor"
+                            data-option="sort"
+                            tabindex="-1"
+                        /></label>
+                      </li>
+                      <li>
+                        <label tabindex="0"
+                          >Mayor a menor precio<input
+                            type="radio"
+                            name="sort"
+                            value="mayor-to-minor"
+                            data-option="sort"
+                            tabindex="-1"
+                        /></label>
+                      </li>
+                      <li>
+                        <label tabindex="0"
+                          >De la A a la Z<input
+                            type="radio"
+                            name="sort"
+                            value="a-to-z"
+                            data-option="sort"
+                            tabindex="-1"
+                        /></label>
+                      </li>
+                      <li>
+                        <label tabindex="0"
+                          >De la Z a la A<input
+                            type="radio"
+                            name="sort"
+                            value="z-to-a"
+                            data-option="sort"
+                            tabindex="-1"
+                        /></label>
+                      </li>
                     </ul>
                     <button
-                      class="controls__option__confirm-button"
+                      class="controls__option__confirm"
                       type="button"
+                      disabled
                     >
                       CONFIRMAR
                     </button>
                     <button
-                      class="controls__option__cancel-button"
+                      class="controls__option__cancel"
                       type="button"
                     ></button>
                   </div>
@@ -260,374 +319,71 @@
           <!-- END CONTROLS -->
 
           <!-- START CARDS -->
-          <section class="cards-container col-10 col-md-11">
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-1.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-1.png"
-                  loading="lazy"
-                  alt="Plato de ensalada Tabulé"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Ensalada Tabulé</h2>
-              <p class="card-plate__price">$&#8239;300</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-1.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-2.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-2.png"
-                  loading="lazy"
-                  alt="Plato de pechugas con ensalada"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Pechugas con ensalada</h2>
-              <p class="card-plate__price">$&#8239;450</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-2.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-3.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-3.png"
-                  loading="lazy"
-                  alt="Plato de pollo frito con vegetales"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Pollo frito con vegetales</h2>
-              <p class="card-plate__price">$&#8239;450</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-3.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-4.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-4.png"
-                  loading="lazy"
-                  alt="Plato de arroz con camarones"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Arroz con camarones</h2>
-              <p class="card-plate__price">$&#8239;500</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-4.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-5.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-5.png"
-                  loading="lazy"
-                  alt="Plato de pollo al curry con arroz"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Pollo al curry con arroz</h2>
-              <p class="card-plate__price">$&#8239;500</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-5.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-6.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-6.png"
-                  loading="lazy"
-                  alt="Plato de mostacholes con salsa"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Mostacholes con salsa</h2>
-              <p class="card-plate__price">$&#8239;500</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-6.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-7.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-7.png"
-                  loading="lazy"
-                  alt="Plato de ravioles negros"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Ravioles negros</h2>
-              <p class="card-plate__price">$&#8239;600</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plate-7.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="card-plate">
-              <picture class="card-plate__picture">
-                <source
-                  srcset="../assets/media/menu/card-plate-image-8.webp"
-                  type="image/webp"
-                />
-                <img
-                  class="card-plate__image"
-                  width="200"
-                  height="200"
-                  src="../assets/media/menu/card-plate-image-8.png"
-                  loading="lazy"
-                  alt="Plato de tirabuzones con brócoli"
-                />
-              </picture>
-
-              <h2 class="card-plate__title">Tirabuzones con brócoli</h2>
-              <p class="card-plate__price">$&#8239;550</p>
-              <div class="card-plate__links">
-                <a class="card-plate__link" href="./plato-8.html">VER</a>
-                <a class="card-plate__link" href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
+          <section class="card__container col-10 col-md-11">
+            <span class="loader loader--card"></span>
           </section>
-          <!-- END CARDS -->
+
+          <!-- ERROR TEMPLATE -->
+          <template class="card__error__template">
+            <h2 class="card__error__title"></h2>
+            <img
+              class="card__error__reload"
+              src="../assets/media/svg/reload.svg"
+              tabindex="0"
+              alt="Recargar búsqueda"
+            />
+          </template>
+          <!-- END ERROR TEMPLATE -->
+
+          <!-- CARD TEMPLATE -->
+          <template class="card__template">
+            <article class="card__plate">
+              <picture class="card__plate__picture">
+                <source class="card__plate__source" type="image/webp" />
+                <img
+                  class="card__plate__image"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                />
+              </picture>
+
+              <h2 class="card__plate__title"></h2>
+              <p class="card__plate__price"></p>
+              <div class="card__plate__links">
+                <a class="card__plate__link" href="./plate.html">VER</a>
+                <a class="card__plate__link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 22 22"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
+                      transform="translate(-116.227 -275.108)"
+                    />
+                    <path
+                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
+                      transform="translate(-223.686 -275.108)"
+                    />
+                    <path
+                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
+                      transform="translate(0 -0.231)"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </template>
+          <!-- END CARD TEMPLATE -->
 
           <!-- START SHOW-MORE -->
-          <section class="show-more col-12">
-            <a class="show-more__button" href="#">VER MÁS</a>
-          </section>
+          <section class="show-more__container col-12"></section>
           <!-- END SHOW-MORE -->
+
+          <!-- END CARDS -->
         </div>
       </main>
       <!-- END MAIN -->
@@ -700,6 +456,6 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    <script src="../assets/js/index.js" type="module"></script>
+    <script src="../assets/js/index-menu.js" type="module"></script>
   </body>
 </html>
