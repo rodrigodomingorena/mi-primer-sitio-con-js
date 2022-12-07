@@ -1,4 +1,4 @@
-const HOST = "https://my-json-server.typicode.com";
+const HOST = "http://my-json-server.typicode.com";
 const PATHNAME = "/rodrigodomingorena/mi-primer-sitio-con-js"
 const PLATES = "/plates";
 const PLATE = "/plate";
