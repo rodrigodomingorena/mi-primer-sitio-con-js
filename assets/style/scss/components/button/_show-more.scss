@@ -11,7 +11,7 @@
 //
 //                             ESTRUCTURA HTML
 //
-//  <section c="show-more">
+//  <section c="show-more__container">
 //    <a c="show-more__button"></a>
 //  </section>
 //
@@ -22,7 +22,7 @@
 
 
 
-.show-more {
+.show-more__container {
   display: flex;
   justify-content: center;
   margin-bottom: 17rem;

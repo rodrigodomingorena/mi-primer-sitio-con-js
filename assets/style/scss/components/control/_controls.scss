@@ -19,7 +19,7 @@
 //    </label>
 //    <fieldset c="controls__options">
 //      <div c="controls__option">
-//        <img c="controls__option__show-button>
+//        <img c="controls__option__show>
 //        <div c="controls__option__modal">
 //          <div c="controls__option__card">
 //            <div c="controls__option__range-container">
@@ -39,8 +39,8 @@
 //                </label>
 //              </li>
 //            </ul>
-//            <button c="controls__option__confirm-button"></button>
-//            <button c="controls__option__cancel-button"></button>
+//            <button c="controls__option__confirm"></button>
+//            <button c="controls__option__cancel"></button>
 //          </div>
 //        </div>
 //      </div>
@@ -148,7 +148,7 @@
 }
 
 
-.controls__option__show-button {
+.controls__option__show {
   @include mx.transition;
   opacity: 0.4;
   cursor: pointer;
@@ -196,7 +196,7 @@
         $h: auto//  height
       );
       position: absolute;
-      top: 4rem;//  El alto de la 'controls__option__show-button' + 10px
+      top: 4rem;//  El alto de la 'controls__option__show' + 10px
       right: 0;
       left: auto;
       z-index: 999;
@@ -308,38 +308,30 @@
 }
 
 
-.controls__option__confirm-button {
+.controls__option__confirm {
   @include mx.transition;
 	@include mx.font-stack (
 		$l-e: v.$interletter,//  letter-spacing
-		$c: v.$orange,//  color
+		$c: v.$white,//  color
 		$f-s: 1.8rem,//  font-size
 		$f-w: 'regular',//  font-weight
 	);
-  background-color: transparent;
+  background-color:  v.$orange;
 	border: 0.007692em solid v.$orange;
 	padding: 0.76923em 0.84615em;
   margin-top: 2.22222em;
   cursor: pointer;
 
-  &:hover {
-    @include mx.font-stack($c: v.$white);//  color
-    background-color: v.$orange;
-  }
-
   &:disabled {
     @include mx.font-stack ($c: v.$brown-05);//  color
+    background-color:  transparent;
     border-color: v.$brown-05;
     cursor: auto;
-
-    &:hover {
-      background-color: transparent;
-    }
   }
 }
 
 
-.controls__option__cancel-button {
+.controls__option__cancel {
   @include mx.transition;
   @include mx.size(
     $w: 1rem,//  width
