@@ -11,17 +11,17 @@
 //
 //                             ESTRUCTURA HTML
 //
-//  <section c="cards-container">
-//    <article c="card-plate">
-//      <picture c="card-plate__picture">
+//  <section c="card__container">
+//    <article c="card__plate">
+//      <picture c="card__plate__picture">
 //        <source></source>
-//        <img c="card-plate__image">
+//        <img c="card__plate__image">
 //      </picture>
-//      <h2 c="card-plate__title"></h2>
-//      <p c="card-plate__price"></p>
-//      <div c="card-plate__links">
-//        <a c="card-plate__link"></a>
-//        <a c="card-plate__link">
+//      <h2 c="card__plate__title"></h2>
+//      <p c="card__plate__price"></p>
+//      <div c="card__plate__links">
+//        <a c="card__plate__link"></a>
+//        <a c="card__plate__link">
 //          <svg>...</svg>
 //        </a>
 //      </div>
@@ -33,10 +33,12 @@
 //  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
 
 
+@keyframes card-show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
-
-.cards-container {
-  @include mx.transition;
+.card__container {
   display: grid;
   grid: {
     template-columns: repeat(auto-fill, minmax(26rem, 1fr));
@@ -53,17 +55,100 @@
   @include mx.responsive('xxl') {
     column-gap: 6rem;
   }
+
+  &--error {
+    //  Mixin que genera los 'background-image' del contenedor de 'cards' cuando se ha
+    //  producido un error relacionado a la solicitud de platos al servidor.
+    //  (Ver estructura en 'utilities/mixins').
+    @include mx.bg-error;
+    @include mx.font-stack($f-s: 1.5rem);//  font-size
+    grid: {
+      template-columns: none;
+      row-gap: 1em;
+    }
+    margin: {
+      top: 10rem;
+      bottom: 0;
+    }
+    box-shadow: v.$box-shadow-2;
+    background: {
+      color: v.$brown-01;
+      position: center;
+      repeat: no-repeat;
+    }
+    padding: 2.33333em 2em;
+    animation: card-show-opacity 1s ease-out;
+
+//  Device 360px
+    @include mx.responsive(360px) {
+    //  Una vez llegados a 360px se puede agrandar el 'font-size' sin que se rompa el diseño.
+      @include mx.font-stack($f-s: 1.8rem);//  font-size
+    }
+
+//  Device Small
+    @include mx.responsive('sm') {
+      @include mx.font-stack($f-s: 2.6rem);//  font-size
+    }
+
+//  Device Medium
+    @include mx.responsive('md') {
+      @include mx.font-stack($f-s: 3.4rem);//  font-size
+    }
+
+//  Device Large
+    @include mx.responsive('lg') {
+      background-position-x: 45rem;
+      justify-items: start;
+    }
+  }
 }
 
 
-.card-plate {
+.card__error__title {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-h: 1.6em,//  line-height
+    $t-a: center,//  text-align
+    $c: v.$orange,//  color
+    $f-s: inherit,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin: 0;
+
+  //  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+}
+
+
+.card__error__reload {
+  @include mx.transition;
+  @include mx.size(
+    $w: 2.66666em,//  width
+    $wmax: 6rem,//  max-width
+    $h: 2.66666em,//  height
+    $hmax: 6rem,//  max-height
+  );
+  opacity: 0.7;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+
+.card__plate {
   @include mx.cards;//  Mixin que genera los estilos de la 'card' (ver estructura en 'utilities/mixins').
   @include mx.size(
     $w: 100%,//  width
     $wmax: 30rem,//  max-width
-    $h: 48.6rem,//  height
   );
+  justify-content: space-between;
+  padding: 5rem 0;
   box-shadow: v.$box-shadow-2;
+  animation: card-show-opacity 1s ease-out;
 
 //  Device Small
   @include mx.responsive('sm') {
@@ -75,23 +160,27 @@
       content: flex-start;
       items: flex-start;
     }
+    justify-content: center;
+    padding: 0;
   }
 
 //  Device Medium
   @include mx.responsive('md') {
     @include mx.size(
       $wmax: 30rem,//  max-width
-      $h: 48.6rem,//  height
+      $h: auto,//  height
     );
     align: {
       content: center;
       items: center;
     }
+    justify-content: space-between;
+    padding: 5rem 0;
   }
 }
 
 
-.card-plate__picture {
+.card__plate__picture {
   @include mx.transition;
   margin-bottom: 5rem;
 
@@ -107,7 +196,7 @@
 }
 
 
-.card-plate__image {
+.card__plate__image {
 //  El width & height de estas imágenes están declarados directamente en el documento html
 //  a través de los atributos 'width' y 'heigth' de la etiqueta <img> para permitirle al
 //  navegador conocer el tamaño antes de descargar la imagen y evitar saltos en la página
@@ -117,7 +206,7 @@
   @include mx.transition;
   filter: drop-shadow(7px 7px 10px #00000066);
 
-  .card-plate:hover & {
+  .card__plate:hover & {
     transform: scale(1.125, 1.125);
   }
 }
@@ -128,7 +217,7 @@
 //  'Placeholder' que se extenderá a próximos selectores
 //===================================================================
 
-%card-plate-title-price {
+%card__plate-title-price {
   @include mx.font-stack(
     $l-h: 1.5em,//  line-height
     $f-s: 1.8rem,//  font-size
@@ -141,35 +230,37 @@
 //===================================================================
 
 
-.card-plate__title {
-  @extend %card-plate-title-price;
+.card__plate__title {
+  @extend %card__plate-title-price;
   @include mx.size(20ch);//  width
   @include mx.font-stack(
     $t-a: center,//  text-align
     $c: v.$light-blue,//  color
     $f-w: 'medium',//  font-weight
   );
+  display: -webkit-box;
+  -webkit-line-clamp: 2;//  Dos renglones
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
 //  Device Small
   @include mx.responsive('sm') {
     @include mx.size(12ch);//  width
-    @include mx.font-stack(
-      $t-a: left//  text-align
-    );
+    @include mx.font-stack($t-a: left);//  text-align
+    -webkit-line-clamp: 3;//  Tres renglones
   }
 
 //  Device Medium
   @include mx.responsive('md') {
     @include mx.size(20ch);//  width
-    @include mx.font-stack(
-      $t-a: center//  text-align
-    );
+    @include mx.font-stack($t-a: center);//  text-align
+    -webkit-line-clamp: 2;//  Dos renglones
   }
 }
 
 
-.card-plate__price {
-  @extend %card-plate-title-price;
+.card__plate__price {
+  @extend %card__plate-title-price;
   @include mx.font-stack(
     $c: v.$brown,//  color
     $f-w: 'light',//  font-weight
@@ -177,7 +268,7 @@
 }
 
 
-.card-plate__link {
+.card__plate__link {
   @include mx.transition($duration: 0.5s);
   @include mx.font-stack(
     $l-e: v.$interletter,//  letter-spacing

@@ -146,6 +146,7 @@
     $w: map.get(mp.$mini-card, 'width'),//  width
     $h: map.get(mp.$mini-card, 'height')//  height
   );
+  justify-content: center;
   padding: 0 1.5rem;
   box-shadow: v.$box-shadow-3;
   scroll-snap: {
@@ -174,4 +175,8 @@
     $f-w: 'regular',//  font-weight
   );
   margin-bottom: 0;//  Elimina el 'margin-bottom' predeterminado de Bootstrap.
+  display: -webkit-box;
+  -webkit-line-clamp: 2;//  Dos renglones
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
