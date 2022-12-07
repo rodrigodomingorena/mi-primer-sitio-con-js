@@ -1,0 +1,76 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                                  LOADER                                   //
+//                                                                           //
+//===========================================================================//
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+.loader {
+  position: absolute;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    border: 0.2rem solid v.$light-blue;
+    animation: animloader 1s ease-in-out infinite;
+  }
+
+  &::after {
+    border-color: v.$orange;
+    animation-delay: 0.5s;
+  }
+
+  &--card {
+    @include mx.size(
+      $w: 5rem,// width
+      $h: 5rem// height
+    );
+
+    &::after, &::before {
+      @include mx.size(
+        $w: 5rem,// width
+        $h: 5rem// height
+      );
+    }
+  }
+
+  &--show-more {
+    position: relative;
+
+    @include mx.size(
+      $w: 4.4rem,// width
+      $h: 4.4rem// height
+    );
+
+    &::after, &::before {
+      @include mx.size(
+        $w: 4.4rem,// width
+        $h: 4.4rem// height
+      );
+    }
+  }
+}
+
