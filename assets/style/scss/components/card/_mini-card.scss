@@ -1,0 +1,182 @@
+@use "sass:map";
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/maps" as mp;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                               MINI CARDS                                  //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <article c="mini-cards">
+//    <svg c="arrow/--prev">...</svg>
+//
+//    <div c="mini-cards__carrousel">
+//      <a>
+//        <article c="mini-cards__card">
+//          <picture c="mini-cards__picture">
+//            <source>
+//            <img c="mini-cards__image">
+//          </picture>
+//          <h4 c="mini-cards__title"></h4>
+//        </article>
+//      </a>
+//      ...
+//    </div>
+//
+//    <svg c="arrow/--next">...</svg>
+//  </article>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.mini-cards {
+  display: grid;
+  grid: {
+    auto-flow: column;
+    gap: 2rem;
+  }
+  justify: {
+    content: center;
+    items: center;
+  }
+  align-items: center;
+  margin-top: 8rem;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin-top: 10rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+  //  Los '2rem' son para forzar a que encajen sin ningún espacio
+  //  extra los '.arrow' rotados a partir de este breakpoint.
+    grid-template-rows: 2rem auto 2rem;
+    margin: {
+      top: 0;
+      left: f.percentage-margin(0.5);//  Media columna de Bootstrap (ver estructura en 'utilities/functions').
+    } 
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin-left: f.percentage-margin(1);//  Una columna de Bootstrap.
+  }
+
+  .arrow {
+    @include mx.transition;
+    color: v.$light-blue;
+    cursor: pointer;
+
+//  Device Large
+    @include mx.responsive('lg') {
+      transform: rotate(90deg);
+    }
+
+    &--disabled {
+      filter: grayscale(1);
+      opacity: 0.2;
+    }
+  }
+}
+
+
+.mini-cards__carrousel {
+  @include mx.transition;
+  @include mx.size(
+    // width: El ancho de una 'mini-card' para que se visualice solo una card.
+    $w: map.get(mp.$mini-card, 'width')
+  );
+  display: grid;
+  grid: {
+    auto-flow: column;
+    gap: map.get(mp.$carrousel, 'gap');
+  }
+  overflow: auto;
+  scroll-snap-type: both mandatory;
+  scrollbar-width: none;//  Oculta el scrollbar en Firefox.
+
+  &::-webkit-scrollbar {
+    display: none;//  Oculta el scrollbar en navegadores basados en WebKit.
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size(
+      // width: El ancho de dos 'mini-cards' + el 'gap' de la grilla para que se visualicen dos cards.
+      $w: map.get(mp.$mini-card, 'width') * 2 + map.get(mp.$carrousel, 'gap')
+    );
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.size(
+      // width: El ancho de tres 'mini-cards' + dos 'gap' de la grilla para que se visualicen tres cards.
+      $w: map.get(mp.$mini-card, 'width') * 3 + map.get(mp.$carrousel, 'gap') * 2
+    );
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.size(
+      $w: auto,//  width
+
+      // height: El alto de dos 'mini-cards' + el 'gap' de la grilla para que se visualicen dos cards.
+      $h: map.get(mp.$mini-card, 'height') * 2 + map.get(mp.$carrousel, 'gap')
+    );
+    grid-auto-flow: row;
+  }
+}
+
+
+.mini-cards__card {
+  @include mx.cards;//  Mixin que genera los estilos de la 'mini-card' (ver estructura en 'utilities/mixins').
+  @include mx.size(
+    $w: map.get(mp.$mini-card, 'width'),//  width
+    $h: map.get(mp.$mini-card, 'height')//  height
+  );
+  justify-content: center;
+  padding: 0 1.5rem;
+  box-shadow: v.$box-shadow-3;
+  scroll-snap: {
+    align: start;
+    stop: always;
+  }
+}
+
+
+.mini-cards__picture {
+  margin-bottom: 2rem;
+}
+
+
+.mini-cards__image {
+  filter: drop-shadow(3px 3px 5px #00000066);
+}
+
+
+.mini-cards__title {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.25em,//  line-height
+    $c: v.$light-blue,//  color
+    $f-s: 1.6rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 0;//  Elimina el 'margin-bottom' predeterminado de Bootstrap.
+  display: -webkit-box;
+  -webkit-line-clamp: 2;//  Dos renglones
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
