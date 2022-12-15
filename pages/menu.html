@@ -4,7 +4,13 @@
     <!-- Meta-tags & title -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+
     <title>Menú | Sauce</title>
 
     <meta
@@ -18,8 +24,6 @@
     />
 
     <meta name="author" content="Rodrigo Domingorena" />
-
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
     <!-- Preloads -->
     <link rel="preload" href="../assets/style/css/main.css" as="style" />
@@ -353,8 +357,8 @@
               <h2 class="card__plate__title"></h2>
               <p class="card__plate__price"></p>
               <div class="card__plate__links">
-                <a class="card__plate__link" href="./plate.html">VER</a>
-                <a class="card__plate__link">
+                <a class="card__plate__link" data-link="plate">VER</a>
+                <a class="card__plate__link" data-link="cart">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22"
