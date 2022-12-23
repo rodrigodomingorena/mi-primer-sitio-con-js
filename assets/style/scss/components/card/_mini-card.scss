@@ -40,6 +40,12 @@
 
 
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .mini-cards {
   display: grid;
   grid: {
@@ -136,6 +142,28 @@
       $h: map.get(mp.$mini-card, 'height') * 2 + map.get(mp.$carrousel, 'gap')
     );
     grid-auto-flow: row;
+  }
+
+  .loading-cards & {
+    background-color: v.$orange-015;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+
+//  Up to device Large 
+    @media (max-width: 992px) {
+      @include mx.size(
+        // height: El alto de una 'mini-card'.
+        $h: map.get(mp.$mini-card, 'height')
+      );
+    }
+
+//  Device Large
+    @include mx.responsive('lg') {
+      @include mx.size(
+        // width: El ancho de una 'mini-card'.
+        $w: map.get(mp.$mini-card, 'width')
+      );
+    }
   }
 }
 

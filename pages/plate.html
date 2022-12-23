@@ -4,7 +4,13 @@
     <!-- Meta-tags & title -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+
     <title>Ensalada Tabulé | Sauce</title>
 
     <meta
@@ -65,7 +71,7 @@
     <link rel="stylesheet" href="../assets/style/css/main.css" />
   </head>
 
-  <body id="start-plate-1">
+  <body id="start-plate">
     <!-- START HEADER -->
     <header class="header header--blue container-fluid">
       <div class="row g-0">
@@ -76,8 +82,8 @@
             class="header__toggler navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbar-plate-1"
-            aria-controls="navbar-plate-1"
+            data-bs-target="#navbar-plate"
+            aria-controls="navbar-plate"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
@@ -86,15 +92,14 @@
 
           <div
             class="header__navbar navbar-collapse collapse"
-            id="navbar-plate-1"
+            id="navbar-plate"
           >
             <ul class="header__navbar-nav navbar-nav">
               <li class="header__item nav-item">
                 <a
                   class="header__link header__link--active"
-                  href="#start-plate-1"
-                  >Ensalada Tabulé</a
-                >
+                  href="#start-plate"
+                ></a>
               </li>
 
               <li class="header__item nav-item">
@@ -116,23 +121,20 @@
     <!-- END HEADER -->
 
     <!-- START MAIN -->
-    <main class="bg-plate">
+    <main class="bg-plate loading-plate loading-cards">
       <!-- START HERO -->
       <section class="hero-plate container px-0">
-        <div class="row g-0">
+        <div class="hero__container row g-0">
           <!-- START TITLE -->
           <article
             class="title-plate col-10 col-sm-7 col-md-9 col-lg-7 col-xl-6"
           >
-            <h1 class="title-plate__title">Ensalada Tabulé</h1>
-            <p class="title-plate__price">$&#8239;300</p>
-            <p class="title-plate__paragraph">
-              Se trata de una ensalada hecha con trigo burgol, pimientos rojos,
-              tomates cherry, perejil, aceite de oliva y limón.
-            </p>
+            <h1 class="title-plate__title"></h1>
+            <p class="title-plate__price"></p>
+            <p class="title-plate__paragraph"></p>
             <div>
               <a class="title-plate__link" href="./menu.html">MENÚ</a>
-              <a class="title-plate__link" href="#">
+              <a class="title-plate__link" data-link="cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -160,34 +162,9 @@
 
           <!-- START PICTURE -->
           <picture class="picture-plate col-10 col-sm-7 col-md-6 col-lg-5">
-            <source
-              media="(min-width: 1200px)"
-              srcset="../assets/media/plate-1/xl/hero-image.webp"
-              type="image/webp"
-            />
-            <source
-              media="(min-width: 1200px)"
-              srcset="../assets/media/plate-1/xl/hero-image.png"
-            />
-
-            <source
-              media="(min-width: 768px)"
-              srcset="../assets/media/plate-1/md/hero-image.webp"
-              type="image/webp"
-            />
-            <source
-              media="(min-width: 768px)"
-              srcset="../assets/media/plate-1/md/hero-image.png"
-            />
-
-            <source
-              srcset="../assets/media/plate-1/hero-image.webp"
-              type="image/webp"
-            />
             <img
               class="picture-plate__image"
-              src="../assets/media/plate-1/hero-image.png"
-              alt="Plato de ensalada Tabulé"
+              src="../assets/media/loading-placeholder/hero-image.png"
             />
           </picture>
           <!-- END PICTURE -->
@@ -208,134 +185,7 @@
               />
             </svg>
 
-            <div class="mini-cards__carrousel">
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-2.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-2.png"
-                      loading="lazy"
-                      alt="Plato de pechugas con ensalada"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Pechugas con ensalada</h4>
-                </article>
-              </a>
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-3.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-3.png"
-                      loading="lazy"
-                      alt="Plato de pollo frito con vegetales"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Pollo frito con vegetales</h4>
-                </article>
-              </a>
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-4.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-4.png"
-                      loading="lazy"
-                      alt="Plato de arroz con camarones"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Arroz con camarones</h4>
-                </article>
-              </a>
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-5.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-5.png"
-                      loading="lazy"
-                      alt="Plato de pollo al curry con arroz"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Pollo al curry con arroz</h4>
-                </article>
-              </a>
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-6.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-6.png"
-                      loading="lazy"
-                      alt="Plato de mostacholes con salsa"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Mostacholes con salsa</h4>
-                </article>
-              </a>
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-7.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-7.png"
-                      loading="lazy"
-                      alt="Plato de ravioles negros"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Ravioles negros</h4>
-                </article>
-              </a>
-              <a href="#">
-                <article class="mini-cards__card">
-                  <picture class="mini-cards__picture">
-                    <source
-                      srcset="../assets/media/mini-card/image-8.webp"
-                      type="image/webp"
-                    />
-                    <img
-                      class="mini-cards__image"
-                      src="../assets/media/mini-card/image-8.png"
-                      loading="lazy"
-                      alt="Plato de tirabuzones con brócoli"
-                    />
-                  </picture>
-
-                  <h4 class="mini-cards__title">Tirabuzones con brócoli</h4>
-                </article>
-              </a>
-            </div>
+            <div class="mini-cards__carrousel"></div>
 
             <svg
               class="arrow arrow--next"
@@ -354,28 +204,69 @@
           <!-- END MINI CARDS -->
         </div>
       </section>
+
+      <!-- IMAGE TEMPLATE -->
+      <template>
+        <source media="(min-width: 1200px)" type="image/webp" />
+        <source media="(min-width: 1200px)" />
+
+        <source media="(min-width: 768px)" type="image/webp" />
+        <source media="(min-width: 768px)" />
+
+        <source class="picture-plate__source" type="image/webp" />
+        <img class="picture-plate__image" />
+      </template>
+      <!-- END IMAGE TEMPLATE -->
+
+      <!-- IMAGE PLACEHOLDER TEMPLATE -->
+      <template>
+        <img
+          class="picture-plate__image"
+          src="../assets/media/loading-placeholder/hero-image.png"
+        />
+      </template>
+      <!-- END IMAGE PLACEHOLDER TEMPLATE -->
+
+      <!-- MINI-CARD TEMPLATE -->
+      <template>
+        <a href="#">
+          <article class="mini-cards__card">
+            <picture class="mini-cards__picture">
+              <source type="image/webp" />
+              <img class="mini-cards__image" loading="lazy" />
+            </picture>
+
+            <h4 class="mini-cards__title"></h4>
+          </article>
+        </a>
+      </template>
+      <!-- END MINI CARD TEMPLATE -->
+
       <!-- END HERO -->
 
       <!-- START NUTRITIONAL INFO -->
       <section class="nutritional-info container px-0">
         <div class="row g-0">
           <!-- START NUTRITIONAL INFO MAIN -->
-          <article
-            class="nutritional-info__main col-10"
-          >
+          <article class="nutritional-info__main col-10">
             <h2 class="nutritional-info__main__title">
               Información nutricional de «Ensalada Tabulé»
             </h2>
             <p class="nutritional-info__main__kcal">383&#8239;kcal</p>
             <ul class="nutritional-info__main__options">
-              <li class="nutritional-info__main__option nutritional-info__main__option--selected">
+              <li
+                class="nutritional-info__main__option nutritional-info__main__option--selected"
+              >
                 <label
                   >Por gramos<input type="radio" name="option" value="grams"
                 /></label>
               </li>
               <li class="nutritional-info__main__option">
                 <label
-                  >Por kilogramos<input type="radio" name="option" value="kilograms"
+                  >Por kilogramos<input
+                    type="radio"
+                    name="option"
+                    value="kilograms"
                 /></label>
               </li>
               <li class="nutritional-info__main__option">
@@ -542,9 +433,7 @@
           <div class="footer__nav col-4 col-sm-10 col-lg-2">
             <ul class="footer__list">
               <li class="footer__item">
-                <a class="footer__link" href="#start-plate-1"
-                  >Volver a arriba</a
-                >
+                <a class="footer__link" href="#start-plate">Volver a arriba</a>
               </li>
 
               <li class="footer__item">
@@ -597,6 +486,6 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    <script src="../assets/js/index.js" type="module"></script>
+    <script src="../assets/js/index-plate.js" type="module"></script>
   </body>
 </html>

@@ -28,8 +28,15 @@
 
 
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .title-plate {
   @include mx.transition(padding);
+
 //  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
 //  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
 //  el diseño en los dipositivos cuyo ancho sea menor a 576px.
@@ -94,6 +101,16 @@
   @include mx.responsive('xxl') {
     @include mx.font-stack($f-s: 4.4rem);//  font-size
   }
+
+  .loading-plate & {
+    @include mx.size(
+      $w: 50%,//  width
+      $h: 2em,//  height
+    );
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }
 
 
@@ -120,6 +137,16 @@
 //  Device XX-Large
   @include mx.responsive('xxl') {
     @include mx.font-stack($f-s: 3rem);//  font-size
+  }
+
+  .loading-plate & {
+    @include mx.size(
+      $w: 25%,//  width
+      $h: 1em,//  height
+    );
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
   }
 }
 
@@ -158,6 +185,13 @@
 //  Device XX-Large
   @include mx.responsive('xxl') {
     @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+
+  .loading-plate & {
+    @include mx.size($h: 5.5em);//  height
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
   }
 }
 

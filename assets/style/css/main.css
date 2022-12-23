@@ -1737,6 +1737,11 @@ body {
   }
 }
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
 .title-plate {
   transition-property: padding;
   transition-duration: 0.75s;
@@ -1800,6 +1805,13 @@ body {
     font-size: 4.4rem;
   }
 }
+.loading-plate .title-plate__title {
+  width: 50%;
+  height: 2em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
 .title-plate__price {
   transition-property: all;
@@ -1826,6 +1838,13 @@ body {
   .title-plate__price {
     font-size: 3rem;
   }
+}
+.loading-plate .title-plate__price {
+  width: 25%;
+  height: 1em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
 }
 
 .title-plate__paragraph {
@@ -1861,6 +1880,12 @@ body {
   .title-plate__paragraph {
     font-size: 2rem;
   }
+}
+.loading-plate .title-plate__paragraph {
+  height: 5.5em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
 }
 
 .title-plate__link {
@@ -1907,6 +1932,11 @@ body {
   background-color: rgb(0, 135, 187);
 }
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
 .picture-plate {
   min-width: 26rem;
   max-width: 31.5rem;
@@ -1934,7 +1964,16 @@ body {
   width: 100%;
   filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.4));
 }
+.loading-plate .picture-plate__image {
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
 .mini-cards {
   display: grid;
   grid-auto-flow: column;
@@ -2010,6 +2049,21 @@ body {
     width: auto;
     height: 40rem;
     grid-auto-flow: row;
+  }
+}
+.loading-cards .mini-cards__carrousel {
+  background-color: rgba(237, 125, 59, 0.15);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
+@media (max-width: 992px) {
+  .loading-cards .mini-cards__carrousel {
+    height: 18rem;
+  }
+}
+@media (min-width: 992px) {
+  .loading-cards .mini-cards__carrousel {
+    width: 16rem;
   }
 }
 
