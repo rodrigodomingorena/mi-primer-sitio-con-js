@@ -43,4 +43,8 @@
       flex-direction: row;
     }
   }
+
+  .error & {
+    display: none;
+  }
 }
