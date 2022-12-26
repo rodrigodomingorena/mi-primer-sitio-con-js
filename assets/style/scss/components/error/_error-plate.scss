@@ -2,6 +2,29 @@
 @use "../../utilities/variables" as v;
 
 
+//===========================================================================//
+//                                                                           //
+//                                ERROR PLATE                                //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <section c="error-plate">
+//    <div>
+//      <article c="error-plate__container">
+//        <h1 c="error-plate__title"></h1>
+//        <img c="error-plate__reload"></img>
+//      </article>
+//    </div>
+//  </section>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
 
 
 .error-plate {
