@@ -1492,16 +1492,16 @@ body {
   animation: card-show-opacity 1s ease-out;
 }
 .card__container--error {
-  background-image: url("../../media/menu/error.png");
+  background-image: url("../../media/error/error.png");
 }
 @media (min-width: 576px) {
   .card__container--error {
-    background-image: url("../../media/menu/sm/error.png");
+    background-image: url("../../media/error/sm/error.png");
   }
 }
 @media (min-width: 768px) {
   .card__container--error {
-    background-image: url("../../media/menu/md/error.png");
+    background-image: url("../../media/error/md/error.png");
   }
 }
 @media (min-width: 360px) {
@@ -1736,6 +1736,9 @@ body {
     flex-direction: row;
   }
 }
+.error .hero-plate {
+  display: none;
+}
 
 @keyframes loading-glow {
   50% {
@@ -1776,10 +1779,6 @@ body {
 }
 
 .title-plate__title {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   text-align: center;
   line-height: 1.03846em;
   color: rgb(15, 159, 214);
@@ -1814,10 +1813,6 @@ body {
 }
 
 .title-plate__price {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   letter-spacing: 0.03em;
   color: rgb(237, 125, 59);
   font-size: 1.8rem;
@@ -1848,10 +1843,6 @@ body {
 }
 
 .title-plate__paragraph {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   width: 24ch;
   text-align: center;
   line-height: 1.5em;
@@ -2121,6 +2112,9 @@ body {
   .nutritional-info {
     padding: 20rem 0;
   }
+}
+.error .nutritional-info {
+  display: none;
 }
 
 .nutritional-info__main {
@@ -2535,6 +2529,108 @@ body {
   .nutritional-info__details__description {
     font-size: 2rem;
   }
+}
+
+.error-plate {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  display: none;
+  padding: 10rem 0;
+}
+@media (min-width: 768px) {
+  .error-plate {
+    padding-top: 20rem;
+  }
+}
+.error .error-plate {
+  display: block;
+}
+
+.error-plate__container {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  font-size: 1.5rem;
+  display: grid;
+  grid-row-gap: 1em;
+  justify-items: center;
+  margin: 0 auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(113, 83, 67, 0.1);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2.33333em 2em;
+}
+.error-plate__container {
+  background-image: url("../../media/error/error.png");
+}
+@media (min-width: 576px) {
+  .error-plate__container {
+    background-image: url("../../media/error/sm/error.png");
+  }
+}
+@media (min-width: 768px) {
+  .error-plate__container {
+    background-image: url("../../media/error/md/error.png");
+  }
+}
+@media (min-width: 360px) {
+  .error-plate__container {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 576px) {
+  .error-plate__container {
+    font-size: 2.6rem;
+  }
+}
+@media (min-width: 768px) {
+  .error-plate__container {
+    font-size: 3.4rem;
+  }
+}
+@media (min-width: 992px) {
+  .error-plate__container {
+    background-position-x: 45rem;
+    justify-items: start;
+  }
+}
+
+.error-plate__title {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  text-align: center;
+  line-height: 1.6em;
+  color: rgb(237, 125, 59);
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .error-plate__title {
+    text-align: left;
+  }
+}
+
+.error-plate__reload {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  width: 2.66666em;
+  max-width: 6rem;
+  height: 2.66666em;
+  max-height: 6rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.error-plate__reload:hover {
+  opacity: 1;
 }
 
 .form {

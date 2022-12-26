@@ -121,302 +121,65 @@
     <!-- END HEADER -->
 
     <!-- START MAIN -->
-    <main class="bg-plate loading-plate loading-cards">
-      <!-- START HERO -->
-      <section class="hero-plate container px-0">
-        <div class="hero__container row g-0">
-          <!-- START TITLE -->
-          <article
-            class="title-plate col-10 col-sm-7 col-md-9 col-lg-7 col-xl-6"
-          >
-            <h1 class="title-plate__title"></h1>
-            <p class="title-plate__price"></p>
-            <p class="title-plate__paragraph"></p>
-            <div>
-              <a class="title-plate__link" href="./menu.html">MENÚ</a>
-              <a class="title-plate__link" data-link="cart">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                    transform="translate(-117.927 -279.108)"
-                  />
-                  <path
-                    d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                    transform="translate(-227.714 -279.108)"
-                  />
-                  <path
-                    d="M17.915,4.521a.408.408,0,0,0-.314-.144H4.1L2.982.509A.252.252,0,0,0,2.97.486.337.337,0,0,0,2.934.419.373.373,0,0,0,2.892.36.346.346,0,0,0,2.837.315.388.388,0,0,0,2.772.274.419.419,0,0,0,2.7.251.394.394,0,0,0,2.624.236c-.01,0-.018-.005-.028-.005H.4A.389.389,0,0,0,0,.608.389.389,0,0,0,.4.985H2.291L3.4,4.847l2,7.628a.4.4,0,0,0,.388.287H15.6a.4.4,0,0,0,.388-.287l2-7.631A.359.359,0,0,0,17.915,4.521Zm-2.624,7.487H6.1L4.3,5.13H17.091Z"
-                    transform="translate(0 -0.231)"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- END TITLE -->
-
-          <!-- START PICTURE -->
-          <picture class="picture-plate col-10 col-sm-7 col-md-6 col-lg-5">
-            <img
-              class="picture-plate__image"
-              src="../assets/media/loading-placeholder/hero-image.png"
-            />
-          </picture>
-          <!-- END PICTURE -->
-
-          <!-- START MINI CARDS -->
-          <article class="mini-cards col-12 col-lg-2">
-            <svg
-              class="arrow arrow--prev arrow--disabled"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="40"
-              viewBox="0 0 20 40"
-              fill="currentColor"
-            >
-              <path
-                d="M40,0H36.249L20,16.222,3.751,0H0L20,20Z"
-                transform="translate(20) rotate(90)"
-              />
-            </svg>
-
-            <div class="mini-cards__carrousel"></div>
-
-            <svg
-              class="arrow arrow--next"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="40"
-              viewBox="0 0 20 40"
-              fill="currentColor"
-            >
-              <path
-                d="M40,0H36.249L20,16.222,3.751,0H0L20,20Z"
-                transform="translate(0 40) rotate(-90)"
-              />
-            </svg>
-          </article>
-          <!-- END MINI CARDS -->
-        </div>
-      </section>
-
-      <!-- IMAGE TEMPLATE -->
-      <template>
-        <source media="(min-width: 1200px)" type="image/webp" />
-        <source media="(min-width: 1200px)" />
-
-        <source media="(min-width: 768px)" type="image/webp" />
-        <source media="(min-width: 768px)" />
-
-        <source class="picture-plate__source" type="image/webp" />
-        <img class="picture-plate__image" />
-      </template>
-      <!-- END IMAGE TEMPLATE -->
-
-      <!-- IMAGE PLACEHOLDER TEMPLATE -->
-      <template>
-        <img
-          class="picture-plate__image"
-          src="../assets/media/loading-placeholder/hero-image.png"
-        />
-      </template>
-      <!-- END IMAGE PLACEHOLDER TEMPLATE -->
-
-      <!-- MINI-CARD TEMPLATE -->
-      <template>
-        <a href="#">
-          <article class="mini-cards__card">
-            <picture class="mini-cards__picture">
-              <source type="image/webp" />
-              <img class="mini-cards__image" loading="lazy" />
-            </picture>
-
-            <h4 class="mini-cards__title"></h4>
-          </article>
-        </a>
-      </template>
-      <!-- END MINI CARD TEMPLATE -->
-
-      <!-- END HERO -->
-
-      <!-- START NUTRITIONAL INFO -->
-      <section class="nutritional-info container px-0">
+    <main class="bg-plate loading-plate loading-cards error">
+      <section class="error-plate container px-0">
         <div class="row g-0">
-          <!-- START NUTRITIONAL INFO MAIN -->
-          <article class="nutritional-info__main col-10">
-            <h2 class="nutritional-info__main__title">
-              Información nutricional de «Ensalada Tabulé»
-            </h2>
-            <p class="nutritional-info__main__kcal">383&#8239;kcal</p>
-            <ul class="nutritional-info__main__options">
-              <li
-                class="nutritional-info__main__option nutritional-info__main__option--selected"
-              >
-                <label
-                  >Por gramos<input type="radio" name="option" value="grams"
-                /></label>
-              </li>
-              <li class="nutritional-info__main__option">
-                <label
-                  >Por kilogramos<input
-                    type="radio"
-                    name="option"
-                    value="kilograms"
-                /></label>
-              </li>
-              <li class="nutritional-info__main__option">
-                <label
-                  >Por platos<input type="radio" name="option" value="plates"
-                /></label>
-              </li>
-            </ul>
-            <input
-              class="nutritional-info__main__amount"
-              type="text"
-              name="amount"
-              value="300&#8239;g"
-              maxlength="10"
-              autocomplete="off"
+          <article class="error-plate__container col-10 col-md-11">
+            <h1 class="error-plate__title">
+              Al parecer hay un error de conexión. Por favor, verificá que el
+              dispositivo esté conectado a la red. Si ya lo está, tocá el botón
+              de recarga para volver a solicitar el plato que necesitás. De lo
+              contrario, asegurate de poder restablecerla antes de iniciar la
+              recarga.
+            </h1>
+            <img
+              class="error-plate__reload"
+              src="../assets/media/svg/reload.svg"
+              tabindex="0"
+              alt="Recargar"
             />
           </article>
-          <!-- END NUTRITIONAL INFO MAIN -->
-
-          <!-- START NUTRITIONAL INFO DETAILS -->
-          <article class="nutritional-info__details col-10" id="details">
-            <button
-              class="nutritional-info__details__button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content-fats"
-              aria-expanded="false"
-              aria-controls="content-fats"
-              id="button-fats"
-            >
-              Grasas
-            </button>
-
-            <div
-              class="nutritional-info__details__content collapse"
-              id="content-fats"
-              aria-labelledby="button-fats"
-              data-bs-parent="#details"
-            >
-              <h3 class="nutritional-info__details__title">Grasas</h3>
-              <div class="nutritional-info__details__data">
-                <p class="nutritional-info__details__grams">
-                  <span>28,86&#8239;g</span>
-                </p>
-                <ul class="nutritional-info__details__ratio">
-                  <li>
-                    <div>4,02&#8239;g</div>
-                    <div>Saturada</div>
-                  </li>
-
-                  <li>
-                    <div>3,254&#8239;g</div>
-                    <div>Poliinsaturada</div>
-                  </li>
-
-                  <li>
-                    <div>20,703&#8239;g</div>
-                    <div>Monoinsaturada</div>
-                  </li>
-                </ul>
-              </div>
-              <p class="nutritional-info__details__description">
-                Las grasas son componentes importantes de la alimentación y la
-                fuente de energía más concentrada. Son insolubles en agua y
-                transportan las vitaminas A, D, E y K y proporcionan al
-                organismo los ácidos grasos esenciales.
-              </p>
-            </div>
-
-            <button
-              class="nutritional-info__details__button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content-carbohydrates"
-              aria-expanded="false"
-              aria-controls="content-carbohydrates"
-              id="button-carbohydrates"
-            >
-              Carbohidratos
-            </button>
-
-            <div
-              class="nutritional-info__details__content collapse"
-              id="content-carbohydrates"
-              aria-labelledby="button-carbohydrates"
-              data-bs-parent="#details"
-            >
-              <h3 class="nutritional-info__details__title">Carbohidratos</h3>
-              <div class="nutritional-info__details__data">
-                <p class="nutritional-info__details__grams">
-                  <span>30,71&#8239;g</span>
-                </p>
-                <ul class="nutritional-info__details__ratio">
-                  <li>
-                    <div>4,14&#8239;g</div>
-                    <div>Azúcar</div>
-                  </li>
-
-                  <li>
-                    <div>7,1&#8239;g</div>
-                    <div>Fibra</div>
-                  </li>
-                </ul>
-              </div>
-              <p class="nutritional-info__details__description">
-                Los carbohidratos son compuestos orgánicos de origen vegetal,
-                excepto la lactosa y el glucógeno, que son de origen animal. La
-                principal función de estos es proporcionar energía al cuerpo.
-              </p>
-            </div>
-
-            <button
-              class="nutritional-info__details__button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#content-proteins"
-              aria-expanded="false"
-              aria-controls="content-proteins"
-              id="button-proteins"
-            >
-              Proteínas
-            </button>
-
-            <div
-              class="nutritional-info__details__content collapse"
-              id="content-proteins"
-              aria-labelledby="button-proteins"
-              data-bs-parent="#details"
-            >
-              <h3 class="nutritional-info__details__title">Proteínas</h3>
-              <div class="nutritional-info__details__data">
-                <p class="nutritional-info__details__grams">
-                  <span>5,07&#8239;g</span>
-                </p>
-              </div>
-              <p class="nutritional-info__details__description">
-                Las proteínas son los pilares fundamentales de la vida. Es
-                necesario consumir proteínas en la dieta para ayudarle al cuerpo
-                a reparar células y producir células nuevas. La proteína también
-                es importante para el crecimiento y el desarrollo de niños,
-                adolescentes y mujeres embarazadas.
-              </p>
-            </div>
-          </article>
-          <!-- END NUTRITIONAL INFO DETAILS -->
         </div>
       </section>
-      <!-- END INFO NUTRICIONAL -->
     </main>
     <!-- END MAIN -->
+
+    <!-- PICTURE CONTENT TEMPLATE -->
+    <template class="picture-plate__template">
+      <source media="(min-width: 1200px)" type="image/webp" />
+      <source media="(min-width: 1200px)" type="image/png" />
+
+      <source media="(min-width: 768px)" type="image/webp" />
+      <source media="(min-width: 768px)" type="image/png" />
+
+      <source class="picture-plate__source" type="image/webp" />
+      <img class="picture-plate__image" />
+    </template>
+    <!-- END PICTURE CONTENT TEMPLATE -->
+
+    <!-- IMAGE PLACEHOLDER TEMPLATE -->
+    <template>
+      <img
+        class="picture-plate__image"
+        src="../assets/media/loading-placeholder/hero-image.png"
+      />
+    </template>
+    <!-- END IMAGE PLACEHOLDER TEMPLATE -->
+
+    <!-- MINI-CARD TEMPLATE -->
+    <template>
+      <a href="#">
+        <article class="mini-cards__card">
+          <picture class="mini-cards__picture">
+            <source type="image/webp" />
+            <img class="mini-cards__image" loading="lazy" />
+          </picture>
+
+          <h4 class="mini-cards__title"></h4>
+        </article>
+      </a>
+    </template>
+    <!-- END MINI CARD TEMPLATE -->
 
     <!-- START FOOTER-->
     <footer class="footer footer--blue">
