@@ -72,7 +72,6 @@
 
 
 .title-plate__title {
-  @include mx.transition;
   @include mx.font-stack(
     $t-a: center,//  text-align
     $l-h: 1.03846em,//  line-height
@@ -115,7 +114,6 @@
 
 
 .title-plate__price {
-  @include mx.transition;
   @include mx.font-stack(
     $l-e: v.$interletter,//  letter-spacing
     $c: v.$orange,//  color
@@ -152,7 +150,6 @@
 
 
 .title-plate__paragraph {
-  @include mx.transition;
   @include mx.size(24ch);//  width
   @include mx.font-stack(
     $t-a: center,//  text-align
