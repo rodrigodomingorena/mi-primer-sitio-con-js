@@ -178,7 +178,9 @@
         "sugar": 0.0138,
         "fiber": 0.0236
       },
-      "proteins": 0.0169
+      "proteins": {
+        "total": 0.0169
+      }
     },
     {
       "id": 2,
@@ -195,7 +197,9 @@
         "sugar": 0.0071,
         "fiber": 0.003
       },
-      "proteins": 0.1516
+      "proteins": {
+        "total": 0.1516
+      }
     },
     {
       "id": 3,
@@ -212,7 +216,9 @@
         "sugar": 0.00294,
         "fiber": 0.003
       },
-      "proteins": 0.05197
+      "proteins": {
+        "total": 0.05197
+      }
     },
     {
       "id": 4,
@@ -229,7 +235,9 @@
         "sugar": 0.0044,
         "fiber": 0.011
       },
-      "proteins": 0.0484
+      "proteins": {
+        "total": 0.0484
+      }
     },
     {
       "id": 5,
@@ -246,7 +254,9 @@
         "sugar": 0.0276,
         "fiber": 0.012
       },
-      "proteins": 0.15294
+      "proteins": {
+        "total": 0.15294
+      }
     },
     {
       "id": 6,
@@ -263,7 +273,9 @@
         "sugar": 0.01477,
         "fiber": 0.0257
       },
-      "proteins": 0.0694
+      "proteins": {
+        "total": 0.0694
+      }
     },
     {
       "id": 7,
@@ -280,7 +292,9 @@
         "sugar": 0.0171,
         "fiber": 0.009
       },
-      "proteins": 0.0725
+      "proteins": {
+        "total": 0.0725
+      }
     },
     {
       "id": 8,
@@ -297,7 +311,9 @@
         "sugar": 0.00144,
         "fiber": 0.0137
       },
-      "proteins": 0.05484
+      "proteins": {
+        "total": 0.05484
+      }
     },
     {
       "id": 9,
@@ -314,7 +330,9 @@
         "sugar": 0.0059,
         "fiber": 0.0025
       },
-      "proteins": 0.1325
+      "proteins": {
+        "total": 0.1325
+      }
     },
     {
       "id": 10,
@@ -331,7 +349,9 @@
         "sugar": 0.0064,
         "fiber": 0.02
       },
-      "proteins": 0.0774
+      "proteins": {
+        "total": 0.0774
+      }
     },
     {
       "id": 11,
@@ -348,7 +368,9 @@
         "sugar": 0.021,
         "fiber": 0.0299
       },
-      "proteins": 0.022
+      "proteins": {
+        "total": 0.022
+      }
     },
     {
       "id": 12,
@@ -365,7 +387,9 @@
         "sugar": 0.009,
         "fiber": 0.0053
       },
-      "proteins": 0.166
+      "proteins": {
+        "total": 0.166
+      }
     },
     {
       "id": 13,
@@ -382,7 +406,9 @@
         "sugar": 0.0101,
         "fiber": 0.0137
       },
-      "proteins": 0.065
+      "proteins": {
+        "total": 0.065
+      }
     },
     {
       "id": 14,
@@ -399,7 +425,9 @@
         "sugar": 0.00194,
         "fiber": 0.0025
       },
-      "proteins": 0.0428
+      "proteins": {
+        "total": 0.0428
+      }
     },
     {
       "id": 15,
@@ -416,7 +444,9 @@
         "sugar": 0.00354,
         "fiber": 0.007
       },
-      "proteins": 0.0682
+      "proteins": {
+        "total": 0.0682
+      }
     },
     {
       "id": 16,
@@ -433,7 +463,9 @@
         "sugar": 0.031,
         "fiber": 0.019
       },
-      "proteins": 0.0995
+      "proteins": {
+        "total": 0.0995
+      }
     },
     {
       "id": 17,
@@ -450,7 +482,9 @@
         "sugar": 0.0081,
         "fiber": 0.005
       },
-      "proteins": 0.3016
+      "proteins": {
+        "total": 0.3016
+      }
     },
     {
       "id": 18,
@@ -467,7 +501,9 @@
         "sugar": 0.0032,
         "fiber": 0.0052
       },
-      "proteins": 0.0628
+      "proteins": {
+        "total": 0.0628
+      }
     },
     {
       "id": 19,
@@ -484,7 +520,9 @@
         "sugar": 0.0092,
         "fiber": 0.0052
       },
-      "proteins": 0.186
+      "proteins": {
+        "total": 0.186
+      }
     },
     {
       "id": 20,
@@ -501,7 +539,9 @@
         "sugar": 0.0298,
         "fiber": 0.029
       },
-      "proteins": 0.0299
+      "proteins": {
+        "total": 0.0299
+      }
     }
   ]
 }
