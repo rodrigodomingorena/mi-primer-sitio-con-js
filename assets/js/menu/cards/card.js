@@ -23,6 +23,9 @@ export class Card {
     this.image = this.card + "__image";
     this.title = this.card + "__title";
     this.price = this.card + "__price";
+    this.link = this.card + "__link";
+    this.plateLink = "[data-link='plate']";
+    this.cartLink = "[data-link='cart']";
 
     this.error = "error";
     this.cardError = this.topLevel + "__" + this.error;
@@ -33,7 +36,7 @@ export class Card {
     this.connection = "connection";
 
     this.limitPerPage = 6;
-    
+
     this.loader = "loader--" + this.topLevel;
     this.$loader = document.querySelector("." + this.loader);
 
@@ -124,12 +127,13 @@ export class Card {
 
     /* Construcción e inserción al documento de una "card" por cada plato */
     for (const plate of plates) {
-      const $card = this.$cardTemplate.content.cloneNode(true);
+      const $cardTemplate = this.$cardTemplate.content.cloneNode(true);
 
-      const $source = $card.querySelector("." + this.source);
-      const $image = $card.querySelector("." + this.image);
-      const $title = $card.querySelector("." + this.title);
-      const $price = $card.querySelector("." + this.price);
+      const $source = $cardTemplate.querySelector("." + this.source);
+      const $image = $cardTemplate.querySelector("." + this.image);
+      const $title = $cardTemplate.querySelector("." + this.title);
+      const $price = $cardTemplate.querySelector("." + this.price);
+      const $plateLink = $cardTemplate.querySelector(this.plateLink);
 
       const imageSrc = `../assets/media/menu/card-plate-image-${plate.imageId}`;
 
@@ -138,8 +142,9 @@ export class Card {
       $image.alt = `Plato de ${plate.name}`;
       $title.innerHTML = plate.name;
       $price.innerHTML = `$&#8239;${plate.price}`;
+      $plateLink.setAttribute("href", `./plate.html#${plate.id}`);
 
-      this.$container.append($card);
+      this.$container.append($cardTemplate);
     }
   }
 

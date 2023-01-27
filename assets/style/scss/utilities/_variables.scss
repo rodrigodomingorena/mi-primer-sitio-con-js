@@ -29,7 +29,7 @@ $light-blue-07: color.adjust($light-blue, $alpha: -0.3);
 $light-blue-05: color.adjust($light-blue, $alpha: -0.5);
 $light-blue-02: color.adjust($light-blue, $alpha: -0.8);
 
-$bondi-blue: rgba(0, 135, 187, 1);
+$bondi-blue: rgb(0, 135, 187);
 
 $dodger-blue: rgba(0, 185, 255, 1);
 
@@ -42,6 +42,7 @@ $blue-gradient: rgba(82, 201, 221, 1);
 $orange: rgba(237, 125, 59, 1);
 $orange-05: color.adjust($orange, $alpha: -0.5);
 $orange-02: color.adjust($orange, $alpha: -0.8);
+$orange-015: color.adjust($orange, $alpha: -0.85);
 
 
 $blaze-orange: rgba(255, 95, 0, 1);

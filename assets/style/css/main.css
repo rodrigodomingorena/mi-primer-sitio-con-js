@@ -33,6 +33,14 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+@keyframes show-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .header {
   transition-property: all;
   transition-duration: 1s;
@@ -163,6 +171,7 @@ body {
 
 .header__item {
   flex-grow: 1;
+  animation: show-opacity 1s ease-out;
 }
 @media (min-width: 992px) {
   .header__item:not(:last-child) {
@@ -1492,16 +1501,16 @@ body {
   animation: card-show-opacity 1s ease-out;
 }
 .card__container--error {
-  background-image: url("../../media/menu/error.png");
+  background-image: url("../../media/error/error.png");
 }
 @media (min-width: 576px) {
   .card__container--error {
-    background-image: url("../../media/menu/sm/error.png");
+    background-image: url("../../media/error/sm/error.png");
   }
 }
 @media (min-width: 768px) {
   .card__container--error {
-    background-image: url("../../media/menu/md/error.png");
+    background-image: url("../../media/error/md/error.png");
   }
 }
 @media (min-width: 360px) {
@@ -1736,7 +1745,23 @@ body {
     flex-direction: row;
   }
 }
+.error .hero-plate {
+  display: none;
+}
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes show-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .title-plate {
   transition-property: padding;
   transition-duration: 0.75s;
@@ -1771,10 +1796,6 @@ body {
 }
 
 .title-plate__title {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   text-align: center;
   line-height: 1.03846em;
   color: rgb(15, 159, 214);
@@ -1782,6 +1803,7 @@ body {
   font-weight: 600;
   word-break: break-word;
   margin-bottom: 0.22307em;
+  animation: show-opacity 1s ease-out;
 }
 @media (min-width: 768px) {
   .title-plate__title {
@@ -1800,17 +1822,21 @@ body {
     font-size: 4.4rem;
   }
 }
+.loading-plate .title-plate__title {
+  width: 50%;
+  height: 2em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
 .title-plate__price {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   letter-spacing: 0.03em;
   color: rgb(237, 125, 59);
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 0.47777em;
+  animation: show-opacity 1s ease-out;
 }
 @media (min-width: 768px) {
   .title-plate__price {
@@ -1827,12 +1853,15 @@ body {
     font-size: 3rem;
   }
 }
+.loading-plate .title-plate__price {
+  width: 25%;
+  height: 1em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
 .title-plate__paragraph {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   width: 24ch;
   text-align: center;
   line-height: 1.5em;
@@ -1840,6 +1869,7 @@ body {
   font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 1.96666em;
+  animation: show-opacity 1s ease-out;
 }
 @media (min-width: 320px) {
   .title-plate__paragraph {
@@ -1861,6 +1891,12 @@ body {
   .title-plate__paragraph {
     font-size: 2rem;
   }
+}
+.loading-plate .title-plate__paragraph {
+  height: 5.5em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
 }
 
 .title-plate__link {
@@ -1907,6 +1943,19 @@ body {
   background-color: rgb(0, 135, 187);
 }
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes show-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .picture-plate {
   min-width: 26rem;
   max-width: 31.5rem;
@@ -1933,8 +1982,26 @@ body {
 .picture-plate__image {
   width: 100%;
   filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.4));
+  animation: show-opacity 1s ease-out;
+}
+.loading-plate .picture-plate__image {
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
 }
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes show-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .mini-cards {
   display: grid;
   grid-auto-flow: column;
@@ -1976,6 +2043,7 @@ body {
 }
 .mini-cards .arrow--disabled {
   filter: grayscale(1);
+  cursor: not-allowed;
   opacity: 0.2;
 }
 
@@ -2012,6 +2080,57 @@ body {
     grid-auto-flow: row;
   }
 }
+@media (max-width: 992px) {
+  .mini-cards__carrousel--error, .loading-cards .mini-cards__carrousel {
+    height: 18rem;
+  }
+}
+@media (min-width: 992px) {
+  .mini-cards__carrousel--error, .loading-cards .mini-cards__carrousel {
+    width: 16rem;
+  }
+}
+.mini-cards__carrousel--error {
+  font-size: 1.8rem;
+  grid-auto-flow: row;
+  grid-gap: 1em;
+  justify-items: center;
+  align-content: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(113, 83, 67, 0.1);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0 1.5rem;
+  animation: show-opacity 1s ease-out;
+}
+.mini-cards__carrousel--error {
+  background-image: url("../../media/error/mini-cards/error.png");
+}
+@media (min-width: 576px) {
+  .mini-cards__carrousel--error {
+    background-image: url("../../media/error/mini-cards/sm/error.png");
+  }
+}
+@media (min-width: 768px) {
+  .mini-cards__carrousel--error {
+    background-image: url("../../media/error/mini-cards/md/error.png");
+  }
+}
+@media (min-width: 576px) {
+  .mini-cards__carrousel--error {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .mini-cards__carrousel--error {
+    font-size: 2.4rem;
+  }
+}
+.loading-cards .mini-cards__carrousel {
+  background-color: rgba(237, 125, 59, 0.15);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
 .mini-cards__card {
   transition-property: background-color;
@@ -2030,9 +2149,13 @@ body {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1254901961);
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  animation: show-opacity 1s ease-out;
 }
 .mini-cards__card:hover {
   background-color: rgba(237, 125, 59, 0.5);
+}
+.mini-cards__card--placeholder {
+  cursor: wait;
 }
 
 .mini-cards__picture {
@@ -2042,8 +2165,16 @@ body {
 .mini-cards__image {
   filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.4));
 }
+.mini-cards__card--placeholder .mini-cards__image {
+  filter: none;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
 .mini-cards__title {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
   text-align: center;
   line-height: 1.25em;
   color: rgb(15, 159, 214);
@@ -2055,7 +2186,45 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.mini-cards__title--error {
+  color: rgb(237, 125, 59);
+  font-size: inherit;
+  display: block;
+}
+.mini-cards__card--placeholder .mini-cards__title {
+  width: 75%;
+  height: 1.5em;
+  background-color: rgba(237, 125, 59, 0.2);
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
+.mini-cards__reload {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  width: 5rem;
+  height: 5rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.mini-cards__reload:hover {
+  opacity: 1;
+}
+
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes show-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .nutritional-info {
   transition-property: all;
   transition-duration: 0.75s;
@@ -2067,6 +2236,9 @@ body {
   .nutritional-info {
     padding: 20rem 0;
   }
+}
+.error .nutritional-info {
+  display: none;
 }
 
 .nutritional-info__main {
@@ -2084,6 +2256,24 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   padding: 3.5rem 1.5rem;
+}
+.nutritional-info__main {
+  background-image: var(--background-url);
+}
+@media (min-width: 576px) {
+  .nutritional-info__main {
+    background-image: var(--background-url-sm);
+  }
+}
+@media (min-width: 768px) {
+  .nutritional-info__main {
+    background-image: var(--background-url-md);
+  }
+}
+@media (min-width: 992px) {
+  .nutritional-info__main {
+    background-image: var(--background-url-lg);
+  }
 }
 @media (min-width: 576px) {
   .nutritional-info__main {
@@ -2105,36 +2295,15 @@ body {
     padding-left: 7rem;
   }
 }
-.nutritional-info__main {
-  background-image: url("../../media/plate-1/nutritional-info.png");
-}
-@media (min-width: 576px) {
-  .nutritional-info__main {
-    background-image: url("../../media/plate-1/sm/nutritional-info.png");
-  }
-}
-@media (min-width: 768px) {
-  .nutritional-info__main {
-    background-image: url("../../media/plate-1/md/nutritional-info.png");
-  }
-}
-@media (min-width: 992px) {
-  .nutritional-info__main {
-    background-image: url("../../media/plate-1/lg/nutritional-info.png");
-  }
-}
 
 .nutritional-info__main__title {
-  transition-property: all;
-  transition-duration: 0.75s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
   width: 21ch;
   line-height: 1.33333em;
   color: rgb(0, 135, 187);
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0 auto 0.46666em;
+  animation: show-opacity 1s ease-out;
 }
 @media (min-width: 360px) {
   .nutritional-info__main__title {
@@ -2158,15 +2327,43 @@ body {
     margin-left: 0;
   }
 }
+.loading-plate .nutritional-info__main__title {
+  width: 75%;
+  height: 2em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
 
 .nutritional-info__main__kcal {
+  transition-property: opacity;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
   text-overflow: ellipsis;
   letter-spacing: 0.03em;
   color: rgb(237, 125, 59);
   font-weight: 500;
   white-space: nowrap;
-  margin-bottom: 0.25em;
+  margin: 0 auto 0.25em;
   overflow: hidden;
+  animation: show-opacity 1s ease-out;
+}
+@media (min-width: 992px) {
+  .nutritional-info__main__kcal {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.loading-plate .nutritional-info__main__kcal {
+  width: 50%;
+  height: 2em;
+  background-color: rgba(237, 125, 59, 0.2);
+  cursor: wait;
+  animation: loading-glow 1s ease-in-out infinite;
+}
+.calculating .nutritional-info__main__kcal {
+  opacity: 0.5;
 }
 
 .nutritional-info__main__options {
@@ -2202,13 +2399,16 @@ body {
   }
 }
 .nutritional-info__main__option--selected {
+  color: rgb(0, 135, 187);
+  font-weight: 500;
   opacity: 1;
 }
-.nutritional-info__main__option--selected label {
+.nutritional-info__main__option:focus-within label {
   text-decoration: underline;
 }
 .nutritional-info__main__option label {
   cursor: pointer;
+  outline: none;
 }
 .nutritional-info__main__option input {
   appearance: none;
@@ -2366,6 +2566,9 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
+.calculating .nutritional-info__details__grams {
+  opacity: 0.5;
+}
 
 .nutritional-info__main__amount, .nutritional-info__details__data {
   font-size: 1.6rem;
@@ -2435,6 +2638,10 @@ body {
   }
 }
 .nutritional-info__details__ratio div:first-child {
+  transition-property: opacity;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2442,6 +2649,9 @@ body {
   background-color: rgb(113, 83, 67);
   padding: 0.375em;
   overflow: hidden;
+}
+.calculating .nutritional-info__details__ratio div:first-child {
+  opacity: 0.5;
 }
 .nutritional-info__details__ratio div:last-child {
   font-size: 1.4rem;
@@ -2481,6 +2691,117 @@ body {
   .nutritional-info__details__description {
     font-size: 2rem;
   }
+}
+
+@keyframes show-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.error-plate {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  display: none;
+  padding: 10rem 0;
+}
+@media (min-width: 768px) {
+  .error-plate {
+    padding-top: 20rem;
+  }
+}
+.error .error-plate {
+  display: block;
+  animation: show-opacity 1s ease-out;
+}
+
+.error-plate__container {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  font-size: 1.5rem;
+  display: grid;
+  grid-row-gap: 1em;
+  justify-items: center;
+  margin: 0 auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1254901961);
+  background-color: rgba(113, 83, 67, 0.1);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2.33333em 2em;
+}
+.error-plate__container {
+  background-image: url("../../media/error/error.png");
+}
+@media (min-width: 576px) {
+  .error-plate__container {
+    background-image: url("../../media/error/sm/error.png");
+  }
+}
+@media (min-width: 768px) {
+  .error-plate__container {
+    background-image: url("../../media/error/md/error.png");
+  }
+}
+@media (min-width: 360px) {
+  .error-plate__container {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 576px) {
+  .error-plate__container {
+    font-size: 2.6rem;
+  }
+}
+@media (min-width: 768px) {
+  .error-plate__container {
+    font-size: 3.4rem;
+  }
+}
+@media (min-width: 992px) {
+  .error-plate__container {
+    background-position-x: 45rem;
+    justify-items: start;
+  }
+}
+
+.error-plate__title {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  text-align: center;
+  line-height: 1.6em;
+  color: rgb(237, 125, 59);
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .error-plate__title {
+    text-align: left;
+  }
+}
+
+.error-plate__reload {
+  transition-property: all;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  width: 2.66666em;
+  max-width: 6rem;
+  height: 2.66666em;
+  max-height: 6rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.error-plate__reload:hover {
+  opacity: 1;
 }
 
 .form {

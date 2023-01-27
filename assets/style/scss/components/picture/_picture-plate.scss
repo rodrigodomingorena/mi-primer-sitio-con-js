@@ -24,6 +24,18 @@
 
 
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 .picture-plate {
 //  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
 //  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
@@ -53,4 +65,10 @@
 .picture-plate__image {
   @include mx.size($w: 100%);//  width
   filter: drop-shadow(10px 10px 20px #00000066);
+  animation: show-opacity 1s ease-out;
+
+  .loading-plate & {
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }

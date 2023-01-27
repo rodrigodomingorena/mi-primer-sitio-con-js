@@ -733,25 +733,25 @@
 
 
 //===================================================================
-//  Bg Not Found
+//  Bg Error
 //===================================================================
 
-//  Mixin que genera los 'background-image' del contenedor de 'cards' cuando se ha
+//  Mixin que genera los 'background-image' de los contenedores de error cuando se ha
 //  producido un error relacionado a la solicitud de platos al servidor, dependiendo
 //  de los distintos breakpoints y pantallas de visualización.
 
-@mixin bg-error {
+@mixin bg-error ($folder: "") {
 
   @each $breakpoint in (null, 'sm', 'md') {//  1*
     @if $breakpoint {//  2*
       @include responsive($breakpoint) {//  3*
         & {
-          background-image: url('../../media/menu/#{$breakpoint}/error.png');//  4*
+          background-image: url('../../media/error/#{$folder}#{$breakpoint}/error.png');//  4*
         }
       }
     } @else {//  5*
       & {
-        background-image: url('../../media/menu/error.png');
+        background-image: url('../../media/error/#{$folder}error.png');
       }
     }
   }
@@ -786,5 +786,66 @@
 
 
 //===================================================================
-//  Cierre de Bg Not Found
+//  Cierre de Bg Error
+//===================================================================
+
+
+
+
+//===================================================================
+//  Bg Nutritional Info
+//===================================================================
+
+//  Mixin que genera los 'background-image' de los '.nutritional-info__main'.
+//  Las propiedades personalizadas '--background-url-*' son asignadas dinámicamente
+//  mediante JavaScript dependiendo del plato que tenga que ser renderizado.
+
+@mixin bg-nutritional-info {
+
+  @each $breakpoint in (null, 'sm', 'md', 'lg') {//  1*
+    @if $breakpoint {//  2*
+      @include responsive($breakpoint) {//  3*
+        & {
+          background-image: var(--background-url-#{$breakpoint});//  4*
+        }
+      }
+    } @else {//  5*
+      & {
+        background-image: var(--background-url);
+      }
+    }
+  }
+  
+}
+
+//  Explicación:
+
+//  1*  Genero un bucle y declaro los valores de los '$breakpoint' a utilizar.
+//  2*  En este caso, si el '$breakpoint' es distinto de 'null'.
+//  3*  Llamamos al mixin 'responsive' pasándole el '$breakpoint' correspondiente
+//      a la iteración del bucle.
+//  4*  Declaramos el 'brackground-image' correspondiente al '$breakpoint' actual
+//      invocando a la propiedad personalizada declarada mediante JavaScript.
+//  5*  En este caso, si el '$breakpoint' es igual a 'null' devolvemos las
+//      declaraciones que siguen.
+
+
+//  Ejemplo.
+
+//  .nutritional-info__main {
+//    @include bg-nutritional-info;
+//  }
+
+
+//  Código resultante (solo se muestra un '$breakpoint' del bucle):
+
+//  @media (min-width: 576px) {
+//    .nutritional-info__main {
+//      background-image: var(--background-url-sm);
+//    }
+//  }
+
+
+//===================================================================
+//  Cierre de Bg Nutritional Info
 //===================================================================

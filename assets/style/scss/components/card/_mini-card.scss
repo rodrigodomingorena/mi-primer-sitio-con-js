@@ -40,6 +40,17 @@
 
 
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .mini-cards {
   display: grid;
   grid: {
@@ -86,6 +97,7 @@
 
     &--disabled {
       filter: grayscale(1);
+      cursor: not-allowed;
       opacity: 0.2;
     }
   }
@@ -137,6 +149,62 @@
     );
     grid-auto-flow: row;
   }
+
+  &--error, .loading-cards & {
+    //  Up to device Large 
+    @media (max-width: 992px) {
+      @include mx.size(
+        // height: El alto de una 'mini-card'.
+        $h: map.get(mp.$mini-card, 'height')
+      );
+    }
+
+    //  Device Large
+    @include mx.responsive('lg') {
+      @include mx.size(
+        // width: El ancho de una 'mini-card'.
+        $w: map.get(mp.$mini-card, 'width')
+      );
+    }
+  }
+
+  &--error {
+  //  Mixin que genera los 'background-image' del carrousel--error cuando se ha
+  //  producido un error relacionado a la solicitud de los platos al servidor.
+  //  (Ver estructura en 'utilities/mixins').
+    @include mx.bg-error("mini-cards/");
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+    grid: {
+      auto-flow: row;
+      gap: 1em;
+    }
+    justify-items: center;
+    align-content: center;
+    box-shadow: v.$box-shadow-2;
+    background: {
+      color: v.$brown-01;
+      position: center;
+      repeat: no-repeat;
+    }
+    padding: 0 1.5rem;
+    animation: show-opacity 1s ease-out;
+
+//  Device Small
+    @include mx.responsive('sm') {
+      @include mx.font-stack($f-s: 2rem);//  font-size
+    }
+
+//  Device Medium
+    @include mx.responsive('md') {
+      @include mx.font-stack($f-s: 2.4rem);//  font-size
+    }
+  }
+
+  .loading-cards & {
+    background-color: v.$orange-015;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }
 
 
@@ -153,6 +221,11 @@
     align: start;
     stop: always;
   }
+  animation: show-opacity 1s ease-out;
+
+  &--placeholder {
+    cursor: wait;
+  }
 }
 
 
@@ -163,10 +236,16 @@
 
 .mini-cards__image {
   filter: drop-shadow(3px 3px 5px #00000066);
+
+  .mini-cards__card--placeholder & {
+    filter: none;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }
 
 
 .mini-cards__title {
+  @include mx.transition;
   @include mx.font-stack(
     $t-a: center,//  text-align
     $l-h: 1.25em,//  line-height
@@ -179,4 +258,35 @@
   -webkit-line-clamp: 2;//  Dos renglones
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  &--error {
+    @include mx.font-stack(
+      $c: v.$orange,//  color
+      $f-s: inherit,//  font-size
+    );
+    display: block;
+  }
+
+  .mini-cards__card--placeholder & {
+    @include mx.size(
+      $w: 75%,//  width
+      $h: 1.5em,//  height
+    );
+    background-color: v.$orange-02;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
+}
+
+.mini-cards__reload {
+  @include mx.transition;
+  @include mx.size(
+    $w: 5rem,//  width
+    $h: 5rem,//  height
+  );
+  opacity: 0.7;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
 }

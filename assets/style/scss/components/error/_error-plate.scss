@@ -1,0 +1,128 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                                ERROR PLATE                                //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <section c="error-plate">
+//    <div>
+//      <article c="error-plate__container">
+//        <h1 c="error-plate__title"></h1>
+//        <img c="error-plate__reload"></img>
+//      </article>
+//    </div>
+//  </section>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.error-plate {
+  @include mx.transition;
+  display: none;
+  padding: 10rem 0;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    padding-top: 20rem;
+  }
+
+  .error & {
+    display: block;
+    animation: show-opacity 1s ease-out;
+  }
+}
+
+
+.error-plate__container {
+  //  Mixin que genera los 'background-image' del contenedor de error cuando se ha
+  //  producido un error relacionado a la solicitud de un plato al servidor.
+  //  (Ver estructura en 'utilities/mixins').
+  @include mx.bg-error;
+  @include mx.transition;
+  @include mx.font-stack($f-s: 1.5rem);//  font-size
+  display: grid;
+  grid-row-gap: 1em;
+  justify-items: center;
+  margin: 0 auto;
+  box-shadow: v.$box-shadow-2;
+  background: {
+    color: v.$brown-01;
+    position: center;
+    repeat: no-repeat;
+  }
+  padding: 2.33333em 2em;
+
+//  Device 360px
+  @include mx.responsive(360px) {
+  //  Una vez llegados a 360px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+  //  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.4rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    background-position-x: 45rem;
+    justify-items: start;
+  }
+}
+
+
+.error-plate__title {
+  @include mx.transition;
+  @include mx.font-stack(
+    $l-h: 1.6em,//  line-height
+    $t-a: center,//  text-align
+    $c: v.$orange,//  color
+    $f-s: inherit,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin: 0;
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+}
+
+
+.error-plate__reload {
+  @include mx.transition;
+  @include mx.size(
+    $w: 2.66666em,//  width
+    $wmax: 6rem,//  max-width
+    $h: 2.66666em,//  height
+    $hmax: 6rem,//  max-height
+  );
+  opacity: 0.7;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}

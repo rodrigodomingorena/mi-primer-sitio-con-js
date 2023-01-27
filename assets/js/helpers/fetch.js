@@ -4,11 +4,11 @@ import { ConnectionError } from "../error/ConnectionError.js";
 import { HttpError } from "../error/HttpError.js";
 import { NotFoundError } from "../error/NotFoundError.js";
 
-export async function fetchResource(url) {
+export async function fetchResource(url, options) {
   let response;
 
   try {
-    response = await fetch(url);
+    response = await fetch(url, options);
   } catch (error) {
     /* Solicitud rechazada si no se pudo establecer la conexión */
     throw new ConnectionError(error);
@@ -27,6 +27,11 @@ export async function fetchResource(url) {
 
     return { response, json };
   } else {
+    if (response.status === 404) {
+      /* Si el servidor responde con un estado de error 404 */
+      throw new NotFoundError();
+    }
+
     /* Si el servidor responde con un estado de error */
     throw new HttpError(response.status);
   }

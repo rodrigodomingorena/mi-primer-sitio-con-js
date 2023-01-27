@@ -28,8 +28,21 @@
 
 
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 .title-plate {
   @include mx.transition(padding);
+
 //  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
 //  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
 //  el diseño en los dipositivos cuyo ancho sea menor a 576px.
@@ -65,7 +78,6 @@
 
 
 .title-plate__title {
-  @include mx.transition;
   @include mx.font-stack(
     $t-a: center,//  text-align
     $l-h: 1.03846em,//  line-height
@@ -75,6 +87,7 @@
     $w-b: break-word,//  word-break
   );
   margin-bottom: 0.22307em;
+  animation: show-opacity 1s ease-out;
 
 //  Device Medium
   @include mx.responsive('md') {
@@ -94,11 +107,20 @@
   @include mx.responsive('xxl') {
     @include mx.font-stack($f-s: 4.4rem);//  font-size
   }
+
+  .loading-plate & {
+    @include mx.size(
+      $w: 50%,//  width
+      $h: 2em,//  height
+    );
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }
 
 
 .title-plate__price {
-  @include mx.transition;
   @include mx.font-stack(
     $l-e: v.$interletter,//  letter-spacing
     $c: v.$orange,//  color
@@ -106,6 +128,7 @@
     $f-w: 'regular',//  font-weight
   );
   margin-bottom: 0.47777em;
+  animation: show-opacity 1s ease-out;
 
 //  Device Medium
   @include mx.responsive('md') {
@@ -121,11 +144,20 @@
   @include mx.responsive('xxl') {
     @include mx.font-stack($f-s: 3rem);//  font-size
   }
+
+  .loading-plate & {
+    @include mx.size(
+      $w: 25%,//  width
+      $h: 1em,//  height
+    );
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }
 
 
 .title-plate__paragraph {
-  @include mx.transition;
   @include mx.size(24ch);//  width
   @include mx.font-stack(
     $t-a: center,//  text-align
@@ -135,6 +167,7 @@
     $f-w: 'regular',//  font-weight
   );
   margin-bottom: 1.96666em;
+  animation: show-opacity 1s ease-out;
 
 //  Device 320px
   @include mx.responsive(320px) {
@@ -158,6 +191,13 @@
 //  Device XX-Large
   @include mx.responsive('xxl') {
     @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+
+  .loading-plate & {
+    @include mx.size($h: 5.5em);//  height
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
   }
 }
 
