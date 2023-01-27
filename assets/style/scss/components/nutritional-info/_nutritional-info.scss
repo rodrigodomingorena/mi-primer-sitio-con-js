@@ -55,6 +55,18 @@
 
 
 
+@keyframes loading-glow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 .nutritional-info {
   @include mx.transition;
   padding: 12rem 0;
@@ -76,6 +88,7 @@
 //  el diseño en los dipositivos cuyo ancho sea menor a 576px.
 //  (Ver estructura en 'utilities/mixins')
   @include mx.size-plate;
+  @include mx.bg-nutritional-info;
   @include mx.transition;
   @include mx.font-stack(
     $t-a: center,//  text-align
@@ -111,26 +124,10 @@
       left: 7rem;
     }
   }
-
-// ESTO DEBERÁ HACERSE MEDIANTE JAVASCRIPT !!!!!!
-  @each $breakpoint in (null, 'sm', 'md', 'lg') {
-    @if $breakpoint {
-      @include mx.responsive($breakpoint) {
-        & {
-          background-image: url('../../media/plate-1/#{$breakpoint}/nutritional-info.png');
-        }
-      }
-    } @else {
-      & {
-        background-image: url('../../media/plate-1/nutritional-info.png');
-      }
-    }
-  }
 }
 
 
 .nutritional-info__main__title {
-  @include mx.transition;
   @include mx.size(21ch);//  width
   @include mx.font-stack(
     $l-h: 1.33333em,//  line-height
@@ -139,6 +136,7 @@
     $f-w: 'semi-bold',//  font-weight
   );
   margin: 0 auto 0.46666em;
+  animation: show-opacity 1s ease-out;
 
 //  Device 360px
   @include mx.responsive(360px) {
@@ -164,10 +162,21 @@
       left: 0;
     }
   }
+
+  .loading-plate & {
+    @include mx.size(
+      $w: 75%,//  width
+      $h: 2em,//  height
+    );
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
 }
 
 
 .nutritional-info__main__kcal {
+  @include mx.transition(opacity);
   @include mx.font-stack(
     $t-o: ellipsis,//  text-overflow
     $l-e: v.$interletter,//  letter-spacing
@@ -175,8 +184,31 @@
     $f-w: 'medium',//  font-weight
     $w-s: nowrap,//  white-space
   );
-  margin-bottom: v.$aspect-main;
+  margin: 0 auto v.$aspect-main;
   overflow: hidden;
+  animation: show-opacity 1s ease-out;
+
+  //  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      right: 0;
+      left: 0;
+    }
+  }
+
+  .loading-plate & {
+    @include mx.size(
+      $w: 50%,//  width
+      $h: 2em,//  height
+    );
+    background-color: v.$orange-02;
+    cursor: wait;
+    animation: loading-glow 1s ease-in-out infinite;
+  }
+
+  .calculating & {
+    opacity: 0.5;
+  }
 }
 
 
@@ -215,8 +247,14 @@
   }
 
   &--selected {
+    @include mx.font-stack(
+      $c: v.$bondi-blue,//  color
+      $f-w: 'medium',//  font-weight
+    );
     opacity: 1;
+  }
 
+  &:focus-within {
     label {
       @include mx.font-stack($t-d: underline);//  text-decoration
     }
@@ -224,6 +262,7 @@
 
   label {
     cursor: pointer;
+    outline: none;
   }
 
   input {
@@ -479,6 +518,10 @@
     );
     overflow: hidden;
   }
+
+  .calculating & {
+    opacity: 0.5;
+  }
 }
 
 
@@ -569,6 +612,7 @@
 //  Los 'div:first-child' corresponden a los 'divs' que contienen los valores nutricionales.
 //  Por ejemplo: '4,02g', '3,254g', '20,703g'.
     &:first-child {
+      @include mx.transition(opacity);
       @include mx.size($wmax: 100%);//  max-width
       @include mx.font-stack(
         $t-o: ellipsis,//  text-overflow
@@ -578,6 +622,10 @@
       background-color: v.$brown;
       padding: v.$aspect-amount;
       overflow: hidden;
+
+      .calculating & {
+        opacity: 0.5;
+      }
     }
 
 //  Los 'div:last-child' corresponden a los 'divs' que contienen el nombre de los componentes nutricionales.
