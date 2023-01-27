@@ -27,6 +27,12 @@
 
 
 
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 .error-plate {
   @include mx.transition;
   display: none;
@@ -39,6 +45,7 @@
 
   .error & {
     display: block;
+    animation: show-opacity 1s ease-out;
   }
 }
 

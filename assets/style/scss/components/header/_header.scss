@@ -38,6 +38,12 @@
 
 
 
+@keyframes show-opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 .header {
   @include mx.transition($duration: 1s);// (ver estructura en 'utilities/mixins')
   position: absolute;
@@ -172,6 +178,7 @@
 
 .header__item {
   flex-grow: 1;
+  animation: show-opacity 1s ease-out;
 
 //  Device Medium
   @include mx.responsive('lg') {
