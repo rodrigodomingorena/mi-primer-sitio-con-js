@@ -11,17 +11,17 @@
 //
 //                             ESTRUCTURA HTML
 //
-//  <section c="card__container">
-//    <article c="card__plate">
-//      <picture c="card__plate__picture">
-//        <source></source>
-//        <img c="card__plate__image">
+//  <section c="cards__container">
+//    <article c="cards__card">
+//      <picture c="cards__card__picture">
+//        <source c="cards__card__source"></source>
+//        <img c="cards__card__image">
 //      </picture>
-//      <h2 c="card__plate__title"></h2>
-//      <p c="card__plate__price"></p>
-//      <div c="card__plate__links">
-//        <a c="card__plate__link"></a>
-//        <a c="card__plate__link">
+//      <h2 c="cards__card__title"></h2>
+//      <p c="cards__card__price"></p>
+//      <div c="cards__card__links">
+//        <a c="cards__card__link"></a>
+//        <a c="cards__card__link">
 //          <svg>...</svg>
 //        </a>
 //      </div>
@@ -38,7 +38,7 @@
   100% { opacity: 1; }
 }
 
-.card__container {
+.cards__container {
   display: grid;
   grid: {
     template-columns: repeat(auto-fill, minmax(26rem, 1fr));
@@ -104,7 +104,7 @@
 }
 
 
-.card__error__title {
+.cards__error__title {
   @include mx.transition;
   @include mx.font-stack(
     $l-h: 1.6em,//  line-height
@@ -122,7 +122,7 @@
 }
 
 
-.card__error__reload {
+.cards__error__reload {
   @include mx.transition;
   @include mx.size(
     $w: 2.66666em,//  width
@@ -139,7 +139,7 @@
 }
 
 
-.card__plate {
+.cards__card {
   @include mx.cards;//  Mixin que genera los estilos de la 'card' (ver estructura en 'utilities/mixins').
   @include mx.size(
     $w: 100%,//  width
@@ -180,7 +180,7 @@
 }
 
 
-.card__plate__picture {
+.cards__card__picture {
   @include mx.transition;
   margin-bottom: 5rem;
 
@@ -196,7 +196,7 @@
 }
 
 
-.card__plate__image {
+.cards__card__image {
 //  El width & height de estas imágenes están declarados directamente en el documento html
 //  a través de los atributos 'width' y 'heigth' de la etiqueta <img> para permitirle al
 //  navegador conocer el tamaño antes de descargar la imagen y evitar saltos en la página
@@ -206,7 +206,7 @@
   @include mx.transition;
   filter: drop-shadow(7px 7px 10px #00000066);
 
-  .card__plate:hover & {
+  .cards__card:hover & {
     transform: scale(1.125, 1.125);
   }
 }
@@ -217,7 +217,7 @@
 //  'Placeholder' que se extenderá a próximos selectores
 //===================================================================
 
-%card__plate-title-price {
+%cards__card-title-price {
   @include mx.font-stack(
     $l-h: 1.5em,//  line-height
     $f-s: 1.8rem,//  font-size
@@ -230,8 +230,8 @@
 //===================================================================
 
 
-.card__plate__title {
-  @extend %card__plate-title-price;
+.cards__card__title {
+  @extend %cards__card-title-price;
   @include mx.size(20ch);//  width
   @include mx.font-stack(
     $t-a: center,//  text-align
@@ -259,8 +259,8 @@
 }
 
 
-.card__plate__price {
-  @extend %card__plate-title-price;
+.cards__card__price {
+  @extend %cards__card-title-price;
   @include mx.font-stack(
     $c: v.$brown,//  color
     $f-w: 'light',//  font-weight
@@ -268,7 +268,7 @@
 }
 
 
-.card__plate__link {
+.cards__card__link {
   @include mx.transition($duration: 0.5s);
   @include mx.font-stack(
     $l-e: v.$interletter,//  letter-spacing
