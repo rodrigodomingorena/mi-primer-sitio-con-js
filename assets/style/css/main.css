@@ -262,11 +262,11 @@ body {
   border-color: rgb(237, 125, 59);
   animation-delay: 0.5s;
 }
-.loader--card {
+.loader--cards {
   width: 5rem;
   height: 5rem;
 }
-.loader--card::after, .loader--card::before {
+.loader--cards::after, .loader--cards::before {
   width: 5rem;
   height: 5rem;
 }
@@ -1303,11 +1303,11 @@ body {
   border-top: 0.1rem transparent solid;
   border-bottom: 0.1rem transparent solid;
 }
-.controls__option__list li.controls__option__li--active {
+.controls__option__list li.controls__option__list__li--active {
   color: rgb(237, 125, 59);
   border-bottom-color: rgb(237, 125, 59);
 }
-.controls__option__card:not(.controls__option__card--filter) .controls__option__list li.controls__option__li--active:not(:focus-within) {
+.controls__option__card:not(.controls__option__card--filter) .controls__option__list li.controls__option__list__li--active:not(:focus-within) {
   justify-self: center;
 }
 .controls__option__list li:focus-within {
@@ -1362,7 +1362,7 @@ body {
   cursor: auto;
 }
 
-.controls__option__cancel {
+.controls__option__hide {
   transition-property: all;
   transition-duration: 0.75s;
   transition-timing-function: ease-out;
@@ -1370,12 +1370,12 @@ body {
   width: 1rem;
   height: 1rem;
   border: none;
-  background: url("../../media/svg/cancel-orange.svg") no-repeat center;
+  background: url("../../media/svg/hide-orange.svg") no-repeat center;
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
-.controls__option__cancel:hover {
+.controls__option__hide:hover {
   scale: 1.5;
 }
 
@@ -1461,7 +1461,7 @@ body {
   height: 0.2777766667em;
 }
 
-#fromRange {
+#from {
   z-index: 1;
 }
 
@@ -1473,7 +1473,7 @@ body {
     opacity: 1;
   }
 }
-.card__container {
+.cards__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
   grid-row-gap: 10rem;
@@ -1483,11 +1483,11 @@ body {
   margin: 17rem auto 10rem;
 }
 @media (min-width: 1400px) {
-  .card__container {
+  .cards__container {
     column-gap: 6rem;
   }
 }
-.card__container--error {
+.cards__container--error {
   font-size: 1.5rem;
   grid-template-columns: none;
   grid-row-gap: 1em;
@@ -1500,42 +1500,42 @@ body {
   padding: 2.33333em 2em;
   animation: card-show-opacity 1s ease-out;
 }
-.card__container--error {
+.cards__container--error {
   background-image: url("../../media/error/error.png");
 }
 @media (min-width: 576px) {
-  .card__container--error {
+  .cards__container--error {
     background-image: url("../../media/error/sm/error.png");
   }
 }
 @media (min-width: 768px) {
-  .card__container--error {
+  .cards__container--error {
     background-image: url("../../media/error/md/error.png");
   }
 }
 @media (min-width: 360px) {
-  .card__container--error {
+  .cards__container--error {
     font-size: 1.8rem;
   }
 }
 @media (min-width: 576px) {
-  .card__container--error {
+  .cards__container--error {
     font-size: 2.6rem;
   }
 }
 @media (min-width: 768px) {
-  .card__container--error {
+  .cards__container--error {
     font-size: 3.4rem;
   }
 }
 @media (min-width: 992px) {
-  .card__container--error {
+  .cards__container--error {
     background-position-x: 45rem;
     justify-items: start;
   }
 }
 
-.card__error__title {
+.cards__error__title {
   transition-property: all;
   transition-duration: 0.75s;
   transition-timing-function: ease-out;
@@ -1548,12 +1548,12 @@ body {
   margin: 0;
 }
 @media (min-width: 992px) {
-  .card__error__title {
+  .cards__error__title {
     text-align: left;
   }
 }
 
-.card__error__reload {
+.cards__error__reload {
   transition-property: all;
   transition-duration: 0.75s;
   transition-timing-function: ease-out;
@@ -1565,11 +1565,11 @@ body {
   opacity: 0.7;
   cursor: pointer;
 }
-.card__error__reload:hover {
+.cards__error__reload:hover {
   opacity: 1;
 }
 
-.card__plate {
+.cards__card {
   transition-property: background-color;
   transition-duration: 0.75s;
   transition-timing-function: ease-out;
@@ -1586,11 +1586,11 @@ body {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1254901961);
   animation: card-show-opacity 1s ease-out;
 }
-.card__plate:hover {
+.cards__card:hover {
   background-color: rgba(237, 125, 59, 0.5);
 }
 @media (min-width: 576px) {
-  .card__plate {
+  .cards__card {
     max-width: none;
     height: 26rem;
     align-content: flex-start;
@@ -1600,7 +1600,7 @@ body {
   }
 }
 @media (min-width: 768px) {
-  .card__plate {
+  .cards__card {
     max-width: 30rem;
     height: auto;
     align-content: center;
@@ -1610,7 +1610,7 @@ body {
   }
 }
 
-.card__plate__picture {
+.cards__card__picture {
   transition-property: all;
   transition-duration: 0.75s;
   transition-timing-function: ease-out;
@@ -1618,34 +1618,34 @@ body {
   margin-bottom: 5rem;
 }
 @media (min-width: 576px) {
-  .card__plate__picture {
+  .cards__card__picture {
     margin: 3rem;
   }
 }
 @media (min-width: 768px) {
-  .card__plate__picture {
+  .cards__card__picture {
     margin: 0 0 5rem 0;
   }
 }
 
-.card__plate__image {
+.cards__card__image {
   transition-property: all;
   transition-duration: 0.75s;
   transition-timing-function: ease-out;
   transition-delay: 0s;
   filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.4));
 }
-.card__plate:hover .card__plate__image {
+.cards__card:hover .cards__card__image {
   transform: scale(1.125, 1.125);
 }
 
-.card__plate__price, .card__plate__title {
+.cards__card__price, .cards__card__title {
   line-height: 1.5em;
   font-size: 1.8rem;
   margin-bottom: 1.38888888em;
 }
 
-.card__plate__title {
+.cards__card__title {
   width: 20ch;
   text-align: center;
   color: rgb(15, 159, 214);
@@ -1656,26 +1656,26 @@ body {
   overflow: hidden;
 }
 @media (min-width: 576px) {
-  .card__plate__title {
+  .cards__card__title {
     width: 12ch;
     text-align: left;
     -webkit-line-clamp: 3;
   }
 }
 @media (min-width: 768px) {
-  .card__plate__title {
+  .cards__card__title {
     width: 20ch;
     text-align: center;
     -webkit-line-clamp: 2;
   }
 }
 
-.card__plate__price {
+.cards__card__price {
   color: rgb(113, 83, 67);
   font-weight: 300;
 }
 
-.card__plate__link {
+.cards__card__link {
   transition-property: all;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
@@ -1688,10 +1688,10 @@ body {
   border: 0.05555em solid rgb(15, 159, 214);
   padding: 0.55555em 0.66666em;
 }
-.card__plate__link:not(:last-child) {
+.cards__card__link:not(:last-child) {
   margin-right: 0.69444em;
 }
-.card__plate__link:hover {
+.cards__card__link:hover {
   color: #fff;
   background-color: rgb(15, 159, 214);
 }
