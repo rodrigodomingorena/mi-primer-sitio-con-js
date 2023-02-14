@@ -43,7 +43,7 @@
     animation-delay: 0.5s;
   }
 
-  &--card {
+  &--cards {
     @include mx.size(
       $w: 5rem,// width
       $h: 5rem// height

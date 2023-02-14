@@ -140,6 +140,7 @@
                 class="controls__search__input"
                 type="search"
                 name="search"
+                data-params="q"
                 placeholder="Buscar"
                 autocomplete="off"
               />
@@ -150,6 +151,7 @@
             <fieldset class="controls__options">
               <!-- START OPTION -->
               <div class="controls__option" id="option-1">
+                <!-- SHOW -->
                 <img
                   class="controls__option__show"
                   src="../assets/media/svg/filter.svg"
@@ -159,70 +161,110 @@
                   loading="lazy"
                   alt="Filtrar"
                 />
+                <!-- START MODAL -->
                 <div class="controls__option__modal">
                   <div
                     class="controls__option__card controls__option__card--filter"
                   >
+                    <!-- START RANGE -->
                     <div class="controls__option__range-container">
                       <div class="controls__option__outputs">
                         <output id="fromOutput"></output>
                         <output id="toOutput"></output>
                       </div>
                       <div class="controls__option__ranges">
+                        <!-- FROM -->
                         <input
-                          id="fromRange"
+                          id="from"
                           step="10"
                           type="range"
                           data-option="range"
+                          data-params="_gte"
+                          data-param-prefixes="price"
                         />
+                        <!-- TO -->
                         <input
-                          id="toRange"
+                          id="to"
                           step="10"
                           type="range"
                           data-option="range"
+                          data-params="_lte"
+                          data-param-prefixes="price"
                         />
                       </div>
                     </div>
+                    <!-- END RANGE -->
 
+                    <!-- START LIST -->
                     <ul class="controls__option__list">
-                      <li>
+                      <!-- ITEM -->
+                      <li class="controls__option__list__li--active">
                         <label class="controls__option__label" tabindex="0"
-                          >Ensaladas<input
+                          >Ensaladas
+                          <!-- FILTER -->
+                          <input
                             type="checkbox"
                             name="salads"
                             data-option="filter"
+                            data-params="_like"
+                            data-param-prefixes="categories"
                             tabindex="-1"
-                        /></label>
+                            checked
+                          />
+                        </label>
                       </li>
-                      <li>
+                      <!-- ITEM -->
+                      <li class="controls__option__list__li--active">
                         <label class="controls__option__label" tabindex="0"
-                          >Verduras<input
+                          >Verduras
+                          <!-- FILTER -->
+                          <input
                             type="checkbox"
                             name="vegetables"
                             data-option="filter"
+                            data-params="_like"
+                            data-param-prefixes="categories"
                             tabindex="-1"
-                        /></label>
+                            checked
+                          />
+                        </label>
                       </li>
-                      <li>
+                      <!-- ITEM -->
+                      <li class="controls__option__list__li--active">
                         <label class="controls__option__label" tabindex="0"
-                          >Pastas<input
+                          >Pastas
+                          <!-- FILTER -->
+                          <input
                             type="checkbox"
                             name="pastas"
                             data-option="filter"
+                            data-params="_like"
+                            data-param-prefixes="categories"
                             tabindex="-1"
-                        /></label>
+                            checked
+                          />
+                        </label>
                       </li>
-                      <li>
+                      <!-- ITEM -->
+                      <li class="controls__option__list__li--active">
                         <label class="controls__option__label" tabindex="0"
-                          >Carnes<input
+                          >Carnes
+                          <!-- FILTER -->
+                          <input
                             type="checkbox"
                             name="meats"
                             data-option="filter"
+                            data-params="_like"
+                            data-param-prefixes="categories"
                             tabindex="-1"
-                        /></label>
+                            checked
+                          />
+                        </label>
                       </li>
                     </ul>
+                    <!-- END LIST -->
 
+                    <!-- CONFIRM -->
                     <button
                       class="controls__option__confirm"
                       type="button"
@@ -230,17 +272,21 @@
                     >
                       CONFIRMAR
                     </button>
+
+                    <!-- HIDE -->
                     <button
-                      class="controls__option__cancel"
+                      class="controls__option__hide"
                       type="button"
                     ></button>
                   </div>
                 </div>
+                <!-- END MODAL -->
               </div>
               <!-- END OPTION -->
 
               <!-- START OPTION -->
               <div class="controls__option" id="option-2">
+                <!-- SHOW -->
                 <img
                   class="controls__option__show"
                   src="../assets/media/svg/sort.svg"
@@ -250,60 +296,99 @@
                   loading="lazy"
                   alt="Ordenar"
                 />
+                <!-- START MODAL -->
                 <div class="controls__option__modal">
                   <div class="controls__option__card">
+                    <!-- START LIST -->
                     <ul class="controls__option__list">
-                      <li>
+                      <!-- ITEM -->
+                      <li class="controls__option__list__li--active">
                         <label tabindex="0"
-                          >Por defecto<input
+                          >Por defecto
+                          <!-- SORT -->
+                          <input
                             type="radio"
                             name="sort"
                             value="default"
                             data-option="sort"
+                            data-params="_sort;_order"
                             tabindex="-1"
-                        /></label>
+                            checked
+                          />
+                        </label>
                       </li>
+                      <!-- ITEM -->
                       <li>
                         <label tabindex="0"
-                          >Menor a mayor precio<input
+                          >Menor a mayor precio
+                          <!-- SORT -->
+                          <input
                             type="radio"
                             name="sort"
                             value="minor-to-mayor"
                             data-option="sort"
+                            data-params="_sort;_order"
+                            data-sort="price,name"
+                            data-order="asc,asc"
                             tabindex="-1"
-                        /></label>
+                          />
+                        </label>
                       </li>
+                      <!-- ITEM -->
                       <li>
                         <label tabindex="0"
-                          >Mayor a menor precio<input
+                          >Mayor a menor precio
+                          <!-- SORT -->
+                          <input
                             type="radio"
                             name="sort"
                             value="mayor-to-minor"
                             data-option="sort"
+                            data-params="_sort;_order"
+                            data-sort="price,name"
+                            data-order="desc,asc"
                             tabindex="-1"
-                        /></label>
+                          />
+                        </label>
                       </li>
+                      <!-- ITEM -->
                       <li>
                         <label tabindex="0"
-                          >De la A a la Z<input
+                          >De la A a la Z
+                          <!-- SORT -->
+                          <input
                             type="radio"
                             name="sort"
                             value="a-to-z"
                             data-option="sort"
+                            data-params="_sort;_order"
+                            data-sort="name,price"
+                            data-order="asc,asc"
                             tabindex="-1"
-                        /></label>
+                          />
+                        </label>
                       </li>
+                      <!-- ITEM -->
                       <li>
                         <label tabindex="0"
-                          >De la Z a la A<input
+                          >De la Z a la A
+                          <!-- SORT -->
+                          <input
                             type="radio"
                             name="sort"
                             value="z-to-a"
                             data-option="sort"
+                            data-params="_sort;_order"
+                            data-sort="name,price"
+                            data-order="desc,asc"
                             tabindex="-1"
-                        /></label>
+                          />
+                        </label>
                       </li>
                     </ul>
+                    <!-- END LIST -->
+
+                    <!-- CONFIRM -->
                     <button
                       class="controls__option__confirm"
                       type="button"
@@ -311,12 +396,15 @@
                     >
                       CONFIRMAR
                     </button>
+
+                    <!-- HIDE -->
                     <button
-                      class="controls__option__cancel"
+                      class="controls__option__hide"
                       type="button"
                     ></button>
                   </div>
                 </div>
+                <!-- END MODAL -->
               </div>
               <!-- END OPTION -->
             </fieldset>
@@ -325,65 +413,9 @@
           <!-- END CONTROLS -->
 
           <!-- START CARDS -->
-          <section class="card__container col-10 col-md-11">
-            <span class="loader loader--card"></span>
+          <section class="cards__container col-10 col-md-11">
+            <span class="loader loader--cards"></span>
           </section>
-
-          <!-- ERROR TEMPLATE -->
-          <template class="card__error__template">
-            <h2 class="card__error__title"></h2>
-            <img
-              class="card__error__reload"
-              src="../assets/media/svg/reload.svg"
-              tabindex="0"
-              alt="Recargar búsqueda"
-            />
-          </template>
-          <!-- END ERROR TEMPLATE -->
-
-          <!-- CARD TEMPLATE -->
-          <template class="card__template">
-            <article class="card__plate">
-              <picture class="card__plate__picture">
-                <source class="card__plate__source" type="image/webp" />
-                <img
-                  class="card__plate__image"
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                />
-              </picture>
-
-              <h2 class="card__plate__title"></h2>
-              <p class="card__plate__price"></p>
-              <div class="card__plate__links">
-                <a class="card__plate__link" data-link="plate">VER</a>
-                <a class="card__plate__link" data-link="cart">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
-                      transform="translate(-116.227 -275.108)"
-                    />
-                    <path
-                      d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
-                      transform="translate(-223.686 -275.108)"
-                    />
-                    <path
-                      d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
-                      transform="translate(0 -0.231)"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </article>
-          </template>
-          <!-- END CARD TEMPLATE -->
 
           <!-- START SHOW-MORE -->
           <section class="show-more__container col-12"></section>
@@ -394,6 +426,7 @@
       </main>
       <!-- END MAIN -->
     </div>
+
     <!-- START FOOTER -->
     <footer class="footer footer--blue">
       <div class="container px-0">
@@ -456,12 +489,74 @@
     </footer>
     <!-- END FOOTER -->
 
+    <!-- START TEMPLATES -->
+
+    <!-- CARDS CARD TEMPLATE -->
+    <template class="cards__card__template">
+      <article class="cards__card">
+        <picture class="cards__card__picture">
+          <source class="cards__card__source" type="image/webp" />
+          <img
+            class="cards__card__image"
+            width="200"
+            height="200"
+            loading="lazy"
+          />
+        </picture>
+
+        <h2 class="cards__card__title"></h2>
+        <p class="cards__card__price"></p>
+        <div class="cards__card__links">
+          <a class="cards__card__link" data-link="plate">VER</a>
+          <a class="cards__card__link" data-link="cart">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="currentColor"
+            >
+              <path
+                d="M125.852,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,125.852,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,125.852,296.176Z"
+                transform="translate(-116.227 -275.108)"
+              />
+              <path
+                d="M240.481,292.917a2.1,2.1,0,1,0,2.1,2.1A2.1,2.1,0,0,0,240.481,292.917Zm0,3.259a1.164,1.164,0,1,1,1.164-1.164A1.165,1.165,0,0,1,240.481,296.176Z"
+                transform="translate(-223.686 -275.108)"
+              />
+              <path
+                d="M21.924,5.89a.485.485,0,0,0-.385-.19H5.012L3.649.6c0-.011-.011-.019-.015-.03A.458.458,0,0,0,3.591.479.493.493,0,0,0,3.539.4a.431.431,0,0,0-.068-.06A.472.472,0,0,0,3.393.288a.487.487,0,0,0-.086-.03.451.451,0,0,0-.1-.02C3.2.237,3.189.231,3.177.231H.489A.493.493,0,0,0,0,.728a.493.493,0,0,0,.489.5H2.8l1.36,5.1L6.607,16.383a.491.491,0,0,0,.475.378H19.095a.49.49,0,0,0,.475-.378L22.013,6.316A.5.5,0,0,0,21.924,5.89Zm-3.212,9.877H7.465l-2.2-9.074H20.915Z"
+                transform="translate(0 -0.231)"
+              />
+            </svg>
+          </a>
+        </div>
+      </article>
+    </template>
+    <!-- END CARDS CARD TEMPLATE -->
+
+    <!-- CARDS ERROR TEMPLATE -->
+    <template class="cards__error__template">
+      <h2 class="cards__error__title"></h2>
+      <img
+        class="cards__error__reload"
+        src="../assets/media/svg/reload.svg"
+        tabindex="0"
+        alt="Recargar búsqueda"
+      />
+    </template>
+    <!-- END CARDS ERROR TEMPLATE -->
+
+    <!-- END TEMPLATES -->
+
     <!-- Bootstrap JS CDN -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Custom JS -->
     <script src="../assets/js/index-menu.js" type="module"></script>
   </body>
 </html>

@@ -11,7 +11,7 @@ export class Details {
     this.PLATE = NUTRITIONAL_INFO.PLATE;
     this.NUTRITIONAL_INFO = NUTRITIONAL_INFO;
 
-    this.details = this.NUTRITIONAL_INFO.$nutritionalInfo + "__details";
+    this.details = this.NUTRITIONAL_INFO.nutritionalInfo + "__details";
 
     this.FATS = new Fats(this);
     this.CARBOHYDRATES = new Carbohydrates(this);
