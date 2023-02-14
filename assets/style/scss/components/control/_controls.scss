@@ -40,7 +40,7 @@
 //              </li>
 //            </ul>
 //            <button c="controls__option__confirm"></button>
-//            <button c="controls__option__cancel"></button>
+//            <button c="controls__option__hide"></button>
 //          </div>
 //        </div>
 //      </div>
@@ -257,7 +257,7 @@
       bottom: 0.1rem transparent solid;
     }
 
-    &.controls__option__li--active {
+    &.controls__option__list__li--active {
       @include mx.font-stack($c: v.$orange);//  color
       border-bottom-color: v.$orange;
 
@@ -331,14 +331,14 @@
 }
 
 
-.controls__option__cancel {
+.controls__option__hide {
   @include mx.transition;
   @include mx.size(
     $w: 1rem,//  width
     $h: 1rem//  height
   );
   border: none;
-  background: url('../../media/svg/cancel-orange.svg') no-repeat center;
+  background: url('../../media/svg/hide-orange.svg') no-repeat center;
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -399,7 +399,7 @@
     }
   }
 }
-#fromRange {
+#from {
 //  Permite que el 'thumb' del primer rango no sea superpuesto por el
 //  'background' del segundo rango que se va rellenando dinámicamente con JavaScript.
   z-index: 1;
