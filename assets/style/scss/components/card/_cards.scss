@@ -279,6 +279,7 @@
   display: inline-block;
   border: 0.05555em solid v.$light-blue;
   padding: 0.55555em 0.66666em;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 0.69444em;

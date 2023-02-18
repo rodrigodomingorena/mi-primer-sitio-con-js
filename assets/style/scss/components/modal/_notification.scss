@@ -1,0 +1,70 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                            MODAL NOTIFICATION                             //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <div c="modal-notification">
+//    <div c="modal-notification__message"></div>
+//  </div>
+//
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+@keyframes modal-show-opacity {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.modal-notification {
+  @include mx.transition($duration: 0.5s);
+  @include mx.size(
+    $w: 100%,//  width
+    $h: 100%//  heigth
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: v.$brown-07;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: modal-show-opacity 0.5s ease-out;
+}
+
+.modal-notification__message {
+  @include mx.transition;
+  @include mx.size(28rem);//  width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.66666,//  line-height
+    $c: v.$orange,//  color
+    $f-s: 1.8rem,//  font-size
+  );
+  background-color: v.$control-card-blue;
+  padding: 3.5rem;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size(45rem);//  width
+  }
+
+  & i {
+    @include mx.font-stack($f-w: 'semi-bold');//  font-weight
+  }
+}
